@@ -1,13 +1,10 @@
-*.csv
 *.svg
 *.PNG
 *.pdf
 *.html
 Thumbs.db
 inst/doc
-
 *.Rhistory
 *.RData
-*.rda
 *.Rproj
 *.Rd
