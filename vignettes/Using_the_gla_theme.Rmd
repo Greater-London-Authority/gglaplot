@@ -1,0 +1,126 @@
+---
+title: "Using `theme_gla()`"
+author: "Libby Rogers"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using the ggla theme}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  fig.width = 6,
+  fig.height = 4,
+  comment = ""
+)
+```
+
+This vignette summarises how to use the custom theme included in `gglaplot`.
+
+Themes control the overall look of the non-data components of plots. `ggplot2` includes various default themes, as well as a framework for editing and building your own, on which `theme_gla` is built.
+
+##How to apply  `theme_gla` to a `ggplot` object
+
+
+```{r}
+library(ggplot2)
+library(gglaplot)
+```
+
+To illustrate how `theme_gla` can be used with `ggplot` plots, we'll use a dataset comparing the gender pay gap in London and the rest of the UK. Here's the dataset plotted in standard `ggplot`.
+
+
+
+```{r}
+plot = ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location, 
+                                   colour = location)) +
+  geom_line()
+plot
+```
+
+
+After installing `gglaplot` the custom theme can be accessed via the `theme_gla()` function.
+The function has been set up in such a way that it can be used without any arguments. The theme can be added onto any standard ggplot object in the same way as the themes built into `ggplot`.
+
+
+```{r}
+plot + 
+  theme_gla()
+```
+
+With the default settings, `theme_gla()` changes some basic aspects of the look of the graph, including legend style and location, background colours and gridlines.
+
+Here's the full argument and default specification for `theme_gla()`:
+
+```{r, echo = FALSE}
+str(theme_gla)
+```
+
+To change some of the more complicated aspects of the style of the plot, we need to change some of the `theme_gla()` arguments from their defaults.
+
+##Settings in the `theme_gla()` function
+
+###Light or Dark Theme
+
+
+```{r}
+plot + 
+  theme_gla(gla_theme = 'dark')
+```
+
+###Gridlines
+
+`xgridlines` controls whether gridlines appear on the x-axis of the plot.
+
+```{r}
+plot +
+  theme_gla(xgridlines = TRUE)
+```
+
+
+###Legend
+
+`legend` controls whether the legend appears. Where possible data should be labelled directly instead.
+
+```{r}
+plot +
+  theme_gla(xgridlines = TRUE, legend = FALSE)
+```
+
+###Font size
+
+`base_size` changes the base font size of the plot. The font size of any titles and captions will scale accordingly. Try and get the `base_size` to match the font size of the document/presentation the plot is being used in.
+
+```{r}
+plot +
+  theme_gla(base_size = 20)
+```
+
+##How to use `theme_gla()`
+
+As above, you can just add `theme_gla()` to each of your ggplot objects. It's best to add it directly after the call to `ggplot` so it won't overwrite any manual changes you make later on. As with other `ggplot` themes you can make manual changes to them directly. For example, if for a particular plot you don't want any y-gridlines you can remove them using the `ggplot::theme()` function:
+
+```{r}
+ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location, 
+                                   colour = location)) +
+  theme_gla(xgridlines = FALSE) +
+  geom_line() +
+  theme(panel.grid.major.y = element_blank())
+```
+
+You can get more information on how to manually adjust themes in the [ggplot documentation](https://ggplot2.tidyverse.org/reference/theme.html). We've tried to include the suggestions of the style guide in `theme_gla()`, but there may be plots it doesn't quite work for.
+
+Instead of adding `theme_gla()` to every one of your plots you can also set the theme at the start of your session.
+
+```{r}
+theme_set(theme_gla(xgridlines = FALSE))
+          
+plot
+```
+
+
+
+
