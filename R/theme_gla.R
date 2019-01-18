@@ -105,7 +105,12 @@ theme_gla <- function(gla_theme = 'light',
         axis.title.x = ggplot2::element_text(colour = colours$`body text`,
                                              family = 'sans',
                                              hjust = 0.5,
-                                             size = label_size)
+                                             size = label_size,
+                                             margin = margin(2 * plot_margin,
+                                                             0,
+                                                             plot_margin,
+                                                             0,
+                                                             "pt"))
         )
   }
     
@@ -118,7 +123,12 @@ theme_gla <- function(gla_theme = 'light',
           axis.title.y = ggplot2::element_text(colour = colours$`body text`,
                                                family = 'sans',
                                                hjust = 0.5,
-                                               size = label_size)
+                                               size = label_size,
+                                               margin = margin(0,
+                                                               2 * plot_margin,
+                                                               0,
+                                                               plot_margin,
+                                                               "pt"))
           )
   }
   
