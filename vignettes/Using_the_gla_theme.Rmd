@@ -71,6 +71,17 @@ plot +
   theme_gla(gla_theme = 'dark')
 ```
 
+###Axis titles
+
+If needed, axis titles can be added to plots with the `x_axis_title` and `y_axis_title` arguments
+
+```{r}
+plot +
+  theme_gla(x_axis_title = TRUE, y_axis_title = TRUE)
+```
+
+
+
 ###Gridlines
 
 `xgridlines` controls whether gridlines appear on the x-axis of the plot.

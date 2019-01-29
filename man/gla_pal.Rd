@@ -14,7 +14,7 @@ gla_pal(gla_theme = NULL, palette_type = "categorical",
 
 \item{main_colours}{One or more of "blue", "pink", "green", "red", "yellow", "orange", "purple" or "mayoral" as a string or list, Default: 'mayoral'}
 
-\item{n}{Number of colours in the palette. If palette_type = "Diverging", this is the number of colours on each side of the diverging scale (so 2n (+1) colours in total will be returned). If palette_type = "Highlight" gla_pal will return main_colours + (n - length(main_colours)) context colours. Default: 6, Default: 6}
+\item{n}{Number of colours in the palette. If palette_type = "Diverging", this is the number of colours on each side of the diverging scale (so 2n (+1) colours in total will be returned). If palette_type = "Highlight" gla_pal will return main_colours + (n - length(main_colours)) context colours. Default: 6}
 
 \item{muted}{boolean, If TRUE a muted version of the gla colours will be used, Default: FALSE}
 
