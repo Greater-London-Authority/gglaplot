@@ -42,8 +42,9 @@ theme_gla <- function(gla_theme = 'light', xgridlines = FALSE, legend = TRUE,
     #background
     ggplot2::theme(
       panel.background = ggplot2::element_rect(fill = colours$background),
-      plot.margin = ggplot2::margin(plot_margin, plot_margin, 
-                                    plot_margin, plot_margin, "pt"),
+      plot.margin = ggplot2::margin(t = plot_margin, r = plot_margin, 
+                                    b = plot_margin, l = 3 * plot_margin, 
+                                    unit =  "pt"),
       plot.background = ggplot2::element_rect(fill = colours$background),
       panel.border = ggplot2::element_blank(),
       
