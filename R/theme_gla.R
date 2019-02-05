@@ -67,9 +67,10 @@ theme_gla <- function(gla_theme = 'light',
     
       
       # axis and gridlines
-      panel.grid = ggplot2::element_blank(),
       panel.grid.major.y = ggplot2::element_line(size = 1 * mm_to_pt, 
                                                  colour = colours$`light grid`),
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor = element_blank(),
       axis.ticks.x = ggplot2::element_blank(),
       axis.ticks.y = ggplot2::element_blank(),
       axis.text = ggplot2::element_text(colour = colours$`body text`, 
@@ -101,7 +102,7 @@ theme_gla <- function(gla_theme = 'light',
     theme_gla <- theme_gla +
       ggplot2::theme(axis.title.x = ggplot2::element_blank())
   } else {
-    theme_gla <- theme_gla + 
+    theme_gla <- theme_gla +
       ggplot2::theme(
         axis.title.x = ggplot2::element_text(colour = colours$`body text`,
                                              family = 'sans',
@@ -119,7 +120,7 @@ theme_gla <- function(gla_theme = 'light',
       theme_gla <- theme_gla +
         ggplot2::theme(axis.title.y = ggplot2::element_blank())
     } else {
-      theme_gla <- theme_gla + 
+      theme_gla <- theme_gla +
         ggplot2::theme(
           axis.title.y = ggplot2::element_text(colour = colours$`body text`,
                                                family = 'sans',
