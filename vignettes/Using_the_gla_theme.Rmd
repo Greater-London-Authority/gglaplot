@@ -101,6 +101,15 @@ plot +
   theme_gla(xgridlines = TRUE, legend = FALSE)
 ```
 
+If you have particularly long labels in your legend, it can be split over multiple rows by adjusting the `guides` settings in your plot:
+
+```{r}
+plot +
+  theme_gla() + 
+  guides(col = guide_legend(nrow = 2))
+```
+
+
 ###Font size
 
 `base_size` changes the base font size of the plot. The font size of any titles and captions will scale accordingly. Try and get the `base_size` to match the font size of the document/presentation the plot is being used in.
