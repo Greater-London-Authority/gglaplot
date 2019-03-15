@@ -15,3 +15,5 @@ Imports: ggplot2,utils,dplyr,checkmate,grDevices,ggplotify,graphics
 Suggests: knitr, rmarkdown, grid, gridExtra, lubridate, scales, sf
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
+URL: https://github.com/Greater-London-Authority/gglaplot
+BugReports: https://github.com/Greater-London-Authority/gglaplot/issues
