@@ -1,7 +1,5 @@
 ---
 title: "Using `theme_gla()`"
-author: "Libby Rogers"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Using the ggla theme}
@@ -25,7 +23,7 @@ Themes control the overall look of the non-data components of plots. `ggplot2` i
 ##How to apply  `theme_gla` to a `ggplot` object
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(ggplot2)
 library(gglaplot)
 ```

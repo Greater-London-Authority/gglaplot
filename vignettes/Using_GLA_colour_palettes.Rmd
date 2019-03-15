@@ -1,7 +1,5 @@
 ---
 title: "Using GLA colour palettes"
-author: "Libby Rogers"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Using GLA colour palettes}
@@ -16,7 +14,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
+library(ggplot2)
 library(gglaplot)
 ```
 

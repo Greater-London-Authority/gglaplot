@@ -1,7 +1,5 @@
 ---
 title: "Custom `gglaplot`s"
-author: "Libby Rogers"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Custom gglaplots}
@@ -26,7 +24,7 @@ As with `ggplot()` these functions work best with, and are designed for, **tidy*
 
 These are the packages we'll need:
 
-```{r, message = FALSE}
+```{r message=FALSE, warning=FALSE}
 # For data manipulation
 library(dplyr)
 # For plotting
