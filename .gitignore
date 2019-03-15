@@ -1,7 +1,6 @@
 *.svg
 *.PNG
 *.pdf
-*.html
 Thumbs.db
 inst/doc
 *.Rhistory
