@@ -46,7 +46,7 @@
 #' \describe{
 #'   \item{\code{Year}}{double year of data}
 #'   \item{\code{location}}{integer London vs UK}
-#'   \item{\code{GPG}}{double Gender pay gap (%)} 
+#'   \item{\code{GPG}}{double Gender pay gap (percentage)} 
 #'}
 #' @source \url{https://data.london.gov.uk/economic-fairness/labour-market/gender-pay-gap/}
 "LDNUK"

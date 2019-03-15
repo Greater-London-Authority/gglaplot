@@ -1,0 +1,43 @@
+reference:
+- title: GLA colours and themes
+  desc: >
+    Functions to generate GLA colours, palettes and themes
+  contents:
+  - '`get_theme_colours`'
+  - '`gla_dark`'
+  - '`gla_light`'
+  - '`gla_pal`'
+  - '`show_gla_pals`'
+  - '`theme_gla`'
+- title: ggplot wrappers
+  desc:  Wrappers for ggplot functions to create GLA style plots
+  contents:
+  - '`ggla_axisat0`'
+  - '`ggla_donut`'
+  - '`ggla_highlight`'
+  - '`ggla_highlightarea`'
+  - '`ggla_horizbar`'
+  - '`ggla_labelline`'
+  - '`ggla_line`'
+  - '`ggla_sf`'
+  - '`left_align_labs`'
+- title: Miscellaneous helpers
+  desc: Additional helper functions
+  contents:
+  - '`mm_to_pt`'
+- title: Example datasets
+  desc: ~
+  contents:
+  - '`AvAtt`'
+  - '`EURef`'
+  - '`EYFSP`'
+  - '`Internet`'
+  - '`LDNUK`'
+
+articles:
+- title: All vignettes
+  desc: ~
+  contents:
+  - '`Using_GLA_colour_palettes`'
+  - '`Using_the_gla_theme`'
+  - '`Custom_ggla_plots`'
