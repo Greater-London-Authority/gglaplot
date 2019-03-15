@@ -7,7 +7,7 @@ Authors@R: c( person("Libby", "Rogers", email = "Libby.Rogers@london.gov.uk", ro
             person("Marta", "Lapsley", email = "Marta.Lapsley@london.gov.uk", role = "ctb"))
 Description: The package provides several wrappers and tools to use with ggplot2 to make graphics
            fit with the GLA style.
-Depends: R (>= 3.5.1)
+Depends: R (>= 3.5.0)
 License: GPL-2 | file LICENSE
 Encoding: UTF-8
 LazyData: true
