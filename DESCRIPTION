@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: c( person("Libby", "Rogers", email = "Libby.Rogers@london.gov.uk", role =
            c("aut","cre")), person("Mike", "Brondbjerg", email = "Mike.Brondbjerg@london.gov.uk",
            role = c("aut", "art")),
-            c(person("Marta", "Lapsley", email = "Marta.Lapsley@london.gov.uk", role = "ctb"))
+            person("Marta", "Lapsley", email = "Marta.Lapsley@london.gov.uk", role = "ctb"))
 Description: The package provides several wrappers and tools to use with ggplot2 to make graphics
            fit with the GLA style.
 Depends: R (>= 3.5.1)

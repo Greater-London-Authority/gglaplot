@@ -14,7 +14,7 @@ To install you'll need an [auth token from github](https://github.com/settings/t
 ``` r
 # To install from github use the devtools function:
 # This will install all required dependencies
-devtools::install_github("LiRogers/gglaplot", auth_token = token)
+devtools::install_github("Greater-London-Authority/gglaplot", auth_token = token)
 ```
 
 Usage
