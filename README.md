@@ -62,3 +62,5 @@ There are many online resources for ggplot2, including:
 ### gglaplot
 
 For help with gglaplot itself, see the vignettes (run `install_github` with `build_vignettes = TRUE` to download them) and function documentation.
+
+The BBC has a similar package for their house style which has some comprehensive help pages [here](https://bbc.github.io/rcookbook/).
