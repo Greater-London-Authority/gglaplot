@@ -9,12 +9,10 @@ The package provides several wrappers and tools to use with ggplot2 to make grap
 Installation
 ------------
 
-To install you'll need an [auth token from github](https://github.com/settings/tokens)
-
 ``` r
 # To install from github use the devtools function:
 # This will install all required dependencies
-devtools::install_github("Greater-London-Authority/gglaplot", auth_token = token)
+devtools::install_github("Greater-London-Authority/gglaplot")
 ```
 
 Usage
@@ -61,6 +59,6 @@ There are many online resources for ggplot2, including:
 
 ### gglaplot
 
-For help with gglaplot itself, see the vignettes (run `install_github` with `build_vignettes = TRUE` to download them) and function documentation.
+For help with gglaplot itself, see the vignettes which are available on the [gglaplot github pages](https://greater-london-authority.github.io/gglaplot/).
 
 The BBC has a similar package for their house style which has some comprehensive help pages [here](https://bbc.github.io/rcookbook/).
