@@ -1,0 +1,23 @@
+colour,theme,hex
+axis text & labels,light,#666666
+axis text & labels,dark,#ffffff
+background,light,#ffffff
+background,dark,#121516
+body text,light,#666666
+body text,dark,#ffffff
+context data,light,#cccccc
+context data,dark,#ffffff
+headlines,light,#353d42
+headlines,dark,#ffffff
+highlight area,light,#000000
+highlight area,dark,#ffffff
+highlighted labels,light,#353d42
+highlighted labels,dark,#ffffff
+label,light,#000000
+label,dark,#ffffff
+light grid,light,#d8d8d8
+light grid,dark,#4e5254
+mid point,light,#e0e0e0
+mid point,dark,#212121
+strong grid,light,#666666
+strong grid,dark,#ffffff
