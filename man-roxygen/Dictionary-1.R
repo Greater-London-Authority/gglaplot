@@ -21,11 +21,12 @@
 #' @param x2 final x-value, only needed lines which aren't perpedicular or parallel to axis, Default: NULL
 #' @param y1 starting y-value, not needed for lines perpendicular to y-axis, Default: NULL
 #' @param x1 starting x-value, not needed for lines perpendicular to x-axis, Default: NULL
-#' @param inc0 boolean, If TRUE an additional colour representing zero will be added to a diverging palette. This results in a palette of length 2n + 1, Default: FALSE
+#' @param inc0 boolean, If TRUE an additional colour representing zero will be added to a quantitative or diverging palette. Default: FALSE
 #' @param muted boolean, If TRUE a muted version of the gla colours will be used, Default: FALSE
-#' @param n Number of colours in the palette. If palette_type = "Diverging", this is the number of colours on each side of the diverging scale (so 2n (+1) colours in total will be returned). If palette_type = "Highlight" gla_pal will return main_colours + (n - length(main_colours)) context colours. Default: 6
-#' @param main_colours One or more of "blue", "pink", "green", "red", "yellow", "orange", "purple" or "mayoral" as a string or list, Default: "mayoral"
+#' @param n Number of colours in the palette. If palette_type = "highlight" n must have length 2, specifing the number of highlighted and contextual colours. Default: 6
+#' @param main_colours One or more colours. If NULL default order will be used, Default: NULL
 #' @param palette_type One of the strings "categorical", "quantitative", "highlight" or "diverging", Default: "categorical"
+#' @param palette_name One of the strings "core", "ldn", "light" or "dark", Default: "core"
 #' @param base_size base font size, Default: 14
 #' @param xgridlines boolean, If TRUE, theme will include gridlines on the x-axis, Default: FALSE
 #' @param legend boolean, If TRUE, theme will include a legend at the top left of the plot, Default: TRUE
