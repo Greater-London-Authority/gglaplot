@@ -1,13 +1,12 @@
 ---
-title: "gglaplot"
 output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.path = "man/figures/")
 ```
 
-## Overview
+# gglaplot <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 The package provides several wrappers and tools to use with ggplot2 to make graphics fit with the GLA style.
 
