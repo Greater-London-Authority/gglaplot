@@ -20,8 +20,6 @@ show_gla_pals <- function(gla_theme = "light", inc_div = FALSE) {
   checkmate::assert_choice(gla_theme, choices = c("light", "dark"))
   checkmate::assert_logical(inc_div)
 
-  colours <- gla_palette_colours %>%
-    dplyr::filter(theme == gla_theme)
   theme_colours <- get(paste("gla", gla_theme, sep = "_"))
   background <- theme_colours$background
   textcol <- theme_colours$`body text`

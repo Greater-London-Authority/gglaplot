@@ -29,4 +29,16 @@ gla_colours <- gla_palette_colours %>%
   as.list()
 
 use_data(gla_colours, overwrite = TRUE)
-use_data(gla_palette_colours, internal = TRUE, overwrite = TRUE)
+
+
+core_order <- c("blue", "ldnmyr", "yellow", "red", "green", "purple",
+                "turquoise", "pink", "orange", "ldnpink")
+ldn_order <- c("blue", "ldnpink", "yellow", "ldnmyr", "orange", "turquoise",
+               "purple", "red", "pink", "green")
+light_order <- c("blue", "purple", "yellow", "red", "green", "turquoise",
+                 "orange")
+dark_order <- c("blue", "magenta", "yellow", "red", "green", "turquoise",
+                "purple", "orange")
+
+use_data(gla_palette_colours, core_order, ldn_order, light_order, dark_order,
+         internal = TRUE, overwrite = TRUE)

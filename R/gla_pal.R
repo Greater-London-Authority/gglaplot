@@ -148,13 +148,13 @@ gla_pal <- function(gla_theme = NULL, palette_type = "categorical",
     colours <- gla_palette_colours %>%
       filter(palette == "core") %>%
       select(colour, hex) %>%
-      deframe() %>%
+      tibble::deframe() %>%
       as.list()
   } else {
     colours <- gla_palette_colours %>%
       filter(palette == palette_name) %>%
       select(colour, hex) %>%
-      deframe() %>%
+      tibble::deframe() %>%
       as.list()
   }
 
