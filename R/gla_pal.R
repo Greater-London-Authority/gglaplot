@@ -1,24 +1,25 @@
 #' @title gla_pal
 #' @description Generates palettes using the GLA colours
 #' @param gla_theme One of "light" or "dark". If NULL will try to pick up current theme, or default to light, Default: NULL
-#' @param palette_type One of "categorical", "quantitative", "highlight" or "diverging", Default: 'categorical'
-#' @param main_colours One or more of "blue", "pink", "green", "red", "yellow", "orange", "purple" or "mayoral" as a string or list, Default: 'mayoral'
 #' @param n Number of colours in the palette. If palette_type = "Diverging", this is the number of colours on each side of the diverging scale . If palette_type = "Highlight" gla_pal will return main_colours + (n - length(main_colours)) context colours. Default: 6
+#' @param palette_type One of "categorical", "quantitative", "highlight" or "diverging", Default: 'categorical'
+#' @param palette_name One of the strings "core", "ldn", "light" or "dark", Default: 'core'
+#' @param main_colours One or more of "blue", "pink", "green", "red", "yellow", "orange", "purple" or "mayoral" as a string or list, Default: 'mayoral'
 #' @param inc0 boolean, If TRUE an additional colour representing zero will be added to a quantiative or diverging palettes, Default: FALSE
 #' @details DETAILS
+#' @return Returns a character vector of length n giving colour hexs.
 #' @examples 
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' @seealso 
-#'  \code{\link[grDevices]{colorRamp}}
 #' @rdname gla_pal
 #' @export 
-#' @import dplyr 
+#' @import dplyr
 #' @import checkmate
-#' @importFrom grDevices colorRampPalette
+#' @importFrom tibble deframe
+#' @importFrom chroma interp_palette
 gla_pal <- function(gla_theme = NULL, palette_type = "categorical",
                     palette_name = "core",
                     main_colours = NULL, n = 6,
@@ -152,7 +153,6 @@ gla_pal <- function(gla_theme = NULL, palette_type = "categorical",
       as.list()
   } else {
     colours <- gla_palette_colours %>%
-      filter(palette == palette_name) %>%
       select(colour, hex) %>%
       tibble::deframe() %>%
       as.list()
@@ -175,24 +175,24 @@ gla_pal <- function(gla_theme = NULL, palette_type = "categorical",
   } else if (palette_type == "quantitative") {
 
     pal_ends <- c(colours, pal_end)
-    makepal <- grDevices::colorRampPalette(pal_ends, space = "rgb",
-                                           interpolate = "linear")
+    make_pal <- chroma::interp_palette(colors = pal_ends, model = 'lab',
+                                     interp = 'bezier', correct.lightness = TRUE)
     if (inc0) {
-      pal <- makepal(n)
+      pal <- make_pal(n)
     } else {
-      pal <- makepal(n + 1)[1:n]
+      pal <- make_pal(n + 1)[1:n]
     }
 
   } else if (palette_type == "diverging") {
     col1 <- colours[1]
     col2 <- colours[2]
     n_each <- floor(n / 2) + 1
-    makepal1 <- grDevices::colorRampPalette(c(col1, pal_end), space = "rgb",
-                                            interpolate = "linear")
-    pal1 <- makepal1(n_each)
-    makepal2 <- grDevices::colorRampPalette(c(pal_end, col2), space = "rgb",
-                                            interpolate = "linear")
-    pal2 <- makepal2(n_each)
+    make_pal1 <- chroma::interp_palette(colors = c(col1, pal_end), model = 'lab',
+                                      interp = 'bezier', correct.lightness = TRUE)
+    pal1 <- make_pal1(n_each)
+    make_pal2 <- chroma::interp_palette(colors = c(pal_end, col2), model = 'lab',
+                                      interp = 'bezier', correct.lightness = TRUE)
+    pal2 <- make_pal2(n_each)
     if (inc0) {
       pal <- c(pal1, pal2[2:n_each])
     } else {
