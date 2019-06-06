@@ -8,30 +8,33 @@
 #' @param inc0 boolean, If TRUE an additional colour representing zero will be added to a quantiative or diverging palettes, Default: FALSE
 #' @details DETAILS
 #' @return Returns a character vector of length n giving colour hexs.
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
 #' @rdname gla_pal
-#' @export 
+#' @export
 #' @import dplyr
 #' @import checkmate
 #' @importFrom tibble deframe
 #' @importFrom chroma interp_palette
-gla_pal <- function(gla_theme = 'default', palette_type = "categorical",
+gla_pal <- function(gla_theme = "default", palette_type = "categorical",
                     palette_name = "core",
                     main_colours = NULL, n = 6,
                     inc0 = FALSE, remove_margin = NULL) {
-  
+  # initial set up
   gla_theme <- ifelse(is.null(gla_theme), NULL, tolower(gla_theme))
   palette_type <- tolower(palette_type)
   palette_name <- tolower(palette_name)
-  
+  remove_left <- checkmate::test_subset(remove_margin, c("left", "both"),
+                                        empty.ok = FALSE)
+  remove_right <- checkmate::test_subset(remove_margin, c("right", "both"),
+                                         empty.ok = FALSE)
   palette_types <- c("categorical", "quantitative", "highlight", "diverging")
   palette_names <- c("core", "light", "dark", "brand")
-  
+
   # simple checks
   checkmate::assert_choice(gla_theme, choices = c("default", "inverse"),
                            null.ok = TRUE)
@@ -46,11 +49,10 @@ gla_pal <- function(gla_theme = 'default', palette_type = "categorical",
     main_colours <- tolower(main_colours)
     checkmate::assert_subset(main_colours, possible_colours, empty.ok = TRUE)
   }
-  checkmate::assert_choice(remove_margin, choices = c('right', 'left', 'both'),
+  checkmate::assert_choice(remove_margin, choices = c("right", "left", "both"),
                            null.ok = TRUE)
   checkmate::assert_logical(inc0)
-  
-  
+
   # conditional checks
   if (palette_type == "highlight") {
     checkmate::assert_integerish(n, len = 2, lower = 1)
@@ -61,19 +63,18 @@ gla_pal <- function(gla_theme = 'default', palette_type = "categorical",
       sum_n <- sum(n)
       n <- c(num_possible_colours, sum_n - num_possible_colours)
     }
-    if (!is.null(main_colours) & n[1] != length(main_colours)) {
-      warning(paste("n[1] and length(main_colours) do not agree.",
-                    "Using n =", n[1], "colours in default order from",
-                    palette_name,
-                    "palette", sep = " "))
-      main_colours <- NULL
+    if (!is.null(main_colours)) {
+      if (n[1] < length(main_colours)) {
+        warning(paste("Too many colours provided, only the first",
+                      n[1], "will be used.", sep = " "))
+      }
     }
   } else {
     checkmate::assert_count(n, positive = TRUE)
     if (palette_type == "quantitative") {
       check <- checkmate::test_character(palette_name, fixed = "core")
       if (!check) {
-        stop("Diverging palettes only availabe for core palettes")
+        stop("Diverging palettes only availabe for core palette")
       }
       check <- checkmate::check_character(main_colours, len = 1, null.ok = TRUE)
       if (!check) {
@@ -89,114 +90,89 @@ gla_pal <- function(gla_theme = 'default', palette_type = "categorical",
                       num_possible_colours, "colours will be returned"))
         n <- num_possible_colours
       }
-      
     } else if (palette_type == "diverging") {
-      mod2 = as.numeric(inc0) + 
-        ifelse(checkmate::test_subset(remove_margin, c('left', 'right'), empty.ok = FALSE),1, 0)
-      mod2 = mod2 %% 2
+      mod2 <- inc0 + remove_left + remove_right
+      mod2 <- mod2 %% 2
       if (n %% 2 != mod2) {
-        warning(paste0('For this combination of inc0 and remove_margin n must be ',
-                       ifelse(mod2 == 0, 'even', 'odd'), '. Returning ',
-                       n + 1, ' colours instead of ', n, '.'))
-        n = n + 1
+        warning(paste0(
+          "For this combination of inc0 and remove_margin n must be ",
+          ifelse(mod2 == 0, "even", "odd"), ". Returning ",
+          n + 1, " colours instead of ", n, "."))
+        n <- n + 1
       }
       check <- checkmate::test_character(palette_name, fixed = "core")
       if (!check) {
-        stop("Diverging palettes only availabe for core palettes")
+        stop("Diverging palettes only availabe for core palette")
       }
       check <- checkmate::test_character(main_colours, len = 2, null.ok = TRUE)
       if (!check) {
         warning("For diverging palettes 2 colours will be used")
-        if (length(main_colours) == 1) {
-          main_colours <- c(main_colours,
-                            possible_colours[possible_colours!=main_colours][1])
-        } else {
-          main_colours <- main_colours[1:2]
-        }
       }
-      
     }
   }
-  
-  
-  
+
   # Set up
-  
   if (gla_theme == "default") {
     theme_colours <- gla_default
-  } else if (gla_theme == "inverse") {
+  } else {
     theme_colours <- gla_inverse
   }
   num_col <- list("categorical" = n,
                   "diverging" = 2,
                   "quantitative" = 1,
                   "highlight" = n[1])
-  
-  
+
   colours <- gla_palette_colours %>%
     filter(palette == palette_name) %>%
     select(-palette)
-  
-  
   if (!is.null(main_colours)) {
-    pos = 1
+    pos <- 1
     colours <- colours %>%
       mutate(order = NA)
     for (col in main_colours) {
       colours <- colours %>%
         mutate(order = ifelse(colour == col, pos, order))
-      pos = pos + 1
+      pos <- pos + 1
     }
     colours <- colours %>%
       arrange(order) %>%
       select(-order)
-    
   }
-  
   colours <- colours %>%
     filter(row_number() <= num_col[[palette_type]])
-  
+
   # Make palettes
-  
   if (palette_type == "categorical") {
     pal <- colours %>%
       pull(hex)
+
   } else if (palette_type == "quantitative") {
-    
     pal_ends <- colours %>%
       select(dark_end, hex, light_end) %>%
       tidyr::gather() %>%
       pull(value)
-    
-    
-    
-    make_pal <- chroma::interp_palette(colors = pal_ends, model = 'lab',
-                                       interp = 'bezier', correct.lightness = TRUE)
-    
-    if (checkmate::test_subset(remove_margin, c('left', 'right'), empty.ok = FALSE)) {
-      n = n + 1
-    } else if (checkmate::test_string(remove_margin, fixed = 'both')) {
-      n = n + 2
-    }
+    make_pal <- chroma::interp_palette(
+      colors = pal_ends, model = "lab", interp = "bezier",
+      correct.lightness = TRUE)
+    n_each <- n + remove_left + remove_right
     if (inc0) {
-      pal <- make_pal(n)
+      pal <- make_pal(n_each)
     } else {
-      pal <- make_pal(n + 1)[-(n + 1)]
+      pal <- make_pal(n_each + 1)[- (n_each + 1)]
     }
-    if (checkmate::test_subset(remove_margin, c('left', 'both'), empty.ok = FALSE)) {
+    if (remove_left) {
       pal <- pal[-1]
-    } else if (checkmate::test_subset(remove_margin, c('both', 'right'), empty.ok = FALSE)) {
+    }
+    if (remove_right) {
       if (inc0) {
-        pal <- pal[-(length(pal) - 1)]
+        pal <- pal[- (length(pal) - 1)]
       } else {
-        pal <- pal[-length(pal)] 
+        pal <- pal[-length(pal)]
       }
     }
-    
-    
-    
+
   } else if (palette_type == "diverging") {
-    mid_point = theme_colours[['mid point']]
+    mid_point <- theme_colours[["mid point"]]
     colours <- colours %>%
       mutate(light_end = mid_point)
     pal_ends1 <- colours %>%
@@ -210,49 +186,48 @@ gla_pal <- function(gla_theme = 'default', palette_type = "categorical",
       tidyr::gather() %>%
       pull(value)
     n_each <- floor(n / 2) + 1
-    if (!is.null(remove_margin)) {
-      if (remove_margin == 'both' | !inc0) {
-        n_each <- n_each + 1
-      }
+    if ((remove_left & remove_right) | ((remove_left | remove_right) & !inc0)) {
+      n_each <- n_each + 1
     }
-    
-    make_pal1 <- chroma::interp_palette(colors = pal_ends1, model = 'lab',
-                                        interp = 'bezier', correct.lightness = TRUE)
-    if (checkmate::test_subset(remove_margin, c('left', 'both'), empty.ok = FALSE)) {
+    make_pal1 <- chroma::interp_palette(
+      colors = pal_ends1, model = "lab", interp = "bezier",
+      correct.lightness = TRUE)
+    if (remove_left) {
       pal1 <- make_pal1(n_each)[-1]
     } else {
       pal1 <- make_pal1(n_each)
     }
-    
-    
-    make_pal2 <- chroma::interp_palette(colors = pal_ends2, model = 'lab',
-                                        interp = 'bezier', correct.lightness = TRUE)
-    if (checkmate::test_subset(remove_margin, c('both', 'right'), empty.ok = FALSE)){
+    make_pal2 <- chroma::interp_palette(
+      colors = pal_ends2, model = "lab", interp = "bezier",
+      correct.lightness = TRUE)
+    if (remove_right){
       pal2 <- make_pal2(n_each)[-n_each]
     } else {
       pal2 <- make_pal2(n_each)
     }
-    
     if (inc0) {
       pal <- c(pal1, pal2[-1])
     } else {
       pal <- c(pal1[-length(pal1)], pal2[-1])
     }
+
   } else if (palette_type == "highlight") {
     context <- theme_colours[["context data"]]
     pal <- colours %>%
       pull(hex) %>%
       c(., rep(context, n[2]))
-    
     pal <- c(colours, rep(context, n[2]))
-    
   }
+
+  # Green & pink warning
   check1 <- checkmate::test_subset(c("#5ea15d", "#ee266d"), pal)
-  check2 <- checkmate::test_subset(c('green', 'ldnpink', main_colours)
+  check2 <- checkmate::test_subset(c("green", "ldnpink"), main_colours)
   if (check1 | check2) {
-    warning("Green and LDN Pink are not always easily differentiable - only use together if strictly necessary")
+    warning(
+      "Green and LDN Pink are not always easily differentiable -
+      only use together if strictly necessary")
   }
-  
+
   return(pal)
-  
+
 }
