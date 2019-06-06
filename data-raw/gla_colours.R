@@ -8,7 +8,7 @@ gla_theme_colours <- read.csv("data-raw/gla_theme_colours.csv",
 gla_palette_colours <- read.csv("data-raw/gla_palette_colours.csv",
                                 stringsAsFactors = FALSE)
 
-gla_themes <- c("dark", "light")
+gla_themes <- c("default", "inverse")
 
 for (gla_theme in gla_themes) {
   colours <- gla_theme_colours %>%
@@ -19,26 +19,15 @@ for (gla_theme in gla_themes) {
   assign(paste("gla_", gla_theme, sep = ""), colours)
 }
 
-use_data(gla_dark, overwrite = TRUE)
-use_data(gla_light, overwrite = TRUE)
+use_data(gla_default, overwrite = TRUE)
+use_data(gla_inverse, overwrite = TRUE)
 
 gla_colours <- gla_palette_colours %>%
   mutate(colour = paste(colour, palette, sep = "_")) %>%
-  select(-palette) %>%
+  select(-palette, -ends_with('end')) %>%
   deframe() %>%
   as.list()
 
 use_data(gla_colours, overwrite = TRUE)
 
-
-core_order <- c("blue", "ldnmyr", "yellow", "red", "green", "purple",
-                "turquoise", "pink", "orange", "ldnpink")
-ldn_order <- c("blue", "ldnpink", "yellow", "ldnmyr", "orange", "turquoise",
-               "purple", "red", "pink", "green")
-light_order <- c("blue", "purple", "yellow", "red", "green", "turquoise",
-                 "orange")
-dark_order <- c("blue", "magenta", "yellow", "red", "green", "turquoise",
-                "purple", "orange")
-
-use_data(gla_palette_colours, core_order, ldn_order, light_order, dark_order,
-         internal = TRUE, overwrite = TRUE)
+use_data(gla_palette_colours, internal = TRUE, overwrite = TRUE)

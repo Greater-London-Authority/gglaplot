@@ -1,6 +1,6 @@
 #' @title theme_gla
 #' @description Controls the non-data display to be consistent with our style guide
-#' @param gla_theme Either 'light' or 'dark', Default: 'light'
+#' @param gla_theme Either 'default' or 'inverse', Default: 'default'
 #' @param x_axis_title boolean, If TRUE an x-axis label/title can be added, Default: FALSE
 #' @param y_axis_title boolean, If TRUE a y-axis label/title can be added, Default: FALSE
 #' @param xgridlines boolean, If TRUE, theme will include gridlines on the x-axis, Default: FALSE
@@ -17,28 +17,28 @@
 #' @export 
 #' @import checkmate
 #' @import ggplot2
-theme_gla <- function(gla_theme = 'light',
+theme_gla <- function(gla_theme = 'default',
                       x_axis_title = FALSE, y_axis_title = FALSE,
                       xgridlines = FALSE, legend = TRUE,
                       base_size = 14) {
   
   # checks
-  checkmate::assert_choice(gla_theme, choices = c('light', 'dark'))
+  checkmate::assert_choice(gla_theme, choices = c('default', 'inverse'))
   checkmate::assert_logical(x_axis_title)
   checkmate::assert_logical(y_axis_title)
   checkmate::assert_logical(xgridlines)
   checkmate::assert_logical(legend)
   checkmate::assert_number(base_size, lower = 0)
   
-  if (gla_theme=='light') {
-    colours <- gla_light
-  } else if (gla_theme=='dark') {
-    colours <- gla_dark
+  if (gla_theme=='default') {
+    colours <- gla_default
+  } else if (gla_theme=='inverse') {
+    colours <- gla_inverse
   }
   
-  title_size = base_size * (30/26)
-  label_size = base_size * (20/26)
-  axis_size = base_size * (16/26)
+  title_size = base_size * (18/14)
+  label_size = base_size * (12/14)
+  axis_size = base_size * (12/14)
   plot_margin = base_size * (5/14)
 
   theme_gla <- ggplot2::theme_bw(base_size = base_size) +
@@ -60,7 +60,8 @@ theme_gla <- function(gla_theme = 'light',
                                          family = 'sans', hjust = 0, 
                                          face = 'bold', size = title_size),
       plot.subtitle = ggplot2::element_text(colour = colours$headlines, 
-                                            family = 'sans', hjust = 0),
+                                            family = 'sans', hjust = 0,
+                                            size = base_size),
       plot.caption = ggplot2::element_text(colour = colours$`body text`, 
                                            family = 'sans', hjust = 0, 
                                            size = label_size),
@@ -80,6 +81,8 @@ theme_gla <- function(gla_theme = 'light',
         hjust = 0, vjust = -1,
         margin = margin(t = 0, r = - 5 * plot_margin, b = 0 , l = plot_margin/2, 
                         unit = 'pt')),
+      axis.line = ggplot2::element_line(size = 1 * mm_to_pt,
+                                        colour = colours$`strong grid`)
       
       # legend
       legend.background = ggplot2::element_rect(fill = colours$background),
@@ -139,7 +142,7 @@ theme_gla <- function(gla_theme = 'light',
 
     theme_gla <- theme_gla +
       ggplot2::theme(panel.grid.major.x = ggplot2::element_line(
-        size = 1, colour =  colours$`light grid`))
+        size = 1 * mm_to_pt, colour =  colours$`light grid`))
   }
   
   # legend
