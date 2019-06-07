@@ -14,6 +14,11 @@
 #' @param gla_theme Either "default" or "inverse", Default: 'default'
 ggla_sf <- function(gla_theme = "default", ...) {
 
+  check <- checkmate::test_choice(gla_theme, choices = c("light", "dark"))
+  if (check) {
+    warning("The gla_themes have been renamed to default (light) and inverse (dark).")
+    gla_theme <- ifelse(gla_theme == "light", "default", "inverse")
+  }
   checkmate::assert_choice(gla_theme, c("default", "inverse"))
 
   colours <- get(paste0("gla_", gla_theme))

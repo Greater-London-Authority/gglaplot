@@ -63,7 +63,7 @@ LDNUK %>%
 `ggla_line()` is the same as `ggplot2::geom_line()` except that it uses a round `lineend` style as default.
 
 ```{r}
-pal <- gla_pal(gla_theme = "light", palette_type = "highlight", n = c(1, 1))
+pal <- gla_pal(gla_theme = "default", palette_type = "highlight", n = c(1, 1))
 
 plot <- ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
                                            colour = location)) +
@@ -209,7 +209,7 @@ We can add some additional formatting and labels to this
    # Add formated labels to each bar
   geom_text(aes(label = paste(format(eyfsp, nsmall = 0), "%", sep = "")),
             y = 8, position = position_nudge(x = 0, y = 0), vjust = 0.50,
-            colour = gla_light$background) +
+            colour = gla_default$background) +
    # Remove any labels from the x axis (effectively our y axis)
   theme(axis.text.x = element_blank()) +
    # Add titles
@@ -240,7 +240,7 @@ numcats <- AvAtt %>%
   unique() %>%
   nrow()
 
-pal <- gla_pal(gla_theme = "light", palette_type = "categorical", n = numcats)
+pal <- gla_pal(gla_theme = "default", palette_type = "categorical", n = numcats)
 
 (ggplot(AvAtt,
         aes(x = Region, y = Score, fill = rev(Subject),
@@ -248,7 +248,7 @@ pal <- gla_pal(gla_theme = "light", palette_type = "categorical", n = numcats)
   theme_gla() +
   ggla_horizbar() +
   geom_text(position = position_stack(vjust = 0.85),
-            color = gla_light$background) +
+            color = gla_default$background) +
   theme(axis.text.x = element_blank()) +
   scale_fill_manual(values = pal,
                     breaks = rev(levels(AvAtt$Subject))) +
@@ -275,7 +275,7 @@ Internet %>%
 ```{r}
 numcats <- nrow(Internet)
 
-pal <- gla_pal(gla_theme = "light", palette_type = "categorical", n = numcats)
+pal <- gla_pal(gla_theme = "default", palette_type = "categorical", n = numcats)
 
 ggplot(data = Internet, mapping = aes(fill = usage)) +
   ggla_donut(mapping = aes(label = usage, y = numUsers), stat = "identity",
@@ -304,7 +304,7 @@ To plot geographical data, you can use the `ggla_sf()` which uses the `ggplot::g
 
 
 ```{r}
-pal <- gla_pal(gla_theme = "light", palette_type = "diverging",
+pal <- gla_pal(gla_theme = "default", palette_type = "diverging",
                main_colours = c("blue", "red"), n = 6)
 
 ggplot(EURef, aes(fill = CatLeave)) +
@@ -314,7 +314,6 @@ ggplot(EURef, aes(fill = CatLeave)) +
     title = "Leave Vote in the 2016 EU Referendum",
     caption = "Contains Ordnance Survey data Crown copyright and database right [2015]"
     )
-
 ```
 
 (For some reason the labels are centred on this plots when rendered in markdown)

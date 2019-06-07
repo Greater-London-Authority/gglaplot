@@ -33,7 +33,7 @@ To illustrate how `theme_gla` can be used with `ggplot` plots, we'll use a datas
 
 
 ```{r}
-plot = ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location, 
+plot <- ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
                                    colour = location)) +
   geom_line()
 plot
@@ -45,7 +45,7 @@ The function has been set up in such a way that it can be used without any argum
 
 
 ```{r}
-plot + 
+plot +
   theme_gla()
 ```
 
@@ -61,12 +61,12 @@ To change some of the more complicated aspects of the style of the plot, we need
 
 ##Settings in the `theme_gla()` function
 
-###Light or Dark Theme
+###Default or Inverse Theme
 
 
 ```{r}
-plot + 
-  theme_gla(gla_theme = 'dark')
+plot +
+  theme_gla(gla_theme = "inverse")
 ```
 
 ###Axis titles
@@ -103,7 +103,7 @@ If you have particularly long labels in your legend, it can be split over multip
 
 ```{r}
 plot +
-  theme_gla() + 
+  theme_gla() +
   guides(col = guide_legend(nrow = 2))
 ```
 
@@ -122,7 +122,7 @@ plot +
 As above, you can just add `theme_gla()` to each of your ggplot objects. It's best to add it directly after the call to `ggplot` so it won't overwrite any manual changes you make later on. As with other `ggplot` themes you can make manual changes to them directly. For example, if for a particular plot you don't want any y-gridlines you can remove them using the `ggplot::theme()` function:
 
 ```{r}
-ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location, 
+ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
                                    colour = location)) +
   theme_gla(xgridlines = FALSE) +
   geom_line() +
@@ -135,7 +135,7 @@ Instead of adding `theme_gla()` to every one of your plots you can also set the 
 
 ```{r}
 theme_set(theme_gla(xgridlines = FALSE))
-          
+
 plot
 ```
 

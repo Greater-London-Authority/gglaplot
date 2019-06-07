@@ -26,6 +26,11 @@ ggla_labelline <- function(x1 = NULL, x2 = NULL, y1 = NULL, y2 = NULL,
   checkmate::assert_number(x2, null.ok = TRUE)
   checkmate::assert_number(y1, null.ok = TRUE)
   checkmate::assert_number(y2, null.ok = TRUE)
+  check <- checkmate::test_choice(gla_theme, choices = c("light", "dark"))
+  if (check) {
+    warning("The gla_themes have been renamed to default (light) and inverse (dark).")
+    gla_theme <- ifelse(gla_theme == "light", "default", "inverse")
+  }
   checkmate::assert_choice(gla_theme, c("default", "inverse"))
 
   colours <- get(paste0("gla_", gla_theme))

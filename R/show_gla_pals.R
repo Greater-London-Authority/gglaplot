@@ -1,6 +1,6 @@
 #' @title show_gla_pals
 #' @description Display the available GLA palettes
-#' @param gla_theme One of 'light' or 'dark', Default: 'light'
+#' @param gla_theme Either "default" or "inverse", Default: "default"
 #' @param inc_div boolean, If TRUE, output will include diverging colour palettes, Default: FALSE
 #' @details DETAILS
 #' @examples 
@@ -13,10 +13,15 @@
 #' @export 
 #' @import checkmate
 #' @import dplyr
-show_gla_pals <- function(gla_theme = "light", inc_div = FALSE) {
+show_gla_pals <- function(gla_theme = "default", inc_div = FALSE) {
 
   # checks
-  checkmate::assert_choice(gla_theme, choices = c("light", "dark"))
+  check <- checkmate::test_choice(gla_theme, choices = c("light", "dark"))
+  if (check) {
+    warning("The gla_themes have been renamed to default (light) and inverse (dark).")
+    gla_theme <- ifelse(gla_theme == "light", "default", "inverse")
+  }
+  checkmate::assert_choice(gla_theme, choices = c("default", "inverse"))
   checkmate::assert_logical(inc_div)
 
   theme_colours <- get(paste("gla", gla_theme, sep = "_"))
@@ -26,12 +31,14 @@ show_gla_pals <- function(gla_theme = "light", inc_div = FALSE) {
   pal_list <- list()
 
   for (pal in c("core", "light", "dark", "brand")) {
+    num_col <- gla_palette_colours %>%
+      dplyr::filter(palette == pal) %>%
+      nrow()
     pal_list[[pal]] <- gla_pal(
       gla_theme = gla_theme,
       palette_type = "categorical",
       palette_name = pal,
-      n = length(get(paste(pal, "order", sep = "_")))
-    )
+      n = num_col)
   }
   core_order <- gla_palette_colours %>%
     dplyr::filter(palette == "core") %>%

@@ -27,6 +27,11 @@ ggla_highlightarea <- function(xmin = -Inf, xmax = Inf,
   checkmate::assert_number(xmax)
   checkmate::assert_number(ymin)
   checkmate::assert_number(ymax)
+  check <- checkmate::test_choice(gla_theme, choices = c("light", "dark"))
+  if (check) {
+    warning("The gla_themes have been renamed to default (light) and inverse (dark).")
+    gla_theme <- ifelse(gla_theme == "light", "default", "inverse")
+  }
   checkmate::assert_choice(gla_theme, c("default", "inverse"))
 
   colours <- get(paste0("gla_", gla_theme))

@@ -22,6 +22,11 @@ theme_gla <- function(gla_theme = "default",
                       base_size = 14) {
 
   # checks
+  check <- checkmate::test_choice(gla_theme, choices = c("light", "dark"))
+  if (check) {
+    warning("The gla_themes have been renamed to default (light) and inverse (dark).")
+    gla_theme <- ifelse(gla_theme == "light", "default", "inverse")
+  }
   checkmate::assert_choice(gla_theme, choices = c("default", "inverse"))
   checkmate::assert_logical(x_axis_title)
   checkmate::assert_logical(y_axis_title)
@@ -81,8 +86,6 @@ theme_gla <- function(gla_theme = "default",
         margin = ggplot2::margin(
           t = 0, r = - 5 * plot_margin, b = 0, l = plot_margin / 2,
           unit = "pt")),
-      axis.line = ggplot2::element_line(size = 1 * mm_to_pt,
-                                        colour = colours$`strong grid`),
 
       # legend
       legend.background = ggplot2::element_rect(fill = colours$background),

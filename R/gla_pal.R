@@ -29,7 +29,7 @@ gla_pal <- function(gla_theme = "default", palette_type = "categorical",
                     main_colours = NULL, n = 6,
                     inc0 = FALSE, remove_margin = NULL) {
   # initial set up
-  gla_theme <- ifelse(is.null(gla_theme), NULL, tolower(gla_theme))
+  gla_theme <- tolower(gla_theme)
   palette_type <- tolower(palette_type)
   palette_name <- tolower(palette_name)
   remove_left <- checkmate::test_subset(remove_margin, c("left", "both"),
@@ -40,8 +40,12 @@ gla_pal <- function(gla_theme = "default", palette_type = "categorical",
   palette_names <- c("core", "light", "dark", "brand")
 
   # simple checks
-  checkmate::assert_choice(gla_theme, choices = c("default", "inverse"),
-                           null.ok = TRUE)
+  check <- checkmate::test_choice(gla_theme, choices = c("light", "dark"))
+  if (check) {
+    warning("The gla_themes have been renamed to default (light) and inverse (dark).")
+    gla_theme <- ifelse(gla_theme == "light", "default", "inverse")
+  }
+  checkmate::assert_choice(gla_theme, choices = c("default", "inverse"))
   checkmate::assert_choice(palette_type, choices = palette_types)
   checkmate::assert_choice(palette_name, choices = palette_names)
   possible_colours <- gla_palette_colours %>%
@@ -220,7 +224,6 @@ gla_pal <- function(gla_theme = "default", palette_type = "categorical",
     pal <- colours %>%
       dplyr::pull(hex) %>%
       c(., rep(context, n[2]))
-    pal <- c(colours, rep(context, n[2]))
   }
 
   # Green & pink warning
