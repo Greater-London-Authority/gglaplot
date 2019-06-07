@@ -26,7 +26,7 @@ show_gla_pals <- function(gla_theme = "light", inc_div = FALSE) {
 
   pal_list <- list()
 
-  for (pal in c("core", "ldn", "light", "dark")) {
+  for (pal in c("core", "light", "dark", "brand")) {
     pal_list[[pal]] <- gla_pal(
       gla_theme = gla_theme,
       palette_type = "categorical",
@@ -34,7 +34,9 @@ show_gla_pals <- function(gla_theme = "light", inc_div = FALSE) {
       n = length(get(paste(pal, "order", sep = "_")))
     )
   }
-
+  core_order <- gla_palette_colours %>%
+    filter(palette == "core") %>%
+    pull(colour)
 
   for (col in core_order) {
     pal_list[[col]] <- gla_pal(gla_theme = gla_theme,

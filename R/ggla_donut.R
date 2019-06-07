@@ -1,7 +1,7 @@
 #' @title ggla_donut
 #' @description This creates a donut chart, similar to a pie chart.
 
-#' @param stat The statistical transformation to use on the data for this layer, 
+#' @param stat The statistical transformation to use on the data for this layer,
 #' as a string. Should be either 'count', for the number of cases in each group, or 'identity' to represent values in the data. Default: 'count'
 #' @param title String title to be used for plot. Will appear in the middle of the donut, Default: NULL
 #' @inheritParams ggplot2::geom_bar
@@ -19,60 +19,63 @@
 #'     \item size
 #'     \item stroke
 #' }
-#' 
+#'
 #' @details This works by creating a stacked bar chart and converting to polar coordinates.
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' @seealso 
+#' @seealso
 #'  \code{\link[ggplot2]{geom_bar}}
 #' @rdname ggla_donut
-#' @export 
+#' @export
 #' @import ggplot2
 #' @importFrom utils modifyList
 ggla_donut <- function(data = NULL, mapping = NULL, stat = "count",
-                       title = NULL, ...) {
-  
-  colours <- get_theme_colours()
-  base_text <- ggplot2::theme_get()$text$size
-  title_text <- base_text * mm_to_pt * 10 / 13
-  label_text <- base_text * mm_to_pt * 8 / 13
+                       title = NULL, gla_theme = "default", base_size = 14,
+                       ...) {
+
+  checkmate::assert_choice(gla_theme, c("default", "inverse"))
+
+  colours <- get(paste0("gla_", gla_theme))
+
+  title_text <- base_size * mm_to_pt * 20 / 24
+  label_text <- base_size * mm_to_pt * 20 / 24
   if (is.null(mapping)) {
     bar_mapping <- ggplot2::aes(x = 2)
     label_mapping <- ggplot2::aes(x = 3)
   } else {
     bar_mapping <- utils::modifyList(ggplot2::aes(x = 2), mapping)
-    bar_mapping['label'] <- NULL
+    bar_mapping["label"] <- NULL
     label_mapping <- utils::modifyList(ggplot2::aes(x = 3), mapping)
   }
-  
-  
+
+
   donut <- list(ggplot2::geom_bar(mapping = bar_mapping, stat = stat,
-                                  position = "stack", 
+                                  position = "stack",
                                   colour = NA, ...),
-                ggplot2::coord_polar(theta = 'y', direction = -1),
+                ggplot2::coord_polar(theta = "y", direction = -1),
                 ggplot2::theme(panel.grid.major.y = ggplot2::element_blank()),
                 ggplot2::theme(axis.text.y = ggplot2::element_blank()),
                 ggplot2::theme(axis.text.x = ggplot2::element_blank()),
                 ggplot2::theme(axis.line = ggplot2::element_blank()),
                 ggplot2::theme(axis.ticks = ggplot2::element_blank()),
-                ggplot2::theme(legend.position = 'none'),
+                ggplot2::theme(legend.position = "none"),
                 ggplot2::xlim(c(0, 3.25)))
   if (!is.null(title)) {
     donut <- list(donut,
-                 ggplot2::annotate(geom = 'text', x = 0, y = 0, label = title,
+                 ggplot2::annotate(geom = "text", x = 0, y = 0, label = title,
                                    colour = colours$headlines,
                                    size = title_text))
   }
-  
+
   donut <- list(donut,
                 ggplot2::geom_text(label_mapping, stat = stat,
                           position = ggplot2::position_stack(vjust = 0.5),
                           colour = colours$`body text`,
                           size = label_text))
-  
+
   return(donut)
 }
