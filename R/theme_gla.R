@@ -7,16 +7,15 @@
 #' @param legend boolean, If TRUE, theme will include a legend at the top left of the plot, Default: TRUE
 #' @param base_size base font size, Default: 14
 #' @details DETAILS
-#' @examples
+#' @examples 
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
 #' @rdname theme_gla
-#' @export
+#' @export 
 #' @import checkmate
-#' @import ggplot2
 theme_gla <- function(gla_theme = "default",
                       x_axis_title = FALSE, y_axis_title = FALSE,
                       xgridlines = FALSE, legend = TRUE,

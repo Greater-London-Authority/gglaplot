@@ -3,17 +3,16 @@
 #' @param gla_theme One of 'light' or 'dark', Default: 'light'
 #' @param inc_div boolean, If TRUE, output will include diverging colour palettes, Default: FALSE
 #' @details DETAILS
-#' @examples
+#' @examples 
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
 #' @rdname show_gla_pals
-#' @export
+#' @export 
 #' @import checkmate
 #' @import dplyr
-#' @import graphics
 show_gla_pals <- function(gla_theme = "light", inc_div = FALSE) {
 
   # checks

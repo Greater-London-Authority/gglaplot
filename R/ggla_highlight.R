@@ -46,24 +46,26 @@ GeomPointHighlight <- ggplot2::ggproto(
 #' @title ggla_highlight
 #' @description Highlight selected data points
 #' @param filter_type One of string "end", "start", "max", "min" or "xy", Default: 'end'
+#' @param ... Other arguments to be passed on to geom_bar()
 #' @param x_filt If filter_type = "xy" use this to select which x-values to highlight, Default: NULL
 #' @param y_filt If filter_type = "xy" use this to select which y-values to highlight, Default: NULL
 #' @param geom Override the default connection between geom_highlight() and GeomPointHighlight, Default: GeomPointHighlight
 #' @param position Position adjustment, either as a string, or the result of a call to a position adjustment function., Default: 'identity'
 #' @inheritParams ggplot2::geom_point
-#' @param ... Other arguments to be passed on to geom_bar()
 #' @details DETAILS
-#' @examples
+#' @examples 
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' @seealso
+#' @seealso 
 #'  \code{\link[ggplot2]{geom_point}}
 #' @rdname ggla_highlight
-#' @export
+#' @export 
 #' @import ggplot2
+#' @param data The data to be displayed in this layer. There are three options: If NULL, the default, the data is inherited from the plot data as specified in the call to ggplot(). A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created. A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data, Default: NULL
+#' @param mapping Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping, Default: NULL
 ggla_highlight <- function(filter_type = "end", x_filt = NULL, y_filt = NULL,
                            data = NULL, mapping = NULL,
                            geom = GeomPointHighlight,

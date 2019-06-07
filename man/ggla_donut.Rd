@@ -5,32 +5,20 @@
 \title{ggla_donut}
 \usage{
 ggla_donut(data = NULL, mapping = NULL, stat = "count",
-  title = NULL, ...)
+  title = NULL, gla_theme = "default", base_size = 14, ...)
 }
 \arguments{
-\item{data}{The data to be displayed in this layer. There are three
-options:
+\item{data}{The data to be displayed in this layer. There are three options: If NULL, the default, the data is inherited from the plot data as specified in the call to ggplot(). A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created. A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data, Default: NULL}
 
-If \code{NULL}, the default, the data is inherited from the plot
-data as specified in the call to \code{\link[=ggplot]{ggplot()}}.
+\item{mapping}{Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping, Default: NULL}
 
-A \code{data.frame}, or other object, will override the plot
-data. All objects will be fortified to produce a data frame. See
-\code{\link[=fortify]{fortify()}} for which variables will be created.
-
-A \code{function} will be called with a single argument,
-the plot data. The return value must be a \code{data.frame}, and
-will be used as the layer data.}
-
-\item{mapping}{Set of aesthetic mappings created by \code{\link[=aes]{aes()}} or
-\code{\link[=aes_]{aes_()}}. If specified and \code{inherit.aes = TRUE} (the
-default), it is combined with the default mapping at the top level of the
-plot. You must supply \code{mapping} if there is no plot mapping.}
-
-\item{stat}{The statistical transformation to use on the data for this layer, 
-as a string. Should be either 'count', for the number of cases in each group, or 'identity' to represent values in the data. Default: 'count'}
+\item{stat}{The statistical transformation to use on the data for this layer, as a string. Should be either 'count', for the number of cases in each group, or 'identity' to represent values in the data. Default: 'count'}
 
 \item{title}{String title to be used for plot. Will appear in the middle of the donut, Default: NULL}
+
+\item{gla_theme}{Either "default" or "inverse", Default: 'default'}
+
+\item{base_size}{base font size, Default: 14}
 
 \item{...}{Other arguments to be passed on to geom_bar()}
 }

@@ -5,17 +5,18 @@
 #' @param ymin lower y-extent of highlighted area, Default: -Inf
 #' @param ymax higher y-extent of highlighted area, Default: Inf
 #' @details DETAILS
-#' @examples
+#' @examples 
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' @seealso
+#' #' @seealso
 #'  \code{\link[ggplot2]{annotate}}
 #' @rdname ggla_highlightarea
-#' @export
+#' @export 
 #' @import checkmate
+#' @param gla_theme Either "default" or "inverse", Default: 'default'
 #' @import ggplot2
 ggla_highlightarea <- function(xmin = -Inf, xmax = Inf,
                                ymin = -Inf, ymax = Inf,

@@ -4,9 +4,11 @@
 \alias{ggla_sf}
 \title{ggla_sf}
 \usage{
-ggla_sf(...)
+ggla_sf(gla_theme = "default", ...)
 }
 \arguments{
+\item{gla_theme}{Either "default" or "inverse", Default: 'default'}
+
 \item{...}{paramters to pass to geom_sf}
 }
 \description{

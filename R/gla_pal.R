@@ -8,18 +8,22 @@
 #' @param inc0 boolean, If TRUE an additional colour representing zero will be added to a quantiative or diverging palettes, Default: FALSE
 #' @details DETAILS
 #' @return Returns a character vector of length n giving colour hexs.
-#' @examples
+#' @examples 
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
 #' @rdname gla_pal
-#' @export
+#' @export 
 #' @import dplyr
 #' @import checkmate
 #' @importFrom tibble deframe
 #' @importFrom chroma interp_palette
+#' @param remove_margin Remove the edges of the palette to get a more central palette. Either 'left', 'right', 'both' or NULL, Default: NULL
+#' @seealso 
+#'  \code{\link[chroma]{interp_scale}}
+#' @importFrom tidyr gather
 gla_pal <- function(gla_theme = "default", palette_type = "categorical",
                     palette_name = "core",
                     main_colours = NULL, n = 6,

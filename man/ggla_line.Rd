@@ -10,7 +10,7 @@ ggla_line(...)
 \item{...}{parameters passed to geom_line}
 }
 \description{
-Wrapper for ggplot2::geom)line with round line ends
+Wrapper for ggplot2::geom_line with round line ends
 }
 \details{
 DETAILS

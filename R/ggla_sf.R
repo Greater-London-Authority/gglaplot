@@ -2,15 +2,16 @@
 #' @description Wrapper for ggplot2::geom_sf simplyfying coordinates and appearance
 #' @param ... paramters to pass to geom_sf
 #' @details DETAILS
-#' @examples
+#' @examples 
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
 #' @rdname ggla_sf
-#' @export
+#' @export 
 #' @import ggplot2
+#' @param gla_theme Either "default" or "inverse", Default: 'default'
 ggla_sf <- function(gla_theme = "default", ...) {
 
   checkmate::assert_choice(gla_theme, c("default", "inverse"))

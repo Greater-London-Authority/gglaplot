@@ -5,7 +5,7 @@
 \title{ggla_highlightarea}
 \usage{
 ggla_highlightarea(xmin = -Inf, xmax = Inf, ymin = -Inf,
-  ymax = Inf)
+  ymax = Inf, gla_theme = "default")
 }
 \arguments{
 \item{xmin}{lower x-extent of highlighted area, Default: -Inf}
@@ -15,6 +15,8 @@ ggla_highlightarea(xmin = -Inf, xmax = Inf, ymin = -Inf,
 \item{ymin}{lower y-extent of highlighted area, Default: -Inf}
 
 \item{ymax}{higher y-extent of highlighted area, Default: Inf}
+
+\item{gla_theme}{Either "default" or "inverse", Default: 'default'}
 }
 \description{
 Add a shaded rectangle behind a plot.
@@ -28,7 +30,6 @@ if(interactive()){
  #EXAMPLE1
  }
 }
-}
-\seealso{
-\code{\link[ggplot2]{annotate}}
+#' @seealso
+ \\code{\\link[ggplot2]{annotate}}
 }
