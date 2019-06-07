@@ -20,7 +20,7 @@ ggla_sf <- function(gla_theme = "default", ...) {
   ggla_sf <- list(ggplot2::geom_sf(colour = colours$background, ...),
                  ggplot2::coord_sf(datum = NA),
                  ggplot2::theme(panel.grid = ggplot2::element_blank(),
-                       axis.line = element_blank()))
+                       axis.line = ggplot2::element_blank()))
 
   return(ggla_sf)
 }

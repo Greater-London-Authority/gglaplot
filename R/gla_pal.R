@@ -41,8 +41,8 @@ gla_pal <- function(gla_theme = "default", palette_type = "categorical",
   checkmate::assert_choice(palette_type, choices = palette_types)
   checkmate::assert_choice(palette_name, choices = palette_names)
   possible_colours <- gla_palette_colours %>%
-    filter(palette == palette_name) %>%
-    pull(colour)
+    dplyr::filter(palette == palette_name) %>%
+    dplyr::pull(colour)
   num_possible_colours <- length(possible_colours)
   check <- checkmate::test_null(main_colours)
   if (!check) {
@@ -123,34 +123,34 @@ gla_pal <- function(gla_theme = "default", palette_type = "categorical",
                   "highlight" = n[1])
 
   colours <- gla_palette_colours %>%
-    filter(palette == palette_name) %>%
-    select(-palette)
+    dplyr::filter(palette == palette_name) %>%
+    dplyr::select(-palette)
   if (!is.null(main_colours)) {
     pos <- 1
     colours <- colours %>%
-      mutate(order = NA)
+      dplyr::mutate(order = NA)
     for (col in main_colours) {
       colours <- colours %>%
-        mutate(order = ifelse(colour == col, pos, order))
+        dplyr::mutate(order = ifelse(colour == col, pos, order))
       pos <- pos + 1
     }
     colours <- colours %>%
-      arrange(order) %>%
-      select(-order)
+      dplyr::arrange(order) %>%
+      dplyr::select(-order)
   }
   colours <- colours %>%
-    filter(row_number() <= num_col[[palette_type]])
+    dplyr::filter(dplyr::row_number() <= num_col[[palette_type]])
 
   # Make palettes
   if (palette_type == "categorical") {
     pal <- colours %>%
-      pull(hex)
+      dplyr::pull(hex)
 
   } else if (palette_type == "quantitative") {
     pal_ends <- colours %>%
-      select(dark_end, hex, light_end) %>%
+      dplyr::select(dark_end, hex, light_end) %>%
       tidyr::gather() %>%
-      pull(value)
+      dplyr::pull(value)
     make_pal <- chroma::interp_palette(
       colors = pal_ends, model = "lab", interp = "bezier",
       correct.lightness = TRUE)
@@ -174,17 +174,17 @@ gla_pal <- function(gla_theme = "default", palette_type = "categorical",
   } else if (palette_type == "diverging") {
     mid_point <- theme_colours[["mid point"]]
     colours <- colours %>%
-      mutate(light_end = mid_point)
+      dplyr::mutate(light_end = mid_point)
     pal_ends1 <- colours %>%
-      filter(row_number() == 1) %>%
-      select(dark_end, hex, light_end) %>%
+      dplyr::filter(dplyr::row_number() == 1) %>%
+      dplyr::select(dark_end, hex, light_end) %>%
       tidyr::gather() %>%
-      pull(value)
+      dplyr::pull(value)
     pal_ends2 <- colours %>%
-      filter(row_number() == 2) %>%
-      select(light_end, hex, dark_end) %>%
+      dplyr::filter(dplyr::row_number() == 2) %>%
+      dplyr::select(light_end, hex, dark_end) %>%
       tidyr::gather() %>%
-      pull(value)
+      dplyr::pull(value)
     n_each <- floor(n / 2) + 1
     if ((remove_left & remove_right) | ((remove_left | remove_right) & !inc0)) {
       n_each <- n_each + 1
@@ -214,7 +214,7 @@ gla_pal <- function(gla_theme = "default", palette_type = "categorical",
   } else if (palette_type == "highlight") {
     context <- theme_colours[["context data"]]
     pal <- colours %>%
-      pull(hex) %>%
+      dplyr::pull(hex) %>%
       c(., rep(context, n[2]))
     pal <- c(colours, rep(context, n[2]))
   }

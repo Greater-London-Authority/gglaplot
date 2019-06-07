@@ -48,7 +48,7 @@ ggla_horizbar <- function(..., stat = "identity", position = "stack",
     ggplot2::theme(panel.grid = ggplot2::element_blank(),
                    axis.text.y = ggplot2::element_text(
                      hjust = 0, vjust = 0.5,
-                     margin = margin(t = 0, r = 0, b = 0, l = 0, unit = "pt"))))
+                     margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 0, unit = "pt"))))
 
   return(horizbar)
 

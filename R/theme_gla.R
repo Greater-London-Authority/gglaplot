@@ -70,8 +70,8 @@ theme_gla <- function(gla_theme = "default",
       # axis and gridlines
       panel.grid.major.y = ggplot2::element_line(size = 1 * mm_to_pt,
                                                  colour = colours$`light grid`),
-      panel.grid.major.x = element_blank(),
-      panel.grid.minor = element_blank(),
+      panel.grid.major.x = ggplot2::element_blank(),
+      panel.grid.minor = ggplot2::element_blank(),
       axis.ticks.x = ggplot2::element_blank(),
       axis.ticks.y = ggplot2::element_blank(),
       axis.text = ggplot2::element_text(colour = colours$`body text`,
@@ -79,7 +79,7 @@ theme_gla <- function(gla_theme = "default",
                                         hjust = 0.5, size = axis_size),
       axis.text.y = ggplot2::element_text(
         hjust = 0, vjust = -1,
-        margin = margin(
+        margin = ggplot2::margin(
           t = 0, r = - 5 * plot_margin, b = 0, l = plot_margin / 2,
           unit = "pt")),
       axis.line = ggplot2::element_line(size = 1 * mm_to_pt,
@@ -110,7 +110,7 @@ theme_gla <- function(gla_theme = "default",
         axis.title.x = ggplot2::element_text(
           colour = colours$`body text`, family = "sans", hjust = 0.5,
           size = label_size,
-          margin = margin(2 * plot_margin, 0, plot_margin, 0, "pt"))
+          margin = ggplot2::margin(2 * plot_margin, 0, plot_margin, 0, "pt"))
         )
   }
     if (y_axis_title == FALSE) {
@@ -122,7 +122,7 @@ theme_gla <- function(gla_theme = "default",
           axis.title.y = ggplot2::element_text(
             colour = colours$`body text`, family = "sans", hjust = 0.5,
             size = label_size,
-            margin = margin(0, 2 * plot_margin, 0, plot_margin, "pt"))
+            margin = ggplot2::margin(0, 2 * plot_margin, 0, plot_margin, "pt"))
           )
   }
 
