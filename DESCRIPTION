@@ -1,17 +1,19 @@
 Package: gglaplot
 Title: Makes graphics in the GLA style using ggplot2
 Version: 0.0.0.9000
-Authors@R: c( person("Libby", "Rogers", email = "Libby.Rogers@london.gov.uk", role =
-           c("aut","cre")), person("Mike", "Brondbjerg", email = "Mike.Brondbjerg@london.gov.uk",
-           role = c("aut", "art")),
-            person("Marta", "Lapsley", email = "Marta.Lapsley@london.gov.uk", role = "ctb"))
-Description: The package provides several wrappers and tools to use with ggplot2 to make graphics
-           fit with the GLA style.
+Authors@R: c(person("Libby", "Rogers", email = "Libby.Rogers@london.gov.uk",
+                    role = c("aut","cre")),
+             person("Mike", "Brondbjerg", email = "Mike.Brondbjerg@london.gov.uk",
+                    role = c("aut", "art")),
+             person("Marta", "Lapsley", email = "Marta.Lapsley@london.gov.uk",
+                    role = "ctb"))
+Description: The package provides several wrappers and tools to use with ggplot2
+             to make graphics fit with the GLA style.
 Depends: R (>= 3.5.1)
 License: GPL-2 | file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: ggplot2,utils,dplyr,checkmate,grDevices,ggplotify,graphics
+Imports: ggplot2,utils,dplyr,checkmate,tidyr,chroma,ggplotify,graphics
 Suggests: knitr, rmarkdown, grid, gridExtra, lubridate, scales, sf
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
