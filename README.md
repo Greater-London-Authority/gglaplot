@@ -1,8 +1,6 @@
-gglaplot
-================
 
-Overview
---------
+gglaplot <img src="man/figures/logo.png" align="right" alt="" width="120" />
+============================================================================
 
 The package provides several wrappers and tools to use with ggplot2 to make graphics fit with the GLA style.
 
@@ -44,7 +42,7 @@ ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
        Chart: GLA Intelligence  Source: London Datastore')
 ```
 
-![](README_files/figure-markdown_github/Usage-1.png)
+![](man/figures/Usage-1.png)
 
 Getting Help
 ------------
