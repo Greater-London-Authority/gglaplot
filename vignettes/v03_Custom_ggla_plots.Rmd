@@ -279,7 +279,7 @@ pal <- gla_pal(gla_theme = "default", palette_type = "categorical", n = numcats)
 
 ggplot(data = Internet, mapping = aes(fill = usage)) +
   ggla_donut(mapping = aes(label = usage, y = numUsers), stat = "identity",
-             title = "Internet usage \nin London") +
+             title = "Internet usage \nin London", base_size = 10) +
   scale_fill_manual(values = pal)
 
 ```
@@ -304,8 +304,9 @@ To plot geographical data, you can use the `ggla_sf()` which uses the `ggplot::g
 
 
 ```{r, fig.align='left', fig.height=7, fig.width=7}
+# Generate a diverging palette - the edges get a bit dark so the remove margins
 pal <- gla_pal(gla_theme = "default", palette_type = "diverging",
-               main_colours = c("blue", "red"), n = 6)
+               main_colours = c("blue", "red"), n = 6, remove_margin = "both")
 
 ggplot(EURef, aes(fill = CatLeave)) +
   ggla_sf() +

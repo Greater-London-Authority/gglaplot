@@ -487,7 +487,7 @@ pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal
 
 <span class="kw">ggplot</span>(<span class="dt">data =</span> Internet, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">fill =</span> usage)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_donut.html">ggla_donut</a></span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">label =</span> usage, <span class="dt">y =</span> numUsers), <span class="dt">stat =</span> <span class="st">"identity"</span>,
-             <span class="dt">title =</span> <span class="st">"Internet usage </span><span class="ch">\n</span><span class="st">in London"</span>) <span class="op">+</span>
+             <span class="dt">title =</span> <span class="st">"Internet usage </span><span class="ch">\n</span><span class="st">in London"</span>, <span class="dt">base_size =</span> <span class="dv">10</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> pal)</code></pre></div>
 <p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-18-1.png" width="672"></p>
 </div>
@@ -561,7 +561,8 @@ pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal
 </table>
 <p>The leave vote has been seperated out into categories for each Borough. The geometry of each Borough is available on the <a href="https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london">DataStore</a>.</p>
 <p>To plot geographical data, you can use the <code><a href="../reference/ggla_sf.html">ggla_sf()</a></code> which uses the <code>ggplot::geom_sf()</code> function and changes some of the defaults to fit with our style guide. This function works with <em>simple features data</em>, as used in the <a href="https://www.rdocumentation.org/packages/sf/versions/0.7-2">sf package</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>, <span class="dt">palette_type =</span> <span class="st">"diverging"</span>,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Generate a diverging palette - the edges get a bit dark so the remove margins</span>
+pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>, <span class="dt">palette_type =</span> <span class="st">"diverging"</span>,
                <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="dt">n =</span> <span class="dv">6</span>, <span class="dt">remove_margin =</span> <span class="st">"both"</span>)
 
 <span class="kw">ggplot</span>(EURef, <span class="kw">aes</span>(<span class="dt">fill =</span> CatLeave)) <span class="op">+</span>
