@@ -33,12 +33,8 @@ theme_gla <- function(gla_theme = "default",
   checkmate::assert_logical(xgridlines)
   checkmate::assert_logical(legend)
   checkmate::assert_number(base_size, lower = 0)
-
-  if (gla_theme == "default") {
-    colours <- gla_default
-  } else if (gla_theme == "inverse") {
-    colours <- gla_inverse
-  }
+  
+  colours <- get(paste0("gla_", gla_theme))
 
   # Text size
   title_size <- base_size * (18 / 14)
@@ -53,7 +49,7 @@ theme_gla <- function(gla_theme = "default",
     ggplot2::theme(
       panel.background = ggplot2::element_rect(fill = colours$background),
       plot.margin = ggplot2::margin(t = plot_margin, r = plot_margin,
-                                    b = plot_margin, l = 3 * plot_margin,
+                                    b = plot_margin, l = 0,
                                     unit =  "pt"),
       plot.background = ggplot2::element_rect(fill = colours$background),
       panel.border = ggplot2::element_blank(),
@@ -96,6 +92,8 @@ theme_gla <- function(gla_theme = "default",
         vjust = 0.5, size = label_size,
         margin = ggplot2::margin(t = 0, r = plot_margin, b = plot_margin / 2,
                                  l = plot_margin / 2, unit = "pt")),
+      legend.margin = margin(t = plot_margin, r = plot_margin,
+                             l = 0, b = 0, unit = "pt"),
 
       # facets
       strip.background = ggplot2::element_blank(),

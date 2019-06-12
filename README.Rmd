@@ -25,10 +25,11 @@ devtools::install_github("Greater-London-Authority/gglaplot")
 ```{r Usage, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(gglaplot)
+library(dplyr)
 library(scales)
 library(lubridate)
 
-pal <- gla_pal(gla_theme = 'light', palette_type = 'highlight', n = 2)
+pal <- gla_pal(gla_theme = 'light', palette_type = 'highlight', n = c(1,1))
 theme_set(theme_gla(gla_theme = 'light'))
 
 ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location, 
@@ -40,12 +41,11 @@ ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
   ggla_axisat0() +
   scale_y_continuous(expand = c(0,0), limits = c(0,32.5), 
                       labels = dollar_format(prefix = '', suffix = '%')) +
-  scale_x_date(date_breaks = '1 year', date_labels = "'%y", expand = c(0,0),
-                limits = c(ymd('1996-01-02'),ymd('2017-06-01'))) +
+  scale_x_date(date_breaks = '1 year', date_labels = "'%y",
+               expand = expand_scale(mult = c(0.05, 0.01))) +
   labs(title = 'Gender Pay Gap - Total (Median)',
         subtitle = 'Gender Pay Gap - Total (Median) - London VS UK',
-        caption = 'Note: 2017 data is provisional\n
-       Chart: GLA Intelligence  Source: London Datastore')
+        caption = 'Note: 2017 data is provisional\nChart: GLA Intelligence  Source: London Datastore')
 ```
 
 ## Getting Help
