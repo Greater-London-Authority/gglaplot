@@ -25,13 +25,13 @@ force_list <- list(
 ignore_list = list(gglaplot = gsub("\\.R", "", R_files))
 
 # Run pretty_namespace on directory with overwrite = FALSE and check results
-sinew::pretty_namespace('.', ask = FALSE, force = force_list,
+sinew::pretty_namespace('.', force = force_list,
                         ignore = ignore_list, overwrite = FALSE)
 
 # TODO: Make necessary changes to force_list + ignore_list
 
 # Run pretty_namespace on directory with overwrite = TRUE
-sinew::pretty_namespace(".", ask = FALSE, force = force_list,
+sinew::pretty_namespace(".", force = force_list,
                         ignore = ignore_list, overwrite = TRUE)
 
 # Run moga on directory with dry.run = TRUE and overwrite = FALSE and check results
@@ -66,9 +66,11 @@ n <- 2
 lintr::lint(vignettes[n])
 
 setwd("F:/project_folders/gglaplot/")
-devtools::load_all()
+devtools::install()
 # Build vignettes
 
 devtools::build_vignettes()
 
 # TODO: delete doc folder
+
+pkgdown::build_site()

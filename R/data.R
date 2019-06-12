@@ -79,3 +79,9 @@
 #' @format named list
 #' @details list of hex codes of colours used for data and non-data elements of the gla_inverse theme
 "gla_inverse"
+
+#' @title gla_colours
+#' @description list of colours used in GLA palettes
+#' @format named list
+#' @details list of hex codes
+"gla_colours"

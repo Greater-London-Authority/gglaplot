@@ -4,10 +4,10 @@
 \alias{show_gla_pals}
 \title{show_gla_pals}
 \usage{
-show_gla_pals(gla_theme = "light", inc_div = FALSE)
+show_gla_pals(gla_theme = "default", inc_div = FALSE)
 }
 \arguments{
-\item{gla_theme}{One of 'light' or 'dark', Default: 'light'}
+\item{gla_theme}{Either "default" or "inverse", Default: "default"}
 
 \item{inc_div}{boolean, If TRUE, output will include diverging colour palettes, Default: FALSE}
 }

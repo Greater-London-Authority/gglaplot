@@ -47,7 +47,7 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Vignettes
      
     <span class="caret"></span>
   </a>
@@ -62,6 +62,9 @@
       <a href="../articles/Using_the_gla_theme.html">Using `theme_gla()`</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -163,8 +166,8 @@
 <h3 class="hasAnchor">
 <a href="#using-ggla_line" class="anchor"></a>Using <code><a href="../reference/ggla_line.html">ggla_line()</a></code>
 </h3>
-<p><code><a href="../reference/ggla_line.html">ggla_line()</a></code> is the same as <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">ggplot2::geom_line()</a></code> except that it uses a round <code>lineend</code> style as default.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">'light'</span>, <span class="dt">palette_type =</span> <span class="st">'highlight'</span>, <span class="dt">n =</span> <span class="dv">2</span>)
+<p><code><a href="../reference/ggla_line.html">ggla_line()</a></code> is the same as <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_path">ggplot2::geom_line()</a></code> except that it uses a round <code>lineend</code> style as default.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>, <span class="dt">palette_type =</span> <span class="st">"highlight"</span>, <span class="dt">n =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>))
 
 plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> LDNUK, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> GPG, <span class="dt">group =</span> location,
                                            <span class="dt">colour =</span> location)) <span class="op">+</span>
@@ -179,21 +182,23 @@ plot</code></pre></div>
 <a href="#adding-emphasis-with-ggla_highlight" class="anchor"></a>Adding emphasis with <code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code>
 </h3>
 <p>To highlight particular features of your data you can add emphasis with <code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code>. This comes in 4 simple flavours, “start” and “end”, for highlighting your first or final data point, “min” and “max” for highlighting your minimum or maximum data points.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p_start &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">'start'</span>)
-p_end &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">'end'</span>)
-p_min &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">'min'</span>)
-p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">'max'</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p_start &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"start"</span>)
+p_end &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"end"</span>)
+p_min &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"min"</span>)
+p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"max"</span>)
 <span class="kw">grid.arrange</span>(p_start, p_end, p_min, p_max, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre></div>
 <p><img src="Custom_ggla_plots_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
 <p><code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code> also includes a more involved <code>xy</code> option for the <code>filter_type</code> argument for cases when you want to pick out a particular value which isn’t covered by start/end etc. This needs to be used along with at least one of the x_filt and y_filt arguments.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">'xy'</span>, <span class="dt">x_filt =</span> <span class="kw">ymd</span>(<span class="st">'2007-01-01'</span>))</code></pre></div>
+<span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"xy"</span>, <span class="dt">x_filt =</span> <span class="kw">ymd</span>(<span class="st">"2007-01-01"</span>))</code></pre></div>
 <p><img src="Custom_ggla_plots_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
 <p>You can also change the <code>geom</code> of <code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code> to add labels. This will probably require a bit of fiddling around with the <code>position_nudge()</code> function to get them in the right place. If we’re labelling our data we might as well remove the legend.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/theme_gla.html">theme_gla</a></span>(<span class="dt">legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">label =</span> location), <span class="dt">filter_type =</span> <span class="st">'end'</span>, <span class="dt">geom =</span> <span class="st">'text'</span>,
-                 <span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="op">-</span><span class="dv">6</span> , <span class="dt">y =</span> <span class="fl">0.5</span>))
+<span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">label =</span> location),
+                 <span class="dt">filter_type =</span> <span class="st">"end"</span>, <span class="dt">geom =</span> <span class="st">"text"</span>,
+                 <span class="dt">show.legend =</span> <span class="ot">FALSE</span>,
+                 <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="op">-</span><span class="dv">6</span>, <span class="dt">y =</span> <span class="fl">0.5</span>))
 <span class="co">#&gt; Warning: Ignoring unknown parameters: show.legend</span></code></pre></div>
 <p><img src="Custom_ggla_plots_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
 </div>
@@ -204,7 +209,7 @@ p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 </h2>
 <p>Areas of the graph can be highlighted with <code><a href="../reference/ggla_highlightarea.html">ggla_highlightarea()</a></code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="../reference/ggla_highlightarea.html">ggla_highlightarea</a></span>(<span class="dt">xmin =</span> <span class="kw">ymd</span>(<span class="st">'2007-01-01'</span>), <span class="dt">xmax =</span> <span class="kw">ymd</span>(<span class="st">'2012-01-01'</span>))</code></pre></div>
+<span class="st">  </span><span class="kw"><a href="../reference/ggla_highlightarea.html">ggla_highlightarea</a></span>(<span class="dt">xmin =</span> <span class="kw">ymd</span>(<span class="st">"2007-01-01"</span>), <span class="dt">xmax =</span> <span class="kw">ymd</span>(<span class="st">"2012-01-01"</span>))</code></pre></div>
 <p><img src="Custom_ggla_plots_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
 </div>
 <div id="adding-lines" class="section level2">
@@ -212,7 +217,7 @@ p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 <a href="#adding-lines" class="anchor"></a>Adding lines</h2>
 <p>Different points in the data can also be highlighted by adding lines</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="../reference/ggla_labelline.html">ggla_labelline</a></span>(<span class="dt">x1 =</span> <span class="kw">ymd</span>(<span class="st">'2000-01-01'</span>))</code></pre></div>
+<span class="st">  </span><span class="kw"><a href="../reference/ggla_labelline.html">ggla_labelline</a></span>(<span class="dt">x1 =</span> <span class="kw">ymd</span>(<span class="st">"2000-01-01"</span>))</code></pre></div>
 <p><img src="Custom_ggla_plots_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
 </div>
 <div id="extending-the-y-axis-to-0-" class="section level2">
@@ -226,32 +231,36 @@ p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 <div id="putting-it-all-together-with-a-few-other-formatting-tweeks" class="section level2">
 <h2 class="hasAnchor">
 <a href="#putting-it-all-together-with-a-few-other-formatting-tweeks" class="anchor"></a>Putting it all together with a few other formatting tweeks</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> LDNUK, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> GPG, <span class="dt">group =</span> location, 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> LDNUK, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> GPG, <span class="dt">group =</span> location,
                                    <span class="dt">colour =</span> location)) <span class="op">+</span>
-<span class="st">  </span><span class="co"># Add the ggla_line layer with an added aesthetic controlling the thickness of the lines</span>
+<span class="st">  </span><span class="co"># Add the ggla_line layer with an added aesthetic controlling</span>
+<span class="st">  </span><span class="co"># the thickness of the lines</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_line.html">ggla_line</a></span>(<span class="kw">aes</span>(<span class="dt">size =</span> location)) <span class="op">+</span>
-<span class="st">  </span><span class="co"># Control the scaling of the thickness, want London (location = 1) to be thicker than UK (location = 2)</span>
+<span class="st">  </span><span class="co"># Control the scaling of the thickness, want London (location = 1)</span>
+<span class="st">  </span><span class="co"># to be thicker than UK (location = 2)</span>
 <span class="st">  </span><span class="kw">scale_size_discrete</span>(<span class="dt">range =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">6</span> <span class="op">*</span><span class="st"> </span>mm_to_pt, <span class="dv">3</span> <span class="op">*</span><span class="st"> </span>mm_to_pt)) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Add the palette</span>
 <span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> pal) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Add some emphasis to the min values</span>
-<span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">'min'</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"min"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Add a context/highlight box between 2007 - 2012</span>
-<span class="st">  </span><span class="kw"><a href="../reference/ggla_highlightarea.html">ggla_highlightarea</a></span>(<span class="dt">xmin =</span> <span class="kw">ymd</span>(<span class="st">'2007-01-01'</span>), <span class="dt">xmax =</span> <span class="kw">ymd</span>(<span class="st">'2012-01-01'</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="../reference/ggla_highlightarea.html">ggla_highlightarea</a></span>(<span class="dt">xmin =</span> <span class="kw">ymd</span>(<span class="st">"2007-01-01"</span>), <span class="dt">xmax =</span> <span class="kw">ymd</span>(<span class="st">"2012-01-01"</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Add a line at 2000</span>
-<span class="st">  </span><span class="kw"><a href="../reference/ggla_labelline.html">ggla_labelline</a></span>(<span class="dt">x1 =</span> <span class="kw">ymd</span>(<span class="st">'2000-01-01'</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="../reference/ggla_labelline.html">ggla_labelline</a></span>(<span class="dt">x1 =</span> <span class="kw">ymd</span>(<span class="st">"2000-01-01"</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Extend the y axis to 0</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_axisat0.html">ggla_axisat0</a></span>() <span class="op">+</span>
 <span class="st">  </span><span class="co"># Format the y-axis</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="fl">32.5</span>), 
-                      <span class="dt">labels =</span> <span class="kw">dollar_format</span>(<span class="dt">prefix =</span> <span class="st">''</span>, <span class="dt">suffix =</span> <span class="st">'%'</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="fl">32.5</span>),
+                      <span class="dt">labels =</span> <span class="kw">dollar_format</span>(<span class="dt">prefix =</span> <span class="st">""</span>, <span class="dt">suffix =</span> <span class="st">"%"</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Format the x-axis</span>
-<span class="st">  </span><span class="kw">scale_x_date</span>(<span class="dt">date_breaks =</span> <span class="st">'1 year'</span>, <span class="dt">date_labels =</span> <span class="st">"'%y"</span>, <span class="dt">expand =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">0</span>),
-                <span class="dt">limits =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="kw">ymd</span>(<span class="st">'1996-01-02'</span>),<span class="kw">ymd</span>(<span class="st">'2017-06-01'</span>))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_date</span>(<span class="dt">date_breaks =</span> <span class="st">"1 year"</span>, <span class="dt">date_labels =</span> <span class="st">"%y"</span>,
+               <span class="dt">expand =</span> <span class="kw">expand_scale</span>(<span class="dt">mult =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>))) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Add titles and captions</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">'Gender Pay Gap - Total (Median)'</span>,
-        <span class="dt">subtitle =</span> <span class="st">'Gender Pay Gap - Total (Median) - London VS UK'</span>,
-        <span class="dt">caption =</span> <span class="st">'Note: 2017 data is provisional</span><span class="ch">\n</span><span class="st">Chart: GLA Intelligence  Source: London Datastore'</span>)
+<span class="st">  </span><span class="kw">labs</span>(
+    <span class="dt">title =</span> <span class="st">"Gender Pay Gap - Total (Median)"</span>,
+    <span class="dt">subtitle =</span> <span class="st">"Gender Pay Gap - Total (Median) - London VS UK"</span>,
+    <span class="dt">caption =</span> <span class="st">"Note: 2017 data is provisional</span><span class="ch">\n</span><span class="st">Chart: GLA Intelligence  Source: London Datastore"</span>
+    )
 <span class="co">#&gt; Warning: Using size for a discrete variable is not advised.</span></code></pre></div>
 <p><img src="Custom_ggla_plots_files/figure-html/unnamed-chunk-11-1.png" width="672"></p>
 </div>
@@ -337,7 +346,7 @@ p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 <span class="st">  </span><span class="kw"><a href="../reference/theme_gla.html">theme_gla</a></span>(<span class="dt">xgridlines =</span> <span class="ot">FALSE</span>, <span class="dt">legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Add horizontal bar chart</span>
 <span class="st">  </span><span class="co"># to100 adds a context bar behind the data up to 100%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/ggla_horizbar.html">ggla_horizbar</a></span>(<span class="dt">to100 =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/ggla_horizbar.html">ggla_horizbar</a></span>(<span class="dt">to100 =</span> <span class="ot">TRUE</span>) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Facet the data by region</span>
 <span class="st">  </span><span class="kw">facet_grid</span>(. <span class="op">~</span><span class="st"> </span>Region) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Add our palette</span>
@@ -346,17 +355,19 @@ p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 barplot</code></pre></div>
 <p><img src="Custom_ggla_plots_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
 <p>We can add some additional formatting and labels to this</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(barplot <span class="op">+</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(barplot <span class="op">+</span>
 <span class="st">   </span><span class="co"># Add formated labels to each bar</span>
-<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/format">format</a></span>(eyfsp, <span class="dt">nsmall =</span> <span class="dv">0</span>), <span class="st">'%'</span>, <span class="dt">sep =</span> <span class="st">''</span>)),
-            <span class="dt">y =</span> <span class="dv">8</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">vjust =</span> <span class="fl">0.50</span>, 
-            <span class="dt">colour =</span> gla_light<span class="op">$</span>background) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/format">format</a></span>(eyfsp, <span class="dt">nsmall =</span> <span class="dv">0</span>), <span class="st">"%"</span>, <span class="dt">sep =</span> <span class="st">""</span>)),
+            <span class="dt">y =</span> <span class="dv">8</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">vjust =</span> <span class="fl">0.50</span>,
+            <span class="dt">colour =</span> gla_default<span class="op">$</span>background) <span class="op">+</span>
 <span class="st">   </span><span class="co"># Remove any labels from the x axis (effectively our y axis)</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_blank</span>()) <span class="op">+</span>
 <span class="st">   </span><span class="co"># Add titles</span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">'Achievement in EYFSP by Ethnicity'</span>,
-        <span class="dt">subtitle =</span> <span class="st">'Percentage achieving at least the expected standard in all ELGs (2017)'</span>,
-        <span class="dt">caption =</span> <span class="st">'Source: Department for Education</span><span class="ch">\n</span><span class="st">Chart: GLA Intelligence'</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">labs</span>(
+      <span class="dt">title =</span> <span class="st">"Achievement in EYFSP by Ethnicity"</span>,
+      <span class="dt">subtitle =</span> <span class="st">"Percentage achieving at least the expected standard in all ELGs (2017)"</span>,
+      <span class="dt">caption =</span> <span class="st">"Source: Department for Education</span><span class="ch">\n</span><span class="st">Chart: GLA Intelligence"</span>
+      )) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="co"># Make labels left aligned</span>
 <span class="st">  </span><span class="kw"><a href="../reference/left_align_labs.html">left_align_labs</a></span>()</code></pre></div>
 <p><img src="Custom_ggla_plots_files/figure-html/unnamed-chunk-14-1.png" width="672"></p>
@@ -418,17 +429,23 @@ barplot</code></pre></div>
 <span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unique">unique</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>()
 
-pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">'light'</span>, <span class="dt">palette_type =</span> <span class="st">'categorical'</span>, <span class="dt">n =</span> numcats)
-(<span class="kw">ggplot</span>(AvAtt,<span class="kw">aes</span>(<span class="dt">x =</span> Region, <span class="dt">y =</span> Score, <span class="dt">fill =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rev">rev</a></span>(Subject), <span class="dt">label =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(Score,<span class="dv">1</span>))) <span class="op">+</span>
+pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>, <span class="dt">palette_type =</span> <span class="st">"categorical"</span>, <span class="dt">n =</span> numcats)
+
+(<span class="kw">ggplot</span>(AvAtt,
+        <span class="kw">aes</span>(<span class="dt">x =</span> Region, <span class="dt">y =</span> Score, <span class="dt">fill =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rev">rev</a></span>(Subject),
+            <span class="dt">label =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(Score, <span class="dv">1</span>))) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/theme_gla.html">theme_gla</a></span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="../reference/ggla_horizbar.html">ggla_horizbar</a></span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.85</span>), <span class="dt">color =</span> gla_light<span class="op">$</span>background) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="../reference/ggla_horizbar.html">ggla_horizbar</a></span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.85</span>),
+            <span class="dt">color =</span> gla_default<span class="op">$</span>background) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_blank</span>()) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> pal,
                     <span class="dt">breaks =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rev">rev</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/levels">levels</a></span>(AvAtt<span class="op">$</span>Subject))) <span class="op">+</span>
-<span class="st">      </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">'Average Attainment 8 Scores - 2016/17'</span>,
-        <span class="dt">subtitle =</span> <span class="st">'Average score per pupil in each element'</span>,
-        <span class="dt">caption =</span> <span class="st">'Source: Department for Education</span><span class="ch">\n</span><span class="st">Chart: GLA Intelligence'</span>)) <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw">labs</span>(
+        <span class="dt">title =</span> <span class="st">"Average Attainment 8 Scores - 2016/17"</span>,
+        <span class="dt">subtitle =</span> <span class="st">"Average score per pupil in each element"</span>,
+        <span class="dt">caption =</span> <span class="st">"Source: Department for Education</span><span class="ch">\n</span><span class="st">Chart: GLA Intelligence"</span>
+        )) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/left_align_labs.html">left_align_labs</a></span>()</code></pre></div>
 <p><img src="Custom_ggla_plots_files/figure-html/unnamed-chunk-16-1.png" width="672"></p>
 </div>
@@ -459,11 +476,11 @@ pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">numcats &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(Internet)
 
-pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">'light'</span>, <span class="dt">palette_type =</span> <span class="st">'categorical'</span>, <span class="dt">n =</span> numcats)
+pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>, <span class="dt">palette_type =</span> <span class="st">"categorical"</span>, <span class="dt">n =</span> numcats)
 
 <span class="kw">ggplot</span>(<span class="dt">data =</span> Internet, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">fill =</span> usage)) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="../reference/ggla_donut.html">ggla_donut</a></span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">label =</span> usage, <span class="dt">y =</span> numUsers), <span class="dt">stat =</span> <span class="st">'identity'</span>, 
-             <span class="dt">title =</span> <span class="st">'Internet usage </span><span class="ch">\n</span><span class="st">in London'</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="../reference/ggla_donut.html">ggla_donut</a></span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">label =</span> usage, <span class="dt">y =</span> numUsers), <span class="dt">stat =</span> <span class="st">"identity"</span>,
+             <span class="dt">title =</span> <span class="st">"Internet usage </span><span class="ch">\n</span><span class="st">in London"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> pal)</code></pre></div>
 <p><img src="Custom_ggla_plots_files/figure-html/unnamed-chunk-18-1.png" width="672"></p>
 </div>
@@ -471,9 +488,9 @@ pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal
 <h2 class="hasAnchor">
 <a href="#maps" class="anchor"></a>Maps</h2>
 <p>We’ll use the results of the 2016 EU referendum in London to illustrate putting data on a map.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">EURef <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>(geometry)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">EURef <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>geometry) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">kable</span>()</code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -537,14 +554,16 @@ pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal
 </table>
 <p>The leave vote has been seperated out into categories for each Borough. The geometry of each Borough is available on the <a href="https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london">DataStore</a>.</p>
 <p>To plot geographical data, you can use the <code><a href="../reference/ggla_sf.html">ggla_sf()</a></code> which uses the <code>ggplot::geom_sf()</code> function and changes some of the defaults to fit with our style guide. This function works with <em>simple features data</em>, as used in the <a href="https://www.rdocumentation.org/packages/sf/versions/0.7-2">sf package</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">'light'</span>, <span class="dt">palette_type =</span> <span class="st">'diverging'</span>, 
-               <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'blue'</span>,<span class="st">'red'</span>), <span class="dt">n =</span> <span class="dv">3</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>, <span class="dt">palette_type =</span> <span class="st">"diverging"</span>,
+               <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="dt">n =</span> <span class="dv">6</span>)
 
 <span class="kw">ggplot</span>(EURef, <span class="kw">aes</span>(<span class="dt">fill =</span> CatLeave)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_sf.html">ggla_sf</a></span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> pal) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Leave Vote in the 2016 EU Referendum"</span>,
-       <span class="dt">caption =</span> <span class="st">"Contains Ordnance Survey data Crown copyright and database right [2015]"</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">labs</span>(
+    <span class="dt">title =</span> <span class="st">"Leave Vote in the 2016 EU Referendum"</span>,
+    <span class="dt">caption =</span> <span class="st">"Contains Ordnance Survey data Crown copyright and database right [2015]"</span>
+    )</code></pre></div>
 <p><img src="Custom_ggla_plots_files/figure-html/unnamed-chunk-20-1.png" width="672"></p>
 <p>(For some reason the labels are centred on this plots when rendered in markdown)</p>
 </div>
