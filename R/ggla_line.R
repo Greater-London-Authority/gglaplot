@@ -1,3 +1,8 @@
+GeomGLALine <- ggplot2::ggproto("GeomGLALine", ggplot2::GeomLine, 
+                       default.aes = ggplot2::aes(size = 3 * mm_to_pt,
+                                                  alpha = 1))
+
+
 #' @title ggla_line
 #' @description Wrapper for ggplot2::geom_line with round line ends
 #' @param ... parameters passed to layer()
@@ -25,15 +30,13 @@ ggla_line <- function(mapping = NULL, data = NULL, stat = "identity",
     data = data,
     mapping = mapping,
     stat = stat,
-    geom = GeomLine,
+    geom = GeomGLALine,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
     params = list(
       na.rm = na.rm,
       lineend = "round",
-      size = 3 * mm_to_pt,
-      alpha = 1,
       ...
     )
   )
