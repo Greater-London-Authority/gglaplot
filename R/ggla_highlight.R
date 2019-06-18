@@ -37,10 +37,15 @@ StatHighlight <- ggplot2::ggproto("StatHighlight", ggplot2::Stat,
 GeomPointHighlight <- ggplot2::ggproto(
   "GeomPointHighlight",
   ggplot2::GeomPoint,
-  default_aes = ggplot2::aes(size = 6 * mm_to_pt, stroke = 3 * mm_to_pt,
-                             shape = 21,
-                             fill = ggplot2::theme_get()$panel.background$fill,
-                             alpha = 1))
+  default_aes = ggplot2::aes(
+    size = 6 * mm_to_pt, stroke = 3 * mm_to_pt,
+    shape = 21,
+    fill = ifelse(
+      ggplot2::theme_get()$panel.background$fill == gla_inverse$background,
+      gla_inverse$background,
+      gla_default$background),
+    colour = gla_colours$blue_core,
+    alpha = 1))
 
 
 #' @title ggla_highlight
@@ -52,7 +57,7 @@ GeomPointHighlight <- ggplot2::ggproto(
 #' @param geom Override the default connection between geom_highlight() and GeomPointHighlight, Default: GeomPointHighlight
 #' @param position Position adjustment, either as a string, or the result of a call to a position adjustment function., Default: 'identity'
 #' @inheritParams ggplot2::geom_point
-#' @details DETAILS
+#' @details To use gla_inverse theme this must be set using `theme_set()` prior to calling `ggla_highlight()`
 #' @examples 
 #' \dontrun{
 #' if(interactive()){
@@ -63,9 +68,9 @@ GeomPointHighlight <- ggplot2::ggproto(
 #'  \code{\link[ggplot2]{geom_point}}
 #' @rdname ggla_highlight
 #' @export 
-#' @import ggplot2
 #' @param data The data to be displayed in this layer. There are three options: If NULL, the default, the data is inherited from the plot data as specified in the call to ggplot(). A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created. A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data, Default: NULL
 #' @param mapping Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping, Default: NULL
+#' @import ggplot2
 ggla_highlight <- function(filter_type = "end", x_filt = NULL, y_filt = NULL,
                            data = NULL, mapping = NULL,
                            geom = GeomPointHighlight,
@@ -73,6 +78,7 @@ ggla_highlight <- function(filter_type = "end", x_filt = NULL, y_filt = NULL,
   ggplot2::layer(
     stat = StatHighlight, data = data, mapping = mapping, geom = geom,
     position = position,
+    show.legend = FALSE,
     params = list(filter_type = filter_type,
                   x_filt = x_filt,
                   y_filt = y_filt,
