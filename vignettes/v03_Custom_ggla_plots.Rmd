@@ -9,11 +9,9 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  fig.width = 7,
-  fig.height = 4,
-  comment = "#>"
+  comment = "",
+  dpi = 300
 )
-library(knitr)
 ```
 
 `gglaplot` contains several functions that take standard ggplot objects/layers and customises them to fit better with our style guide for data vis. Some of these just change some default settings to change the look of a chart, and others create new chart types.
@@ -38,6 +36,8 @@ library(lubridate)
 library(scales)
 # For spatial data
 library(sf)
+# For markdown table output
+library(knitr)
 
 ```
 And we can set the GLA theme at the start:
@@ -104,7 +104,6 @@ plot +
   theme_gla(legend = FALSE) +
   ggla_highlight(mapping = aes(label = location),
                  filter_type = "end", geom = "text",
-                 show.legend = FALSE,
                  position = position_nudge(x = -6, y = 0.5))
 ```
 
@@ -299,7 +298,7 @@ EURef %>%
 The leave vote has been seperated out into categories for each Borough.
 The geometry of each Borough is available on the [DataStore](https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london).
 
-To plot geographical data, you can use the `ggla_sf()` which uses the `ggplot::geom_sf()` function and changes some of the defaults to fit with our style guide. This function works with *simple features data*, as used in the [sf package](https://www.rdocumentation.org/packages/sf/versions/0.7-2).
+To plot geographical data, you can use the `ggla_sf()` which is similar to the `ggplot::geom_sf()` function with different defaults to fit with our style guide. This function works with *simple features data*, as used in the [sf package](https://www.rdocumentation.org/packages/sf/versions/0.7-2). The geometry here is polygons, but `ggla_sf()` works with other geometry types.
 
 
 
@@ -308,7 +307,7 @@ To plot geographical data, you can use the `ggla_sf()` which uses the `ggplot::g
 pal <- gla_pal(gla_theme = "default", palette_type = "diverging",
                main_colours = c("blue", "red"), n = 6, remove_margin = "both")
 
-ggplot(EURef, aes(fill = CatLeave)) +
+ggplot(EURef, aes(geometry = geometry, fill = CatLeave)) +
   ggla_sf() +
   scale_fill_manual(values = pal) +
   labs(

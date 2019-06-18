@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.path = "man/figures/")
 
 # gglaplot <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
-The package provides several wrappers and tools to use with ggplot2 to make graphics fit with the GLA style.
+The package provides several wrappers and tools to use with ggplot2 to make graphics that follow the GLA [City Intelligence Data Design Guidelines](https://data.london.gov.uk/blog/city-intelligence-data-design-guidelines/).
 
 ## Installation
 
@@ -21,7 +21,7 @@ devtools::install_github("Greater-London-Authority/gglaplot")
 
 ## Usage
 
-```{r Usage, message=FALSE, warning=FALSE}
+```{r Usage, message=FALSE, warning=FALSE, dpi = 300}
 library(ggplot2)
 library(gglaplot)
 library(dplyr)
@@ -31,7 +31,7 @@ library(lubridate)
 pal <- gla_pal(gla_theme = 'light', palette_type = 'highlight', n = c(1,1))
 theme_set(theme_gla(gla_theme = 'light'))
 
-ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location, 
+plot <- ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location, 
                                    colour = location)) +
   ggla_line(aes(size = location)) +
   scale_size_discrete(range = c(6 * mm_to_pt, 3 * mm_to_pt)) +
@@ -45,7 +45,17 @@ ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
   labs(title = 'Gender Pay Gap - Total (Median)',
         subtitle = 'Gender Pay Gap - Total (Median) - London VS UK',
         caption = 'Note: 2017 data is provisional\nChart: GLA Intelligence  Source: London Datastore')
+plot
 ```
+
+Plots can be incorporated in Rmarkdown/Notebooks or exported to be included in documents/slideshows etc
+
+```{r saving plot, message=FALSE, warning=FALSE, eval=FALSE}
+ggsave(plot = plot, path = "example_plot.svg")
+```
+
+`.svg` is the best format to export plots, and the size and dpi of the output can be adjusted within `ggsave()`.
+
 
 ## Getting Help
 
@@ -57,11 +67,8 @@ There are many online resources for ggplot2, including:
 * [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/)
 * [DataCamp course](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1)
 
-###gglaplot
+### gglaplot
 
 For help with gglaplot itself, see the vignettes which are available on the [gglaplot github pages](https://greater-london-authority.github.io/gglaplot/).
 
 The BBC has a similar package for their house style which has some comprehensive help pages [here](https://bbc.github.io/rcookbook/).
-
-
-
