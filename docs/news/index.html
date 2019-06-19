@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gglaplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -131,32 +131,35 @@
       <small>Source: <a href='https://github.com/Greater-London-Authority/gglaplot/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="gglaplot-0-0-1-0000" class="section level1">
+    <div id="gglaplot-1-0-0" class="section level1">
 <h1 class="page-header">
-<a href="#gglaplot-0-0-1-0000" class="anchor"></a>gglaplot 0.0.1.0000</h1>
-<p>The majority of the changes relate to updates to the underlying style guide, please see that for mor details and advice.</p>
+<a href="#gglaplot-1-0-0" class="anchor"></a>gglaplot 1.0.0</h1>
+<p>The majority of the changes relate to updates to the underlying style guide, further details and advice can be found <a href="https://data.london.gov.uk/blog/city-intelligence-data-design-guidelines/">here</a>, and updates to ggplot2. The package now depends on <a href="https://github.com/tidyverse/ggplot2/tree/v3.2.0">ggplot2 v3.2</a>.</p>
 <div id="theme-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#theme-changes" class="anchor"></a>Theme changes</h2>
-<div id="theme_gla" class="section level3">
-<h3 class="hasAnchor">
-<a href="#theme_gla" class="anchor"></a><code><a href="../reference/theme_gla.html">theme_gla()</a></code>
-</h3>
+<ul>
+<li>
+<code><a href="../reference/theme_gla.html">theme_gla()</a></code>
 <ul>
 <li>
 <code>gla_theme</code> now accepts “default” and “inverse” instead of “light” and “dark” to avoid confusion with the new “light” and “dark” palettes. If “light” or “dark” are used they’ll be changed to the appropriate new value. The default value of this parameter is now “default”.</li>
 <li>Text size ratios have been updated.</li>
 <li>A few other minor changes to theme settings</li>
 </ul>
-</div>
-<div id="get_theme_colours" class="section level3">
-<h3 class="hasAnchor">
-<a href="#get_theme_colours" class="anchor"></a><code>get_theme_colours()</code>
-</h3>
+</li>
+<li>
+<code>get_theme_colours()</code>
 <ul>
 <li>This function has been removed. It was mainly an internal function. Other package functions which need to know the underlying theme will use “default”, unless otherwise specified.</li>
 </ul>
+</li>
+</ul>
 </div>
+<div id="colour-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#colour-changes" class="anchor"></a>Colour changes</h2>
+<p>The colours (both names and values) have been changed to match the new version of the style guide. See <code>gla_colours</code>, <code>gla_default</code> and <code>gla_inverse</code> for all the details of the new colours used by the themes and palettes.</p>
 </div>
 <div id="palette-changes" class="section level2">
 <h2 class="hasAnchor">
@@ -164,7 +167,7 @@
 <p>The available palettes and the colours underlying them have changed, which has necessitated some changes in the <code><a href="../reference/gla_pal.html">gla_pal()</a></code> function.</p>
 <ul>
 <li>
-<code>gla_theme</code> now accepts “default” and “inverse”.</li>
+<code>gla_theme</code> now accepts “default” and “inverse”. If “light” or “dark” are used they’ll be changed to the appropriate new value and a warning given.</li>
 <li>
 <code>palette_name</code> now accepts “core”, “light”, “dark” and “brand”.</li>
 <li>
@@ -172,23 +175,55 @@
 <li>
 <code>n</code> should always be the number of colours you want returned. For all palettes except “highlight” this should be a single integer. For “highlight” palettes it should be a vector of 2 integers, the first number of categories you want highlighted, and the second the number of context categories. For “diverging” palettes <code>n</code> must be odd or even depending on the combination of <code>inc0</code> and <code>remove_margin</code>, a warning will be given and <code>n</code> adjusted upwards if needed,</li>
 <li>
-<code>remove_margin</code> has been added for diverging and quantitative palettes. To be used to remove the edges of palettes if they are too light or dark. Can be set to “left”, “right”, “both” or <code>NULL</code> (the default). Will remove 1 colour from the appropriate end of the palette, still returning <code>n</code> colours in total.</li>
+<code>remove_margin</code> has been added for diverging and quantitative palettes. Can be used to remove the edges of palettes if they are too light or dark. Can be set to “left”, “right”, “both” or <code>NULL</code> (the default). Will remove 1 colour from the appropriate end(s) of the palette, still returning <code>n</code> colours in total.</li>
 <li>
 <code>muted</code> has been removed as a paramter - similar palettes can now be accessed by specifying <code>palette_name = "dark"</code>.</li>
 </ul>
-<p><code><a href="../reference/gla_pal.html">gla_pal()</a></code> now uses the <code>chroma</code> function <code>interp_scale</code> instead of <code><a href="https://www.rdocumentation.org/packages/grDevices/topics/colorRamp">grDevices::colorRampPalette</a></code>. The original <code>chroma</code> package is available from github <a href="https://github.com/jiho/chroma">here</a> and is designed to emulate the <a href="https://github.com/gka/chroma.js/">chroma.js</a> javascript library. <code>gglaplot</code> uses a <a href="https://github.com/LiRogers/chroma">forked version of this repo</a> that includes a the option to correct the lightness scale of a palette.</p>
+<p><code><a href="../reference/gla_pal.html">gla_pal()</a></code> now uses the <code>chroma</code> function <code>interp_scale</code> instead of <code><a href="https://www.rdocumentation.org/packages/grDevices/topics/colorRamp">grDevices::colorRampPalette</a></code>. The original <code>chroma</code> package is available from github <a href="https://github.com/jiho/chroma">here</a> and is designed to emulate the <a href="https://github.com/gka/chroma.js/">chroma.js</a> javascript library. <code>gglaplot</code> uses a <a href="https://github.com/LiRogers/chroma">forked version of this repo</a> that includes the option to correct the lightness scale of a palette. This version will be installed automatically when the package is updated/installed.</p>
 </div>
 <div id="plot-function-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#plot-function-changes" class="anchor"></a>Plot function changes</h2>
-<div id="ggla_axis_at_0-ggla_donut-ggla_highlightarea-ggla_horizbar-ggla_labelline-and-ggla_sf" class="section level3">
-<h3 class="hasAnchor">
-<a href="#ggla_axis_at_0-ggla_donut-ggla_highlightarea-ggla_horizbar-ggla_labelline-and-ggla_sf" class="anchor"></a><code>ggla_axis_at_0()</code>, <code><a href="../reference/ggla_donut.html">ggla_donut()</a></code>, <code><a href="../reference/ggla_highlightarea.html">ggla_highlightarea()</a></code>, <code><a href="../reference/ggla_horizbar.html">ggla_horizbar()</a></code>, <code><a href="../reference/ggla_labelline.html">ggla_labelline()</a></code> and <code><a href="../reference/ggla_sf.html">ggla_sf()</a></code>
-</h3>
 <ul>
-<li>Now accept a <code>gla_theme</code> parameter.</li>
+<li>
+<code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code>
+<ul>
+<li>Now uses the settings for <code>gla_default</code> unless <code>gla_inverse</code> has been set using <code>theme_set()</code>
+</li>
+<li>Uses <code>blue_core</code> as its default colour. *<code><a href="../reference/ggla_line.html">ggla_line()</a></code>
+</li>
+<li>Uses <code>blue_core</code> as its default colour.</li>
+<li>Default size set to 3pt.</li>
 </ul>
-</div>
+</li>
+<li>
+<code><a href="../reference/ggla_sf.html">ggla_sf()</a></code>
+<ul>
+<li>This function has been overhauled due to underlying changes in ggplot2 v3.2 which makes extending the ggplot function <code>geom_sf()</code> a lot easier.</li>
+<li>The geometry aesthetic <strong>must</strong> be set (this is due to a change in ggplot).</li>
+<li>Sensible default aesthetics are set for different geometries:
+<ul>
+<li>
+<code>blue_core</code> as the default colour for point and line geometries.</li>
+<li>Default size set to 3pt for point and line geometries.</li>
+<li>The neutral <code>mid point</code> colour as the default fill for polygons</li>
+<li>The theme <code>background</code> as the default colour (used for polygon outlines).</li>
+</ul>
+</li>
+<li>Will use the settings for <code>gla_default</code> unless <code>gla_inverse</code> has been set using <code>theme_set()</code>
+</li>
+</ul>
+</li>
+<li>The following now accept <code>gla_theme</code> as a parameter (set to “default”" as default)
+<ul>
+<li><code>ggla_axis_at_0()</code></li>
+<li><code><a href="../reference/ggla_donut.html">ggla_donut()</a></code></li>
+<li><code><a href="../reference/ggla_highlightarea.html">ggla_highlightarea()</a></code></li>
+<li><code><a href="../reference/ggla_horizbar.html">ggla_horizbar()</a></code></li>
+<li><code><a href="../reference/ggla_labelline.html">ggla_labelline()</a></code></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
     <div id="gglaplot-0-0-0-9000" class="section level1">
@@ -204,7 +239,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#gglaplot-0-0-1-0000">0.0.1.0000</a></li>
+        <li><a href="#gglaplot-1-0-0">1.0.0</a></li>
         <li><a href="#gglaplot-0-0-0-9000">0.0.0.9000</a></li>
       </ul>
     </div>

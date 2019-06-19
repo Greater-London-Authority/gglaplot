@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gglaplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -119,7 +119,9 @@
 <span class="co"># For improving the labelling of our axis</span>
 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(scales)
 <span class="co"># For spatial data</span>
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sf)</code></pre></div>
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sf)
+<span class="co"># For markdown table output</span>
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(knitr)</code></pre></div>
 <p>And we can set the GLA theme at the start:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">theme_set</span>(<span class="kw"><a href="../reference/theme_gla.html">theme_gla</a></span>())</code></pre></div>
 <p>All the data used in this vignette is included in the <code>gglaplot</code> package.</p>
@@ -173,7 +175,7 @@
 <h3 class="hasAnchor">
 <a href="#using-ggla_line" class="anchor"></a>Using <code><a href="../reference/ggla_line.html">ggla_line()</a></code>
 </h3>
-<p><code><a href="../reference/ggla_line.html">ggla_line()</a></code> is the same as <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_path">ggplot2::geom_line()</a></code> except that it uses a round <code>lineend</code> style as default.</p>
+<p><code><a href="../reference/ggla_line.html">ggla_line()</a></code> is the same as <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">ggplot2::geom_line()</a></code> except that it uses a round <code>lineend</code> style as default.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>, <span class="dt">palette_type =</span> <span class="st">"highlight"</span>, <span class="dt">n =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>))
 
 plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> LDNUK, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> GPG, <span class="dt">group =</span> location,
@@ -182,7 +184,7 @@ plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="d
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_line.html">ggla_line</a></span>()
 
 plot</code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-4-1.png" width="2187.5"></p>
 </div>
 <div id="adding-emphasis-with-ggla_highlight" class="section level3">
 <h3 class="hasAnchor">
@@ -194,20 +196,18 @@ p_end &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 p_min &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"min"</span>)
 p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"max"</span>)
 <span class="kw">grid.arrange</span>(p_start, p_end, p_min, p_max, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-5-1.png" width="2187.5"></p>
 <p><code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code> also includes a more involved <code>xy</code> option for the <code>filter_type</code> argument for cases when you want to pick out a particular value which isn’t covered by start/end etc. This needs to be used along with at least one of the x_filt and y_filt arguments.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"xy"</span>, <span class="dt">x_filt =</span> <span class="kw">ymd</span>(<span class="st">"2007-01-01"</span>))</code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-6-1.png" width="2187.5"></p>
 <p>You can also change the <code>geom</code> of <code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code> to add labels. This will probably require a bit of fiddling around with the <code>position_nudge()</code> function to get them in the right place. If we’re labelling our data we might as well remove the legend.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/theme_gla.html">theme_gla</a></span>(<span class="dt">legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">label =</span> location),
                  <span class="dt">filter_type =</span> <span class="st">"end"</span>, <span class="dt">geom =</span> <span class="st">"text"</span>,
-                 <span class="dt">show.legend =</span> <span class="ot">FALSE</span>,
-                 <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="op">-</span><span class="dv">6</span>, <span class="dt">y =</span> <span class="fl">0.5</span>))
-<span class="co">#&gt; Warning: Ignoring unknown parameters: show.legend</span></code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
+                 <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="op">-</span><span class="dv">6</span>, <span class="dt">y =</span> <span class="fl">0.5</span>))</code></pre></div>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-7-1.png" width="2187.5"></p>
 </div>
 </div>
 <div id="highlighting-an-area-with-ggla_highlightarea" class="section level2">
@@ -217,7 +217,7 @@ p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 <p>Areas of the graph can be highlighted with <code><a href="../reference/ggla_highlightarea.html">ggla_highlightarea()</a></code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_highlightarea.html">ggla_highlightarea</a></span>(<span class="dt">xmin =</span> <span class="kw">ymd</span>(<span class="st">"2007-01-01"</span>), <span class="dt">xmax =</span> <span class="kw">ymd</span>(<span class="st">"2012-01-01"</span>))</code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-8-1.png" width="2187.5"></p>
 </div>
 <div id="adding-lines" class="section level2">
 <h2 class="hasAnchor">
@@ -225,7 +225,7 @@ p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 <p>Different points in the data can also be highlighted by adding lines</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_labelline.html">ggla_labelline</a></span>(<span class="dt">x1 =</span> <span class="kw">ymd</span>(<span class="st">"2000-01-01"</span>))</code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-9-1.png" width="2187.5"></p>
 </div>
 <div id="extending-the-y-axis-to-0-" class="section level2">
 <h2 class="hasAnchor">
@@ -233,7 +233,7 @@ p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 <p>If 0 is a meaningful number and the size of the plot allows it, it’s a good idea to include y=0 in your plot. <code>ggla_axisat0</code> will do this for you, as well as making it stronger than other grid lines.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_axisat0.html">ggla_axisat0</a></span>()</code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-10-1.png" width="2187.5"></p>
 </div>
 <div id="putting-it-all-together-with-a-few-other-formatting-tweeks" class="section level2">
 <h2 class="hasAnchor">
@@ -266,10 +266,10 @@ p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 <span class="st">  </span><span class="kw">labs</span>(
     <span class="dt">title =</span> <span class="st">"Gender Pay Gap - Total (Median)"</span>,
     <span class="dt">subtitle =</span> <span class="st">"Gender Pay Gap - Total (Median) - London VS UK"</span>,
-    <span class="dt">caption =</span> <span class="st">"Note: 2017 data is provisional</span><span class="ch">\n</span><span class="st">Chart: GLA Intelligence  Source: London Datastore"</span>
+    <span class="dt">caption =</span> <span class="st">"Note: 2017 data is provisional</span><span class="ch">\n</span><span class="st">Chart: GLA City Intelligence  Source: London Datastore"</span>
     )
-<span class="co">#&gt; Warning: Using size for a discrete variable is not advised.</span></code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-11-1.png" width="672"></p>
+Warning<span class="op">:</span><span class="st"> </span>Using size <span class="cf">for</span> a discrete variable is not advised.</code></pre></div>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-11-1.png" width="2187.5"></p>
 </div>
 <div id="bar-charts" class="section level2">
 <h2 class="hasAnchor">
@@ -360,7 +360,7 @@ p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 <span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> pal)
 
 barplot</code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-13-1.png" width="2187.5"></p>
 <p>We can add some additional formatting and labels to this</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(barplot <span class="op">+</span>
 <span class="st">   </span><span class="co"># Add formated labels to each bar</span>
@@ -373,11 +373,11 @@ barplot</code></pre></div>
 <span class="st">    </span><span class="kw">labs</span>(
       <span class="dt">title =</span> <span class="st">"Achievement in EYFSP by Ethnicity"</span>,
       <span class="dt">subtitle =</span> <span class="st">"Percentage achieving at least the expected standard in all ELGs (2017)"</span>,
-      <span class="dt">caption =</span> <span class="st">"Source: Department for Education</span><span class="ch">\n</span><span class="st">Chart: GLA Intelligence"</span>
+      <span class="dt">caption =</span> <span class="st">"Source: Department for Education</span><span class="ch">\n</span><span class="st">Chart: GLA City Intelligence"</span>
       )) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="co"># Make labels left aligned</span>
 <span class="st">  </span><span class="kw"><a href="../reference/left_align_labs.html">left_align_labs</a></span>()</code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-14-1.png" width="672"></p>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-14-1.png" width="2187.5"></p>
 <p>By default, <code>ggplot2</code> aligns the plot labels (titles, captions etc) to the panel of the plot itself, not the whole plot area. As the ethnicity labels extend out to the left hand side of the plot, this ends up making the plot look a bit misaligned. <code><a href="../reference/left_align_labs.html">left_align_labs()</a></code> will adjust the alignment to be with respect to the whole plot area. This needs to be applied to the whole <code>ggplot</code> object, not just + on the end.</p>
 <p>And a stacked example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">AvAtt <span class="op">%&gt;%</span>
@@ -451,10 +451,10 @@ pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal
 <span class="st">      </span><span class="kw">labs</span>(
         <span class="dt">title =</span> <span class="st">"Average Attainment 8 Scores - 2016/17"</span>,
         <span class="dt">subtitle =</span> <span class="st">"Average score per pupil in each element"</span>,
-        <span class="dt">caption =</span> <span class="st">"Source: Department for Education</span><span class="ch">\n</span><span class="st">Chart: GLA Intelligence"</span>
+        <span class="dt">caption =</span> <span class="st">"Source: Department for Education</span><span class="ch">\n</span><span class="st">Chart: GLA City Intelligence"</span>
         )) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/left_align_labs.html">left_align_labs</a></span>()</code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-16-1.png" width="672"></p>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-16-1.png" width="2100"></p>
 </div>
 <div id="donut-charts" class="section level2">
 <h2 class="hasAnchor">
@@ -489,7 +489,7 @@ pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_donut.html">ggla_donut</a></span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">label =</span> usage, <span class="dt">y =</span> numUsers), <span class="dt">stat =</span> <span class="st">"identity"</span>,
              <span class="dt">title =</span> <span class="st">"Internet usage </span><span class="ch">\n</span><span class="st">in London"</span>, <span class="dt">base_size =</span> <span class="dv">10</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> pal)</code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-18-1.png" width="672"></p>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-18-1.png" width="2187.5"></p>
 </div>
 <div id="maps" class="section level2">
 <h2 class="hasAnchor">
@@ -560,19 +560,19 @@ pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal
 </tbody>
 </table>
 <p>The leave vote has been seperated out into categories for each Borough. The geometry of each Borough is available on the <a href="https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london">DataStore</a>.</p>
-<p>To plot geographical data, you can use the <code><a href="../reference/ggla_sf.html">ggla_sf()</a></code> which uses the <code>ggplot::geom_sf()</code> function and changes some of the defaults to fit with our style guide. This function works with <em>simple features data</em>, as used in the <a href="https://www.rdocumentation.org/packages/sf/versions/0.7-2">sf package</a>.</p>
+<p>To plot geographical data, you can use the <code><a href="../reference/ggla_sf.html">ggla_sf()</a></code> which is similar to the <code>ggplot::geom_sf()</code> function with different defaults to fit with our style guide. This function works with <em>simple features data</em>, as used in the <a href="https://www.rdocumentation.org/packages/sf/versions/0.7-2">sf package</a>. The geometry here is polygons, but <code><a href="../reference/ggla_sf.html">ggla_sf()</a></code> works with other geometry types.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Generate a diverging palette - the edges get a bit dark so the remove margins</span>
 pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>, <span class="dt">palette_type =</span> <span class="st">"diverging"</span>,
                <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="dt">n =</span> <span class="dv">6</span>, <span class="dt">remove_margin =</span> <span class="st">"both"</span>)
 
-<span class="kw">ggplot</span>(EURef, <span class="kw">aes</span>(<span class="dt">fill =</span> CatLeave)) <span class="op">+</span>
+<span class="kw">ggplot</span>(EURef, <span class="kw">aes</span>(<span class="dt">geometry =</span> geometry, <span class="dt">fill =</span> CatLeave)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_sf.html">ggla_sf</a></span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> pal) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(
     <span class="dt">title =</span> <span class="st">"Leave Vote in the 2016 EU Referendum"</span>,
     <span class="dt">caption =</span> <span class="st">"Contains Ordnance Survey data Crown copyright and database right [2015]"</span>
     )</code></pre></div>
-<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto auto auto 0;"></p>
+<p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-20-1.png" width="2100" style="display: block; margin: auto auto auto 0;"></p>
 </div>
   </div>
 

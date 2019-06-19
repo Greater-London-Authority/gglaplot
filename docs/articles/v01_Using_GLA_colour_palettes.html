@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gglaplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -110,63 +110,63 @@
 <a href="#gla-colours" class="anchor"></a>GLA colours</h2>
 <p><code>gglaplot</code> comes with a set of colours to be used for plot details (axis lines, fonts etc) as well as colours for the data itself. These can be accessed directly as Hex colour code strings from the lists <code>gla_default</code>, <code>gla_inverse</code> and <code>gla_colours</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(gla_default)
-<span class="co">#&gt; List of 11</span>
-<span class="co">#&gt;  $ axis text &amp; labels: chr "#666666"</span>
-<span class="co">#&gt;  $ background        : chr "#ffffff"</span>
-<span class="co">#&gt;  $ body text         : chr "#666666"</span>
-<span class="co">#&gt;  $ context data      : chr "#cccccc"</span>
-<span class="co">#&gt;  $ headlines         : chr "#353d42"</span>
-<span class="co">#&gt;  $ highlight area    : chr "#000000"</span>
-<span class="co">#&gt;  $ highlighted labels: chr "#353d42"</span>
-<span class="co">#&gt;  $ label             : chr "#353d42"</span>
-<span class="co">#&gt;  $ light grid        : chr "#d8d8d8"</span>
-<span class="co">#&gt;  $ mid point         : chr "#eeeeee"</span>
-<span class="co">#&gt;  $ strong grid       : chr "#666666"</span></code></pre></div>
+List of <span class="dv">11</span>
+ <span class="op">$</span><span class="st"> </span>axis text <span class="op">&amp;</span><span class="st"> </span>labels<span class="op">:</span><span class="st"> </span>chr <span class="st">"#666666"</span>
+ <span class="op">$</span><span class="st"> </span>background        <span class="op">:</span><span class="st"> </span>chr <span class="st">"#ffffff"</span>
+ <span class="op">$</span><span class="st"> </span>body text         <span class="op">:</span><span class="st"> </span>chr <span class="st">"#666666"</span>
+ <span class="op">$</span><span class="st"> </span>context data      <span class="op">:</span><span class="st"> </span>chr <span class="st">"#cccccc"</span>
+ <span class="op">$</span><span class="st"> </span>headlines         <span class="op">:</span><span class="st"> </span>chr <span class="st">"#353d42"</span>
+ <span class="op">$</span><span class="st"> </span>highlight area    <span class="op">:</span><span class="st"> </span>chr <span class="st">"#000000"</span>
+ <span class="op">$</span><span class="st"> </span>highlighted labels<span class="op">:</span><span class="st"> </span>chr <span class="st">"#353d42"</span>
+ <span class="op">$</span><span class="st"> </span>label             <span class="op">:</span><span class="st"> </span>chr <span class="st">"#353d42"</span>
+ <span class="op">$</span><span class="st"> </span>light grid        <span class="op">:</span><span class="st"> </span>chr <span class="st">"#d8d8d8"</span>
+ <span class="op">$</span><span class="st"> </span>mid point         <span class="op">:</span><span class="st"> </span>chr <span class="st">"#eeeeee"</span>
+ <span class="op">$</span><span class="st"> </span>strong grid       <span class="op">:</span><span class="st"> </span>chr <span class="st">"#666666"</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(gla_inverse)
-<span class="co">#&gt; List of 11</span>
-<span class="co">#&gt;  $ axis text &amp; labels: chr "#ffffff"</span>
-<span class="co">#&gt;  $ background        : chr "#121516"</span>
-<span class="co">#&gt;  $ body text         : chr "#ffffff"</span>
-<span class="co">#&gt;  $ context data      : chr "#ffffff"</span>
-<span class="co">#&gt;  $ headlines         : chr "#ffffff"</span>
-<span class="co">#&gt;  $ highlight area    : chr "#ffffff"</span>
-<span class="co">#&gt;  $ highlighted labels: chr "#ffffff"</span>
-<span class="co">#&gt;  $ label             : chr "#ffffff"</span>
-<span class="co">#&gt;  $ light grid        : chr "#4e5254"</span>
-<span class="co">#&gt;  $ mid point         : chr "#333333"</span>
-<span class="co">#&gt;  $ strong grid       : chr "#ffffff"</span></code></pre></div>
+List of <span class="dv">11</span>
+ <span class="op">$</span><span class="st"> </span>axis text <span class="op">&amp;</span><span class="st"> </span>labels<span class="op">:</span><span class="st"> </span>chr <span class="st">"#ffffff"</span>
+ <span class="op">$</span><span class="st"> </span>background        <span class="op">:</span><span class="st"> </span>chr <span class="st">"#121516"</span>
+ <span class="op">$</span><span class="st"> </span>body text         <span class="op">:</span><span class="st"> </span>chr <span class="st">"#ffffff"</span>
+ <span class="op">$</span><span class="st"> </span>context data      <span class="op">:</span><span class="st"> </span>chr <span class="st">"#ffffff"</span>
+ <span class="op">$</span><span class="st"> </span>headlines         <span class="op">:</span><span class="st"> </span>chr <span class="st">"#ffffff"</span>
+ <span class="op">$</span><span class="st"> </span>highlight area    <span class="op">:</span><span class="st"> </span>chr <span class="st">"#ffffff"</span>
+ <span class="op">$</span><span class="st"> </span>highlighted labels<span class="op">:</span><span class="st"> </span>chr <span class="st">"#ffffff"</span>
+ <span class="op">$</span><span class="st"> </span>label             <span class="op">:</span><span class="st"> </span>chr <span class="st">"#ffffff"</span>
+ <span class="op">$</span><span class="st"> </span>light grid        <span class="op">:</span><span class="st"> </span>chr <span class="st">"#4e5254"</span>
+ <span class="op">$</span><span class="st"> </span>mid point         <span class="op">:</span><span class="st"> </span>chr <span class="st">"#333333"</span>
+ <span class="op">$</span><span class="st"> </span>strong grid       <span class="op">:</span><span class="st"> </span>chr <span class="st">"#ffffff"</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(gla_colours)
-<span class="co">#&gt; List of 30</span>
-<span class="co">#&gt;  $ blue_core      : chr "#6da7de"</span>
-<span class="co">#&gt;  $ ldndkpink_core : chr "#9e0059"</span>
-<span class="co">#&gt;  $ yellow_core    : chr "#dee000"</span>
-<span class="co">#&gt;  $ red_core       : chr "#d82222"</span>
-<span class="co">#&gt;  $ green_core     : chr "#5ea15d"</span>
-<span class="co">#&gt;  $ purple_core    : chr "#943fa6"</span>
-<span class="co">#&gt;  $ turquoise_core : chr "#63c5b5"</span>
-<span class="co">#&gt;  $ pink_core      : chr "#ff38ba"</span>
-<span class="co">#&gt;  $ orange_core    : chr "#eb861e"</span>
-<span class="co">#&gt;  $ ldnpink_core   : chr "#ee266d"</span>
-<span class="co">#&gt;  $ blue_light     : chr "#7ab5e5"</span>
-<span class="co">#&gt;  $ purple_light   : chr "#964a92"</span>
-<span class="co">#&gt;  $ yellow_light   : chr "#ddd82c"</span>
-<span class="co">#&gt;  $ red_light      : chr "#d84545"</span>
-<span class="co">#&gt;  $ green_light    : chr "#65aa63"</span>
-<span class="co">#&gt;  $ turquoise_light: chr "#49bf9a"</span>
-<span class="co">#&gt;  $ orange_light   : chr "#d6793a"</span>
-<span class="co">#&gt;  $ blue_dark      : chr "#3681bf"</span>
-<span class="co">#&gt;  $ magenta_dark   : chr "#89105d"</span>
-<span class="co">#&gt;  $ yellow_dark    : chr "#d3c913"</span>
-<span class="co">#&gt;  $ red_dark       : chr "#af2828"</span>
-<span class="co">#&gt;  $ green_dark     : chr "#73a072"</span>
-<span class="co">#&gt;  $ turquoise_dark : chr "#56b2a1"</span>
-<span class="co">#&gt;  $ purple_dark    : chr "#884299"</span>
-<span class="co">#&gt;  $ orange_dark    : chr "#b76325"</span>
-<span class="co">#&gt;  $ pink_brand     : chr "#ee266d"</span>
-<span class="co">#&gt;  $ cyan_brand     : chr "#00aeef"</span>
-<span class="co">#&gt;  $ dkpink_brand   : chr "#9e0059"</span>
-<span class="co">#&gt;  $ mustard_brand  : chr "#dca000"</span>
-<span class="co">#&gt;  $ red_brand      : chr "#e0001b"</span></code></pre></div>
+List of <span class="dv">30</span>
+ <span class="op">$</span><span class="st"> </span>blue_core      <span class="op">:</span><span class="st"> </span>chr <span class="st">"#6da7de"</span>
+ <span class="op">$</span><span class="st"> </span>ldndkpink_core <span class="op">:</span><span class="st"> </span>chr <span class="st">"#9e0059"</span>
+ <span class="op">$</span><span class="st"> </span>yellow_core    <span class="op">:</span><span class="st"> </span>chr <span class="st">"#dee000"</span>
+ <span class="op">$</span><span class="st"> </span>red_core       <span class="op">:</span><span class="st"> </span>chr <span class="st">"#d82222"</span>
+ <span class="op">$</span><span class="st"> </span>green_core     <span class="op">:</span><span class="st"> </span>chr <span class="st">"#5ea15d"</span>
+ <span class="op">$</span><span class="st"> </span>purple_core    <span class="op">:</span><span class="st"> </span>chr <span class="st">"#943fa6"</span>
+ <span class="op">$</span><span class="st"> </span>turquoise_core <span class="op">:</span><span class="st"> </span>chr <span class="st">"#63c5b5"</span>
+ <span class="op">$</span><span class="st"> </span>pink_core      <span class="op">:</span><span class="st"> </span>chr <span class="st">"#ff38ba"</span>
+ <span class="op">$</span><span class="st"> </span>orange_core    <span class="op">:</span><span class="st"> </span>chr <span class="st">"#eb861e"</span>
+ <span class="op">$</span><span class="st"> </span>ldnpink_core   <span class="op">:</span><span class="st"> </span>chr <span class="st">"#ee266d"</span>
+ <span class="op">$</span><span class="st"> </span>blue_light     <span class="op">:</span><span class="st"> </span>chr <span class="st">"#7ab5e5"</span>
+ <span class="op">$</span><span class="st"> </span>purple_light   <span class="op">:</span><span class="st"> </span>chr <span class="st">"#964a92"</span>
+ <span class="op">$</span><span class="st"> </span>yellow_light   <span class="op">:</span><span class="st"> </span>chr <span class="st">"#ddd82c"</span>
+ <span class="op">$</span><span class="st"> </span>red_light      <span class="op">:</span><span class="st"> </span>chr <span class="st">"#d84545"</span>
+ <span class="op">$</span><span class="st"> </span>green_light    <span class="op">:</span><span class="st"> </span>chr <span class="st">"#65aa63"</span>
+ <span class="op">$</span><span class="st"> </span>turquoise_light<span class="op">:</span><span class="st"> </span>chr <span class="st">"#49bf9a"</span>
+ <span class="op">$</span><span class="st"> </span>orange_light   <span class="op">:</span><span class="st"> </span>chr <span class="st">"#d6793a"</span>
+ <span class="op">$</span><span class="st"> </span>blue_dark      <span class="op">:</span><span class="st"> </span>chr <span class="st">"#3681bf"</span>
+ <span class="op">$</span><span class="st"> </span>magenta_dark   <span class="op">:</span><span class="st"> </span>chr <span class="st">"#89105d"</span>
+ <span class="op">$</span><span class="st"> </span>yellow_dark    <span class="op">:</span><span class="st"> </span>chr <span class="st">"#d3c913"</span>
+ <span class="op">$</span><span class="st"> </span>red_dark       <span class="op">:</span><span class="st"> </span>chr <span class="st">"#af2828"</span>
+ <span class="op">$</span><span class="st"> </span>green_dark     <span class="op">:</span><span class="st"> </span>chr <span class="st">"#73a072"</span>
+ <span class="op">$</span><span class="st"> </span>turquoise_dark <span class="op">:</span><span class="st"> </span>chr <span class="st">"#56b2a1"</span>
+ <span class="op">$</span><span class="st"> </span>purple_dark    <span class="op">:</span><span class="st"> </span>chr <span class="st">"#884299"</span>
+ <span class="op">$</span><span class="st"> </span>orange_dark    <span class="op">:</span><span class="st"> </span>chr <span class="st">"#b76325"</span>
+ <span class="op">$</span><span class="st"> </span>pink_brand     <span class="op">:</span><span class="st"> </span>chr <span class="st">"#ee266d"</span>
+ <span class="op">$</span><span class="st"> </span>cyan_brand     <span class="op">:</span><span class="st"> </span>chr <span class="st">"#00aeef"</span>
+ <span class="op">$</span><span class="st"> </span>dkpink_brand   <span class="op">:</span><span class="st"> </span>chr <span class="st">"#9e0059"</span>
+ <span class="op">$</span><span class="st"> </span>mustard_brand  <span class="op">:</span><span class="st"> </span>chr <span class="st">"#dca000"</span>
+ <span class="op">$</span><span class="st"> </span>red_brand      <span class="op">:</span><span class="st"> </span>chr <span class="st">"#e0001b"</span></code></pre></div>
 </div>
 <div id="gla-palettes" class="section level2">
 <h2 class="hasAnchor">
@@ -212,7 +212,7 @@
 </ul>
 <p>These palettes have a default order of colours which maximises differentiability and accessibility.</p>
 <p>The different palettes can be seen here:</p>
-<p><img src="v01_Using_GLA_colour_palettes_files/figure-html/unnamed-chunk-5-1.png" width="768"></p>
+<p><img src="v01_Using_GLA_colour_palettes_files/figure-html/unnamed-chunk-5-1.png" width="2400"></p>
 </div>
 <div id="main_colours" class="section level3">
 <h3 class="hasAnchor">
@@ -235,17 +235,17 @@
 <p>Except for highlight palettes, <code>n</code> needs to be set to the number of categories in your data, and <code>gla_pal</code> will generate this many colours.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">palette_type =</span> <span class="st">"categorical"</span>,
         <span class="dt">palette_name =</span> <span class="st">"core"</span>, <span class="dt">n =</span> <span class="dv">5</span>)
-<span class="co">#&gt; [1] "#6da7de" "#9e0059" "#dee000" "#d82222" "#5ea15d"</span></code></pre></div>
+[<span class="dv">1</span>] <span class="st">"#6da7de"</span> <span class="st">"#9e0059"</span> <span class="st">"#dee000"</span> <span class="st">"#d82222"</span> <span class="st">"#5ea15d"</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">palette_type =</span> <span class="st">"quantitative"</span>,
         <span class="dt">main_colours =</span> <span class="st">"green"</span>, <span class="dt">n =</span> <span class="dv">5</span>)
-<span class="co">#&gt; [1] "#212B20" "#374F35" "#527450" "#759A72" "#A1C09E"</span></code></pre></div>
+[<span class="dv">1</span>] <span class="st">"#212B20"</span> <span class="st">"#374F35"</span> <span class="st">"#527450"</span> <span class="st">"#759A72"</span> <span class="st">"#A1C09E"</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">palette_type =</span> <span class="st">"diverging"</span>,
         <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"red"</span>, <span class="st">"yellow"</span>), <span class="dt">n =</span> <span class="dv">6</span>)
-<span class="co">#&gt; [1] "#5D221A" "#B54C3E" "#E79788" "#B2AF52" "#716F28" "#36351A"</span></code></pre></div>
+[<span class="dv">1</span>] <span class="st">"#5D221A"</span> <span class="st">"#B54C3E"</span> <span class="st">"#E79788"</span> <span class="st">"#B2AF52"</span> <span class="st">"#716F28"</span> <span class="st">"#36351A"</span></code></pre></div>
 <p>For highlight palettes, you need to provide a vector giving the number of highlighted categories followed by the number of contextual categories.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">palette_type =</span> <span class="st">"highlight"</span>,
         <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"blue"</span>, <span class="st">"yellow"</span>), <span class="dt">n =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2</span>, <span class="dv">3</span>))
-<span class="co">#&gt; [1] "#6da7de" "#dee000" "#cccccc" "#cccccc" "#cccccc"</span></code></pre></div>
+[<span class="dv">1</span>] <span class="st">"#6da7de"</span> <span class="st">"#dee000"</span> <span class="st">"#cccccc"</span> <span class="st">"#cccccc"</span> <span class="st">"#cccccc"</span></code></pre></div>
 </div>
 <div id="inc0" class="section level3">
 <h3 class="hasAnchor">
@@ -254,7 +254,7 @@
 <p>This is only relevant for diverging or quantitative colour palettes, if you want to explicitly include 0 in your colour scale (i.e. for a diverging palette you have a colour in the middle of the palette that is completely neutral between to two ends of the scale) then set <code>inc0 = TRUE</code> and this colour will be included in the middle or end of the palette. n colours will still be returned.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>, <span class="dt">palette_type =</span> <span class="st">"diverging"</span>,
         <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"red"</span>, <span class="st">"yellow"</span>), <span class="dt">n =</span> <span class="dv">7</span>, <span class="dt">inc0 =</span> <span class="ot">TRUE</span>)
-<span class="co">#&gt; [1] "#5D221A" "#B54C3E" "#E79788" "#EEEEEE" "#B2AF52" "#716F28" "#36351A"</span></code></pre></div>
+[<span class="dv">1</span>] <span class="st">"#5D221A"</span> <span class="st">"#B54C3E"</span> <span class="st">"#E79788"</span> <span class="st">"#EEEEEE"</span> <span class="st">"#B2AF52"</span> <span class="st">"#716F28"</span> <span class="st">"#36351A"</span></code></pre></div>
 </div>
 <div id="remove_margin" class="section level3">
 <h3 class="hasAnchor">
@@ -264,7 +264,7 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"inverse"</span>, <span class="dt">palette_type =</span> <span class="st">"diverging"</span>,
         <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"red"</span>, <span class="st">"yellow"</span>), <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">inc0 =</span> <span class="ot">TRUE</span>,
         <span class="dt">remove_margin =</span> <span class="st">"both"</span>)
-<span class="co">#&gt; [1] "#373333" "#353333" "#333333" "#333333" "#343433"</span></code></pre></div>
+[<span class="dv">1</span>] <span class="st">"#373333"</span> <span class="st">"#353333"</span> <span class="st">"#333333"</span> <span class="st">"#333333"</span> <span class="st">"#343433"</span></code></pre></div>
 <p><strong>Note:</strong> For diverging palettes, n must be either odd or even depending on the combination of <code>inc0</code> and <code>remove_margin</code> used.</p>
 </div>
 </div>
@@ -281,7 +281,7 @@ plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="d
 <span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> my_pal)
 plot</code></pre></div>
-<p><img src="v01_Using_GLA_colour_palettes_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
+<p><img src="v01_Using_GLA_colour_palettes_files/figure-html/unnamed-chunk-12-1.png" width="2187.5"></p>
 </div>
   </div>
 

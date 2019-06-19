@@ -17,7 +17,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Makes graphics in the GLA style using ggplot2">
 <meta property="og:description" content="The package provides several wrappers and tools to use with ggplot2
-             to make graphics fit with the GLA style.">
+             to make graphics that follow the GLA City Intelligence Data Design Guidelines.">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">gglaplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -101,7 +101,7 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#gglaplot" class="anchor"></a>gglaplot <img src="reference/figures/logo.png" align="right" alt="" width="120">
 </h1></div>
-<p>The package provides several wrappers and tools to use with ggplot2 to make graphics fit with the GLA style.</p>
+<p>The package provides several wrappers and tools to use with ggplot2 to make graphics that follow the GLA <a href="https://data.london.gov.uk/blog/city-intelligence-data-design-guidelines/">City Intelligence Data Design Guidelines</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -118,24 +118,28 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(scales)
 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(lubridate)
 
-pal &lt;-<span class="st"> </span><span class="kw"><a href="reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">'light'</span>, <span class="dt">palette_type =</span> <span class="st">'highlight'</span>, <span class="dt">n =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">1</span>))
-<span class="kw">theme_set</span>(<span class="kw"><a href="reference/theme_gla.html">theme_gla</a></span>(<span class="dt">gla_theme =</span> <span class="st">'light'</span>))
+pal &lt;-<span class="st"> </span><span class="kw"><a href="reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>, <span class="dt">palette_type =</span> <span class="st">"highlight"</span>, <span class="dt">n =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>))
+<span class="kw">theme_set</span>(<span class="kw"><a href="reference/theme_gla.html">theme_gla</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>))
 
-<span class="kw">ggplot</span>(<span class="dt">data =</span> LDNUK, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> GPG, <span class="dt">group =</span> location, 
+plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> LDNUK, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> GPG, <span class="dt">group =</span> location,
                                    <span class="dt">colour =</span> location)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="reference/ggla_line.html">ggla_line</a></span>(<span class="kw">aes</span>(<span class="dt">size =</span> location)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_size_discrete</span>(<span class="dt">range =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">6</span> <span class="op">*</span><span class="st"> </span>mm_to_pt, <span class="dv">3</span> <span class="op">*</span><span class="st"> </span>mm_to_pt)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> pal) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">'end'</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"end"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="reference/ggla_axisat0.html">ggla_axisat0</a></span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="fl">32.5</span>), 
-                      <span class="dt">labels =</span> <span class="kw">dollar_format</span>(<span class="dt">prefix =</span> <span class="st">''</span>, <span class="dt">suffix =</span> <span class="st">'%'</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_x_date</span>(<span class="dt">date_breaks =</span> <span class="st">'1 year'</span>, <span class="dt">date_labels =</span> <span class="st">"'%y"</span>,
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="fl">32.5</span>),
+                      <span class="dt">labels =</span> <span class="kw">dollar_format</span>(<span class="dt">prefix =</span> <span class="st">""</span>, <span class="dt">suffix =</span> <span class="st">"%"</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_date</span>(<span class="dt">date_breaks =</span> <span class="st">"1 year"</span>, <span class="dt">date_labels =</span> <span class="st">"'%y"</span>,
                <span class="dt">expand =</span> <span class="kw">expand_scale</span>(<span class="dt">mult =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>))) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">'Gender Pay Gap - Total (Median)'</span>,
-        <span class="dt">subtitle =</span> <span class="st">'Gender Pay Gap - Total (Median) - London VS UK'</span>,
-        <span class="dt">caption =</span> <span class="st">'Note: 2017 data is provisional</span><span class="ch">\n</span><span class="st">Chart: GLA Intelligence  Source: London Datastore'</span>)</code></pre></div>
-<p><img src="reference/figures/Usage-1.png" width="700"></p>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Gender Pay Gap - Total (Median)"</span>,
+        <span class="dt">subtitle =</span> <span class="st">"Gender Pay Gap - Total (Median) - London VS UK"</span>,
+        <span class="dt">caption =</span> <span class="st">"Note: 2017 data is provisional</span><span class="ch">\n</span><span class="st">Chart: GLA City Intelligence  Source: London Datastore"</span>)
+plot</code></pre></div>
+<p><img src="reference/figures/Usage-1.png" width="2187.5"></p>
+<p>Plots can be incorporated in Rmarkdown/Notebooks or exported to be included in documents/slideshows etc</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="dt">plot =</span> plot, <span class="dt">path =</span> <span class="st">"example_plot.svg"</span>)</code></pre></div>
+<p><code>.svg</code> is the best format to export plots, and the size and dpi of the output can be adjusted within <code>ggsave()</code>.</p>
 </div>
 <div id="getting-help" class="section level2">
 <h2 class="hasAnchor">
@@ -173,9 +177,7 @@ pal &lt;-<span class="st"> </span><span class="kw"><a href="reference/gla_pal.ht
 <div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://www.r-project.org/Licenses/GPL-2">GPL-2</a> | file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
 </ul>
 </div>
 <div class="developers">
