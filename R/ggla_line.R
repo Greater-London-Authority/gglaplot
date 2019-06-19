@@ -1,3 +1,4 @@
+#' @export
 GeomGLALine <- ggplot2::ggproto("GeomGLALine", ggplot2::GeomLine,
                        default_aes = ggplot2::aes(
                          colour = gla_colours$blue_core,

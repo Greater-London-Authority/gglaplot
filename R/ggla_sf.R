@@ -1,5 +1,6 @@
 # These functions have been adapted from ggplot2/R/geom_sf to use gla themes
 # and colours
+#' @export
 GeomGLASf <- ggplot2::ggproto("GeomGLASf", ggplot2::GeomSf,
                      required_aes = "geometry",
                      default_aes = ggplot2::aes(

@@ -178,10 +178,10 @@
 <p><code><a href="../reference/ggla_line.html">ggla_line()</a></code> is the same as <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">ggplot2::geom_line()</a></code> except that it uses a round <code>lineend</code> style as default.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>, <span class="dt">palette_type =</span> <span class="st">"highlight"</span>, <span class="dt">n =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>))
 
-plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> LDNUK, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> GPG, <span class="dt">group =</span> location,
-                                           <span class="dt">colour =</span> location)) <span class="op">+</span>
+plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> LDNUK, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> GPG,
+                                           <span class="dt">group =</span> location)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> pal) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="../reference/ggla_line.html">ggla_line</a></span>()
+<span class="st">  </span><span class="kw"><a href="../reference/ggla_line.html">ggla_line</a></span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">colour =</span> location))
 
 plot</code></pre></div>
 <p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-4-1.png" width="2187.5"></p>
@@ -191,22 +191,22 @@ plot</code></pre></div>
 <a href="#adding-emphasis-with-ggla_highlight" class="anchor"></a>Adding emphasis with <code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code>
 </h3>
 <p>To highlight particular features of your data you can add emphasis with <code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code>. This comes in 4 simple flavours, “start” and “end”, for highlighting your first or final data point, “min” and “max” for highlighting your minimum or maximum data points.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p_start &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"start"</span>)
-p_end &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"end"</span>)
-p_min &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"min"</span>)
-p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"max"</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p_start &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="kw">aes</span>(<span class="dt">colour =</span> location), <span class="dt">filter_type =</span> <span class="st">"start"</span>)
+p_end &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="kw">aes</span>(<span class="dt">colour =</span> location), <span class="dt">filter_type =</span> <span class="st">"end"</span>)
+p_min &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="kw">aes</span>(<span class="dt">colour =</span> location), <span class="dt">filter_type =</span> <span class="st">"min"</span>)
+p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="kw">aes</span>(<span class="dt">colour =</span> location), <span class="dt">filter_type =</span> <span class="st">"max"</span>)
 <span class="kw">grid.arrange</span>(p_start, p_end, p_min, p_max, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre></div>
 <p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-5-1.png" width="2187.5"></p>
 <p><code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code> also includes a more involved <code>xy</code> option for the <code>filter_type</code> argument for cases when you want to pick out a particular value which isn’t covered by start/end etc. This needs to be used along with at least one of the x_filt and y_filt arguments.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"xy"</span>, <span class="dt">x_filt =</span> <span class="kw">ymd</span>(<span class="st">"2007-01-01"</span>))</code></pre></div>
+<span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="kw">aes</span>(<span class="dt">colour =</span> location), <span class="dt">filter_type =</span> <span class="st">"xy"</span>, <span class="dt">x_filt =</span> <span class="kw">ymd</span>(<span class="st">"2007-01-01"</span>))</code></pre></div>
 <p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-6-1.png" width="2187.5"></p>
 <p>You can also change the <code>geom</code> of <code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code> to add labels. This will probably require a bit of fiddling around with the <code>position_nudge()</code> function to get them in the right place. If we’re labelling our data we might as well remove the legend.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/theme_gla.html">theme_gla</a></span>(<span class="dt">legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">label =</span> location),
-                 <span class="dt">filter_type =</span> <span class="st">"end"</span>, <span class="dt">geom =</span> <span class="st">"text"</span>,
-                 <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="op">-</span><span class="dv">6</span>, <span class="dt">y =</span> <span class="fl">0.5</span>))</code></pre></div>
+                 <span class="dt">filter_type =</span> <span class="st">"end"</span>, <span class="dt">geom =</span> GeomTextHighlight,
+                 <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="op">-</span><span class="dv">35</span>, <span class="dt">y =</span> <span class="fl">0.5</span>))</code></pre></div>
 <p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-7-1.png" width="2187.5"></p>
 </div>
 </div>

@@ -65,10 +65,10 @@ LDNUK %>%
 ```{r}
 pal <- gla_pal(gla_theme = "default", palette_type = "highlight", n = c(1, 1))
 
-plot <- ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
-                                           colour = location)) +
+plot <- ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG,
+                                           group = location)) +
   scale_colour_manual(values = pal) +
-  ggla_line()
+  ggla_line(mapping = aes(colour = location))
 
 plot
 
@@ -81,10 +81,10 @@ To highlight particular features of your data you can add emphasis with `ggla_hi
 This comes in 4 simple flavours, "start" and "end", for highlighting your first or final data point, "min" and "max" for highlighting your minimum or maximum data points.
 
 ```{r}
-p_start <- plot + ggla_highlight(filter_type = "start")
-p_end <- plot + ggla_highlight(filter_type = "end")
-p_min <- plot + ggla_highlight(filter_type = "min")
-p_max <- plot + ggla_highlight(filter_type = "max")
+p_start <- plot + ggla_highlight(aes(colour = location), filter_type = "start")
+p_end <- plot + ggla_highlight(aes(colour = location), filter_type = "end")
+p_min <- plot + ggla_highlight(aes(colour = location), filter_type = "min")
+p_max <- plot + ggla_highlight(aes(colour = location), filter_type = "max")
 grid.arrange(p_start, p_end, p_min, p_max, ncol = 2, nrow = 2)
 
 ```
@@ -93,7 +93,7 @@ grid.arrange(p_start, p_end, p_min, p_max, ncol = 2, nrow = 2)
 
 ```{r}
 plot +
-  ggla_highlight(filter_type = "xy", x_filt = ymd("2007-01-01"))
+  ggla_highlight(aes(colour = location), filter_type = "xy", x_filt = ymd("2007-01-01"))
 ```
 
 You can also change the `geom` of `ggla_highlight()` to add labels. This will probably require a bit of fiddling around with the `position_nudge()` function to get them in the right place. If we're labelling our data we might as well remove the legend.
@@ -103,8 +103,8 @@ You can also change the `geom` of `ggla_highlight()` to add labels. This will pr
 plot +
   theme_gla(legend = FALSE) +
   ggla_highlight(mapping = aes(label = location),
-                 filter_type = "end", geom = "text",
-                 position = position_nudge(x = -6, y = 0.5))
+                 filter_type = "end", geom = GeomTextHighlight,
+                 position = position_nudge(x = -35, y = 0.5))
 ```
 
 ## Highlighting an area with `ggla_highlightarea()`

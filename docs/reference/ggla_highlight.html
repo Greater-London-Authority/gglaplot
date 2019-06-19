@@ -140,13 +140,44 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>ggla_highlight</span>(<span class='kw'>filter_type</span> <span class='kw'>=</span> <span class='st'>"end"</span>, <span class='kw'>x_filt</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>y_filt</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>geom</span> <span class='kw'>=</span> <span class='no'>GeomPointHighlight</span>,
-  <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"identity"</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>ggla_highlight</span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>geom</span> <span class='kw'>=</span> <span class='no'>GeomPointHighlight</span>, <span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
+  <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"identity"</span>, <span class='no'>...</span>, <span class='kw'>filter_type</span> <span class='kw'>=</span> <span class='st'>"end"</span>, <span class='kw'>x_filt</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>y_filt</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>show.legend</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>inherit.aes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>mapping</th>
+      <td><p>Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping, Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td><p>The data to be displayed in this layer. There are three options: If NULL, the default, the data is inherited from the plot data as specified in the call to ggplot(). A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created. A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data, Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>geom</th>
+      <td><p>Override the default connection between geom_highlight() and GeomPointHighlight, for text use GeomTextHighlight Default: GeomPointHighlight</p></td>
+    </tr>
+    <tr>
+      <th>stat</th>
+      <td><p>The statistical transformation to use on the data for this
+layer, as a string.</p></td>
+    </tr>
+    <tr>
+      <th>position</th>
+      <td><p>Position adjustment, either as a string, or the result of
+a call to a position adjustment function.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments passed on to <code>layer()</code>. These are
+often aesthetics, used to set an aesthetic to a fixed value, like
+<code>colour = "red"</code> or <code>size = 3</code>. They may also be parameters
+to the paired geom/stat.</p></td>
+    </tr>
     <tr>
       <th>filter_type</th>
       <td><p>One of string "end", "start", "max", "min" or "xy", Default: 'end'</p></td>
@@ -160,28 +191,24 @@
       <td><p>If filter_type = "xy" use this to select which y-values to highlight, Default: NULL</p></td>
     </tr>
     <tr>
-      <th>data</th>
-      <td><p>The data to be displayed in this layer. There are three options: If NULL, the default, the data is inherited from the plot data as specified in the call to ggplot(). A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created. A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data, Default: NULL</p></td>
+      <th>na.rm</th>
+      <td><p>If <code>FALSE</code>, the default, missing values are removed with
+a warning. If <code>TRUE</code>, missing values are silently removed.</p></td>
     </tr>
     <tr>
-      <th>mapping</th>
-      <td><p>Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping, Default: NULL</p></td>
+      <th>show.legend</th>
+      <td><p>logical. Should this layer be included in the legends?
+<code>NA</code>, the default, includes if any aesthetics are mapped.
+<code>FALSE</code> never includes, and <code>TRUE</code> always includes.
+It can also be a named logical vector to finely select the aesthetics to
+display.</p></td>
     </tr>
     <tr>
-      <th>geom</th>
-      <td><p>Override the default connection between geom_highlight() and GeomPointHighlight, Default: GeomPointHighlight</p></td>
-    </tr>
-    <tr>
-      <th>position</th>
-      <td><p>Position adjustment, either as a string, or the result of
-a call to a position adjustment function.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Other arguments passed on to <code>layer()</code>. These are
-often aesthetics, used to set an aesthetic to a fixed value, like
-<code>colour = "red"</code> or <code>size = 3</code>. They may also be parameters
-to the paired geom/stat.</p></td>
+      <th>inherit.aes</th>
+      <td><p>If <code>FALSE</code>, overrides the default aesthetics,
+rather than combining with them. This is most useful for helper functions
+that define both data and aesthetics and shouldn't inherit behaviour from
+the default plot specification, e.g. <code>borders()</code>.</p></td>
     </tr>
     </table>
     
