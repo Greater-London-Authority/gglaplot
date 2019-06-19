@@ -21,15 +21,19 @@ ggla_highlight(filter_type = "end", x_filt = NULL, y_filt = NULL,
 
 \item{geom}{Override the default connection between geom_highlight() and GeomPointHighlight, Default: GeomPointHighlight}
 
-\item{position}{Position adjustment, either as a string, or the result of a call to a position adjustment function., Default: 'identity'}
+\item{position}{Position adjustment, either as a string, or the result of
+a call to a position adjustment function.}
 
-\item{...}{Other arguments to be passed on to geom_bar()}
+\item{...}{Other arguments passed on to \code{\link[=layer]{layer()}}. These are
+often aesthetics, used to set an aesthetic to a fixed value, like
+\code{colour = "red"} or \code{size = 3}. They may also be parameters
+to the paired geom/stat.}
 }
 \description{
 Highlight selected data points
 }
 \details{
-DETAILS
+To use gla_inverse theme this must be set using theme_set() prior to calling ggla_highlight()
 }
 \examples{
 \dontrun{

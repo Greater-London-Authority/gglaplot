@@ -167,7 +167,7 @@ ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
   labs(
     title = "Gender Pay Gap - Total (Median)",
     subtitle = "Gender Pay Gap - Total (Median) - London VS UK",
-    caption = "Note: 2017 data is provisional\nChart: GLA Intelligence  Source: London Datastore"
+    caption = "Note: 2017 data is provisional\nChart: GLA City Intelligence  Source: London Datastore"
     )
 
 ```
@@ -215,7 +215,7 @@ We can add some additional formatting and labels to this
     labs(
       title = "Achievement in EYFSP by Ethnicity",
       subtitle = "Percentage achieving at least the expected standard in all ELGs (2017)",
-      caption = "Source: Department for Education\nChart: GLA Intelligence"
+      caption = "Source: Department for Education\nChart: GLA City Intelligence"
       )) %>%
   # Make labels left aligned
   left_align_labs()
@@ -254,7 +254,7 @@ pal <- gla_pal(gla_theme = "default", palette_type = "categorical", n = numcats)
       labs(
         title = "Average Attainment 8 Scores - 2016/17",
         subtitle = "Average score per pupil in each element",
-        caption = "Source: Department for Education\nChart: GLA Intelligence"
+        caption = "Source: Department for Education\nChart: GLA City Intelligence"
         )) %>%
   left_align_labs()
 ```

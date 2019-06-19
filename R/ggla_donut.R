@@ -1,8 +1,10 @@
 #' @title ggla_donut
 #' @description This creates a donut chart, similar to a pie chart.
-#' @param stat The statistical transformation to use on the data for this layer, as a string. Should be either 'count', for the number of cases in each group, or 'identity' to represent values in the data. Default: 'count'
 #' @param ... Other arguments to be passed on to geom_bar()
 #' @param title String title to be used for plot. Will appear in the middle of the donut, Default: NULL
+#' @param stat The statistical transformation to use on the data for this layer, as a string. Should be either 'count', for the number of cases in each group, or 'identity' to represent values in the data. Default: 'count'
+#' @inheritParams ggplot2::layer
+#' @inheritParams ggplot2::geom_point
 #' @inheritParams ggplot2::geom_bar
 #' @section Aesthetics:
 #' ggla_donut() understands the following aesthetics (required aesthetics in bold).
@@ -34,10 +36,8 @@
 #' @param gla_theme Either "default" or "inverse", Default: 'default'
 #' @param base_size base font size, Default: 14
 #' @import checkmate
-#' @param data The data to be displayed in this layer. There are three options: If NULL, the default, the data is inherited from the plot data as specified in the call to ggplot(). A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created. A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data, Default: NULL
-#' @param mapping Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping, Default: NULL
 
-ggla_donut <- function(data = NULL, mapping = NULL, stat = "count",
+ggla_donut <- function(mapping = NULL, data = NULL, stat = "count",
                        title = NULL, gla_theme = "default", base_size = 14,
                        ...) {
 

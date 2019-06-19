@@ -51,13 +51,12 @@ GeomPointHighlight <- ggplot2::ggproto(
 #' @title ggla_highlight
 #' @description Highlight selected data points
 #' @param filter_type One of string "end", "start", "max", "min" or "xy", Default: 'end'
-#' @param ... Other arguments to be passed on to geom_bar()
 #' @param x_filt If filter_type = "xy" use this to select which x-values to highlight, Default: NULL
 #' @param y_filt If filter_type = "xy" use this to select which y-values to highlight, Default: NULL
 #' @param geom Override the default connection between geom_highlight() and GeomPointHighlight, Default: GeomPointHighlight
-#' @param position Position adjustment, either as a string, or the result of a call to a position adjustment function., Default: 'identity'
+#' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_point
-#' @details To use gla_inverse theme this must be set using `theme_set()` prior to calling `ggla_highlight()`
+#' @details To use gla_inverse theme this must be set using theme_set() prior to calling ggla_highlight()
 #' @examples 
 #' \dontrun{
 #' if(interactive()){

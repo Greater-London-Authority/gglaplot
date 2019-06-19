@@ -1,5 +1,5 @@
 ^Meta$
-^doc$
+^docs/*$
 ^update_package/*
 ^/\.gitattributes$
 ^data-raw$

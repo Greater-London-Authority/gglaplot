@@ -10,9 +10,10 @@ ggla_horizbar(..., stat = "identity", position = "stack",
 \arguments{
 \item{...}{other parameters to be passed to geom_bar}
 
-\item{stat}{The statistical transformation to use on the data for this layer, as a string, Default: 'identity'}
+\item{stat}{The statistical transformation to use on the data for this layer, as a string, Default: "identity"}
 
-\item{position}{Position adjustment, either as a string, or the result of a call to a position adjustment function., Default: 'stack'}
+\item{position}{Position adjustment, either as a string, or the result of
+a call to a position adjustment function.}
 
 \item{to100}{boolean, If TRUE a context layer will be added below to bar chart up to 100, Default: FALSE}
 

@@ -1,9 +1,9 @@
 #' @title ggla_horizbar
 #' @description Create a horizontal bar chart
 #' @param ... other parameters to be passed to geom_bar
-#' @param stat The statistical transformation to use on the data for this layer, as a string, Default: 'identity'
-#' @param position Position adjustment, either as a string, or the result of a call to a position adjustment function., Default: 'stack'
+#' @param stat The statistical transformation to use on the data for this layer, as a string, Default: "identity"
 #' @param to100 boolean, If TRUE a context layer will be added below to bar chart up to 100, Default: FALSE
+#' @inheritParams ggplot2::geom_bar
 #' @details DETAILS
 #' @examples 
 #' \dontrun{
