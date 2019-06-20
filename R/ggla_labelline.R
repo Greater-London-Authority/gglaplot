@@ -16,32 +16,39 @@
 #'  \code{\link[ggplot2]{geom_segment}}
 #' @rdname ggla_labelline
 #' @export 
-#' @import checkmate 
-ggla_labelline <- function(x1 = NULL, x2 = NULL, y1 = NULL, y2 = NULL) {
-  
+#' @import checkmate
+#' @param gla_theme Either "default" or "inverse", Default: 'default'
+ggla_labelline <- function(x1 = NULL, x2 = NULL, y1 = NULL, y2 = NULL,
+                           gla_theme = "default") {
+
   # checks
   checkmate::assert_number(x1, null.ok = TRUE)
   checkmate::assert_number(x2, null.ok = TRUE)
   checkmate::assert_number(y1, null.ok = TRUE)
   checkmate::assert_number(y2, null.ok = TRUE)
-  
-  
-  colours <- get_theme_colours()
+  check <- checkmate::test_choice(gla_theme, choices = c("light", "dark"))
+  if (check) {
+    warning("The gla_themes have been renamed to default (light) and inverse (dark).")
+    gla_theme <- ifelse(gla_theme == "light", "default", "inverse")
+  }
+  checkmate::assert_choice(gla_theme, c("default", "inverse"))
+
+  colours <- get(paste0("gla_", gla_theme))
   if (is.null(x1) & is.null(x2) & is.null(y2)) {
-    geom_hline(aes(yintercept = y1),
+    ggplot2::geom_hline(ggplot2::aes(yintercept = y1),
                colour = colours$`axis text & labels`,
-               linetype = 'dotted',
+               linetype = "dotted",
                size = 1 * mm_to_pt)
   } else if (is.null(y1) & is.null(y2) & is.null(x2)) {
-    geom_vline(aes(xintercept = x1),
+    ggplot2::geom_vline(ggplot2::aes(xintercept = x1),
                colour = colours$`axis text & labels`,
-               linetype = 'dotted',
+               linetype = "dotted",
                size = 1 * mm_to_pt)
   } else {
-  geom_segment(mapping = aes(x = x1, xend = x2, y = y1, yend = y2),
+  ggplot2::geom_segment(mapping = ggplot2::aes(x = x1, xend = x2, y = y1, yend = y2),
                colour = colours$`axis text & labels`,
-               linetype = 'dotted',
+               linetype = "dotted",
                size = 1 * mm_to_pt)
   }
-  
+
 }

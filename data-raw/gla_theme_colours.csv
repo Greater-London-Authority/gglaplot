@@ -1,0 +1,23 @@
+colour,theme,hex
+axis text & labels,default,#666666
+axis text & labels,inverse,#ffffff
+background,default,#ffffff
+background,inverse,#121516
+body text,default,#666666
+body text,inverse,#ffffff
+context data,default,#cccccc
+context data,inverse,#ffffff
+headlines,default,#353d42
+headlines,inverse,#ffffff
+highlight area,default,#000000
+highlight area,inverse,#ffffff
+highlighted labels,default,#353d42
+highlighted labels,inverse,#ffffff
+label,default,#353d42
+label,inverse,#ffffff
+light grid,default,#d8d8d8
+light grid,inverse,#4e5254
+mid point,default,#eeeeee
+mid point,inverse,#333333
+strong grid,default,#666666
+strong grid,inverse,#ffffff

@@ -8,6 +8,13 @@
 
 <title>ggla_horizbar — ggla_horizbar • gglaplot</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
@@ -33,6 +40,8 @@
 <meta property="og:title" content="ggla_horizbar — ggla_horizbar" />
 
 <meta property="og:description" content="Create a horizontal bar chart" />
+
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gglaplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -80,21 +89,24 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Vignettes
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Custom_ggla_plots.html">Custom `gglaplot`s</a>
+      <a href="../articles/v01_Using_GLA_colour_palettes.html">Using GLA colour palettes</a>
     </li>
     <li>
-      <a href="../articles/Using_GLA_colour_palettes.html">Using GLA colour palettes</a>
+      <a href="../articles/v02_Using_the_gla_theme.html">Using `theme_gla()`</a>
     </li>
     <li>
-      <a href="../articles/Using_the_gla_theme.html">Using `theme_gla()`</a>
+      <a href="../articles/v03_Custom_ggla_plots.html">Custom `gglaplot`s</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -129,7 +141,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>ggla_horizbar</span>(<span class='no'>...</span>, <span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"identity"</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"stack"</span>,
-  <span class='kw'>to100</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>to100</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>gla_theme</span> <span class='kw'>=</span> <span class='st'>"default"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -140,15 +152,20 @@
     </tr>
     <tr>
       <th>stat</th>
-      <td><p>The statistical transformation to use on the data for this layer, as a string, Default: 'identity'</p></td>
+      <td><p>The statistical transformation to use on the data for this layer, as a string, Default: "identity"</p></td>
     </tr>
     <tr>
       <th>position</th>
-      <td><p>Position adjustment, either as a string, or the result of a call to a position adjustment function., Default: 'stack'</p></td>
+      <td><p>Position adjustment, either as a string, or the result of
+a call to a position adjustment function.</p></td>
     </tr>
     <tr>
       <th>to100</th>
       <td><p>boolean, If TRUE a context layer will be added below to bar chart up to 100, Default: FALSE</p></td>
+    </tr>
+    <tr>
+      <th>gla_theme</th>
+      <td><p>Either "default" or "inverse", Default: 'default'</p></td>
     </tr>
     </table>
     

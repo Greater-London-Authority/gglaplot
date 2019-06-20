@@ -4,47 +4,55 @@
 \alias{ggla_highlight}
 \title{ggla_highlight}
 \usage{
-ggla_highlight(filter_type = "end", x_filt = NULL, y_filt = NULL,
-  data = NULL, mapping = NULL, geom = GeomPointHighlight,
-  position = "identity", ...)
+ggla_highlight(mapping = NULL, data = NULL,
+  geom = GeomGLAPointHighlight, stat = "identity",
+  position = "identity", ..., filter_type = "end", x_filt = NULL,
+  y_filt = NULL, na.rm = FALSE, show.legend = FALSE,
+  inherit.aes = TRUE)
 }
 \arguments{
+\item{mapping}{Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping, Default: NULL}
+
+\item{data}{The data to be displayed in this layer. There are three options: If NULL, the default, the data is inherited from the plot data as specified in the call to ggplot(). A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created. A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data, Default: NULL}
+
+\item{geom}{Override the default connection between geom_highlight() and GeomGLAPointHighlight, for text use GeomGLATextHighlight Default: GeomGLAPointHighlight}
+
+\item{stat}{The statistical transformation to use on the data for this
+layer, as a string.}
+
+\item{position}{Position adjustment, either as a string, or the result of
+a call to a position adjustment function.}
+
+\item{...}{Other arguments passed on to \code{\link[=layer]{layer()}}. These are
+often aesthetics, used to set an aesthetic to a fixed value, like
+\code{colour = "red"} or \code{size = 3}. They may also be parameters
+to the paired geom/stat.}
+
 \item{filter_type}{One of string "end", "start", "max", "min" or "xy", Default: 'end'}
 
 \item{x_filt}{If filter_type = "xy" use this to select which x-values to highlight, Default: NULL}
 
 \item{y_filt}{If filter_type = "xy" use this to select which y-values to highlight, Default: NULL}
 
-\item{data}{The data to be displayed in this layer. There are three
-options:
+\item{na.rm}{If \code{FALSE}, the default, missing values are removed with
+a warning. If \code{TRUE}, missing values are silently removed.}
 
-If \code{NULL}, the default, the data is inherited from the plot
-data as specified in the call to \code{\link[=ggplot]{ggplot()}}.
+\item{show.legend}{logical. Should this layer be included in the legends?
+\code{NA}, the default, includes if any aesthetics are mapped.
+\code{FALSE} never includes, and \code{TRUE} always includes.
+It can also be a named logical vector to finely select the aesthetics to
+display.}
 
-A \code{data.frame}, or other object, will override the plot
-data. All objects will be fortified to produce a data frame. See
-\code{\link[=fortify]{fortify()}} for which variables will be created.
-
-A \code{function} will be called with a single argument,
-the plot data. The return value must be a \code{data.frame}, and
-will be used as the layer data.}
-
-\item{mapping}{Set of aesthetic mappings created by \code{\link[=aes]{aes()}} or
-\code{\link[=aes_]{aes_()}}. If specified and \code{inherit.aes = TRUE} (the
-default), it is combined with the default mapping at the top level of the
-plot. You must supply \code{mapping} if there is no plot mapping.}
-
-\item{geom}{Override the default connection between geom_highlight() and GeomPointHighlight, Default: GeomPointHighlight}
-
-\item{position}{Position adjustment, either as a string, or the result of a call to a position adjustment function., Default: 'identity'}
-
-\item{...}{Other arguments to be passed on to geom_bar()}
+\item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics,
+rather than combining with them. This is most useful for helper functions
+that define both data and aesthetics and shouldn't inherit behaviour from
+the default plot specification, e.g. \code{\link[=borders]{borders()}}.}
 }
 \description{
 Highlight selected data points
 }
 \details{
-DETAILS
+To use gla_inverse theme this must be set using theme_set() prior to calling ggla_highlight()
 }
 \examples{
 \dontrun{

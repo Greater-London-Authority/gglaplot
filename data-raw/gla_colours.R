@@ -1,46 +1,33 @@
 library(dplyr)
-library(devtools)
+library(usethis)
+library(tibble)
 
-gla_colours <- read.csv('data-raw/gla_colours.csv',
-                        colClasses = c('Colour' = 'character',
-                                       'Theme' = 'character',
-                                       'Muted' = 'logical',
-                                       'Hex' = 'character',
-                                       'endOfPaletteHex' = 'character'))
+gla_theme_colours <- read.csv("data-raw/gla_theme_colours.csv",
+                              stringsAsFactors = FALSE)
 
-main_colours <- gla_colours %>%
-  dplyr::filter(endOfPaletteHex != '') %>%
-  dplyr::pull(Colour) %>%
-  unique()
+gla_palette_colours <- read.csv("data-raw/gla_palette_colours.csv",
+                                stringsAsFactors = FALSE)
 
-muted_colours <- gla_colours %>%
-  dplyr::filter(Muted == TRUE) %>%
-  dplyr::pull(Colour) %>%
-  unique()
+gla_themes <- c("default", "inverse")
 
-for (theme in c('dark','light')) {
-  colours <- gla_colours %>%
-    dplyr::filter(Theme == theme) %>%
-    dplyr::filter(Muted == FALSE) %>%
-    dplyr::select(Colour, Hex)
-  colours <- base::split(colours$Hex, colours$Colour)
-  for (colour in main_colours) {
-    colours[paste(colour, 'end', sep = '_')] <- gla_colours %>%
-      dplyr::filter(Theme == theme) %>%
-      dplyr::filter(Muted == FALSE) %>%
-      dplyr::filter(Colour == colour) %>%
-      dplyr::pull(endOfPaletteHex)
-  }
-  for (colour in muted_colours) {
-    colours[paste(colour, 'muted', sep = '_')] <- gla_colours %>%
-      dplyr::filter(Theme == theme) %>%
-      dplyr::filter(Muted == TRUE) %>%
-      dplyr::filter(Colour == colour) %>%
-      dplyr::pull(Hex)
-  }
-  assign(paste('gla_', theme, sep = ''), colours)
-  
+for (gla_theme in gla_themes) {
+  colours <- gla_theme_colours %>%
+    filter(theme == gla_theme) %>%
+    select(colour, hex) %>%
+    deframe() %>%
+    as.list()
+  assign(paste("gla_", gla_theme, sep = ""), colours)
 }
-devtools::use_data(gla_colours, internal = TRUE, overwrite = TRUE)
-devtools::use_data(gla_dark, overwrite = TRUE)
-devtools::use_data(gla_light, overwrite = TRUE)
+
+use_data(gla_default, overwrite = TRUE)
+use_data(gla_inverse, overwrite = TRUE)
+
+gla_colours <- gla_palette_colours %>%
+  mutate(colour = paste(colour, palette, sep = "_")) %>%
+  select(-palette, -ends_with('end')) %>%
+  deframe() %>%
+  as.list()
+
+use_data(gla_colours, overwrite = TRUE)
+
+use_data(gla_palette_colours, internal = TRUE, overwrite = TRUE)

@@ -8,6 +8,13 @@
 
 <title>Function reference • gglaplot</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
@@ -31,6 +38,9 @@
 
 
 <meta property="og:title" content="Function reference" />
+
+<meta property="og:image" content="/logo.png" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -60,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gglaplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -77,21 +87,24 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Vignettes
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Custom_ggla_plots.html">Custom `gglaplot`s</a>
+      <a href="../articles/v01_Using_GLA_colour_palettes.html">Using GLA colour palettes</a>
     </li>
     <li>
-      <a href="../articles/Using_GLA_colour_palettes.html">Using GLA colour palettes</a>
+      <a href="../articles/v02_Using_the_gla_theme.html">Using `theme_gla()`</a>
     </li>
     <li>
-      <a href="../articles/Using_the_gla_theme.html">Using `theme_gla()`</a>
+      <a href="../articles/v03_Custom_ggla_plots.html">Custom `gglaplot`s</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -128,28 +141,28 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-gla-colours-and-themes" class="hasAnchor"><a href="#section-gla-colours-and-themes" class="anchor"></a>GLA colours and themes</h2>
-          <p class="section-desc"><p>Functions to generate GLA colours, palettes and themes</p></p>
+          <h2 id="section-gla-colours-palettes-and-themes" class="hasAnchor"><a href="#section-gla-colours-palettes-and-themes" class="anchor"></a>GLA colours, palettes and themes</h2>
+          <p class="section-desc"><p>Lists of GLA colours and functions to generate GLA palettes and themes</p></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="get_theme_colours.html">get_theme_colours()</a></code> </p>
+          <p><code><a href="gla_default.html">gla_default</a></code> </p>
         </td>
-        <td><p>get_theme_colours()</p></td>
+        <td><p>gla_default</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="gla_dark.html">gla_dark</a></code> </p>
+          <p><code><a href="gla_inverse.html">gla_inverse</a></code> </p>
         </td>
-        <td><p>gla_dark</p></td>
+        <td><p>gla_inverse</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="gla_light.html">gla_light</a></code> </p>
+          <p><code><a href="gla_colours.html">gla_colours</a></code> </p>
         </td>
-        <td><p>gla_light</p></td>
+        <td><p>gla_colours</p></td>
       </tr><tr>
         
         <td>
@@ -234,8 +247,46 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
+          <h2 id="section-custom-geoms" class="hasAnchor"><a href="#section-custom-geoms" class="anchor"></a>Custom Geoms</h2>
+          <p class="section-desc"><p>Custom Geoms set with default aesthetics to make GLA style plots</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="GeomGLALine.html">GeomGLALine</a></code> </p>
+        </td>
+        <td><p>GeomGLALine</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="GeomGLAPointHighlight.html">GeomGLAPointHighlight</a></code> </p>
+        </td>
+        <td><p>GeomGLAPointHighlight</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="GeomGLATextHighlight.html">GeomGLATextHighlight</a></code> </p>
+        </td>
+        <td><p>GeomGLATextHighlight</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="GeomGLAAnnotate.html">GeomGLAAnnotate</a></code> </p>
+        </td>
+        <td><p>GeomGLAAnnotate</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="GeomGLASf.html">GeomGLASf</a></code> </p>
+        </td>
+        <td><p>GeomGLASf</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
           <h2 id="section-miscellaneous-helpers" class="hasAnchor"><a href="#section-miscellaneous-helpers" class="anchor"></a>Miscellaneous helpers</h2>
-          <p class="section-desc"><p>Additional helper functions</p></p>
+          <p class="section-desc"><p>Additional helpers</p></p>
         </th>
       </tr>
       <tr>
@@ -290,8 +341,9 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-gla-colours-and-themes">GLA colours and themes</a></li>
+      <li><a href="#section-gla-colours-palettes-and-themes">GLA colours, palettes and themes</a></li>
       <li><a href="#section-ggplot-wrappers">ggplot wrappers</a></li>
+      <li><a href="#section-custom-geoms">Custom Geoms</a></li>
       <li><a href="#section-miscellaneous-helpers">Miscellaneous helpers</a></li>
       <li><a href="#section-example-datasets">Example datasets</a></li>
     </ul>

@@ -8,6 +8,13 @@
 
 <title>gla_pal — gla_pal • gglaplot</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
@@ -33,6 +40,8 @@
 <meta property="og:title" content="gla_pal — gla_pal" />
 
 <meta property="og:description" content="Generates palettes using the GLA colours" />
+
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">gglaplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -80,21 +89,24 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Vignettes
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Custom_ggla_plots.html">Custom `gglaplot`s</a>
+      <a href="../articles/v01_Using_GLA_colour_palettes.html">Using GLA colour palettes</a>
     </li>
     <li>
-      <a href="../articles/Using_GLA_colour_palettes.html">Using GLA colour palettes</a>
+      <a href="../articles/v02_Using_the_gla_theme.html">Using `theme_gla()`</a>
     </li>
     <li>
-      <a href="../articles/Using_the_gla_theme.html">Using `theme_gla()`</a>
+      <a href="../articles/v03_Custom_ggla_plots.html">Custom `gglaplot`s</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -128,19 +140,24 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>gla_pal</span>(<span class='kw'>gla_theme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>palette_type</span> <span class='kw'>=</span> <span class='st'>"categorical"</span>,
-  <span class='kw'>main_colours</span> <span class='kw'>=</span> <span class='st'>"mayoral"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>muted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>inc0</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>gla_pal</span>(<span class='kw'>gla_theme</span> <span class='kw'>=</span> <span class='st'>"default"</span>, <span class='kw'>palette_type</span> <span class='kw'>=</span> <span class='st'>"categorical"</span>,
+  <span class='kw'>palette_name</span> <span class='kw'>=</span> <span class='st'>"core"</span>, <span class='kw'>main_colours</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>inc0</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>remove_margin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>gla_theme</th>
-      <td><p>One of "light" or "dark". If NULL will try to pick up current theme, or default to light, Default: NULL</p></td>
+      <td><p>One of "default" or "inverse". Default: 'default'</p></td>
     </tr>
     <tr>
       <th>palette_type</th>
       <td><p>One of "categorical", "quantitative", "highlight" or "diverging", Default: 'categorical'</p></td>
+    </tr>
+    <tr>
+      <th>palette_name</th>
+      <td><p>One of the strings "core", "light", "dark", "brand", Default: 'core'</p></td>
     </tr>
     <tr>
       <th>main_colours</th>
@@ -148,17 +165,21 @@
     </tr>
     <tr>
       <th>n</th>
-      <td><p>Number of colours in the palette. If palette_type = "Diverging", this is the number of colours on each side of the diverging scale (so 2n (+1) colours in total will be returned). If palette_type = "Highlight" gla_pal will return main_colours + (n - length(main_colours)) context colours. Default: 6</p></td>
-    </tr>
-    <tr>
-      <th>muted</th>
-      <td><p>boolean, If TRUE a muted version of the gla colours will be used, Default: FALSE</p></td>
+      <td><p>Number of colours in the palette. If palette_type = "Diverging", this is the number of colours on each side of the diverging scale . If palette_type = "Highlight" gla_pal will return main_colours + (n - length(main_colours)) context colours. Default: 6</p></td>
     </tr>
     <tr>
       <th>inc0</th>
-      <td><p>boolean, If TRUE an additional colour representing zero will be added to a diverging palette. This results in a palette of length 2n + 1, Default: FALSE</p></td>
+      <td><p>boolean, If TRUE an additional colour representing zero will be added to a quantiative or diverging palettes, Default: FALSE</p></td>
+    </tr>
+    <tr>
+      <th>remove_margin</th>
+      <td><p>Remove the edges of the palette to get a more central palette. Either 'left', 'right', 'both' or NULL, Default: NULL</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Returns a character vector of length n giving colour hexs.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -166,7 +187,7 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/grDevices/topics/colorRamp'>colorRamp</a></code></p></div>
+    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/chroma/topics/interp_scale'>interp_scale</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -181,6 +202,8 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>

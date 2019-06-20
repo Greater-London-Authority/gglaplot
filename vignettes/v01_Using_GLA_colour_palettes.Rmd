@@ -1,0 +1,151 @@
+---
+title: "Using GLA colour palettes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using GLA colour palettes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "",
+  dpi = 300
+)
+```
+
+```{r message=FALSE, warning=FALSE}
+library(ggplot2)
+library(gglaplot)
+```
+
+## GLA colours
+
+`gglaplot` comes with a set of colours to be used for plot details (axis lines, fonts etc) as well as colours for the data itself. These can be accessed directly as Hex colour code strings from the lists `gla_default`, `gla_inverse` and `gla_colours`.
+
+```{r, out.height=10}
+str(gla_default)
+```
+
+```{r, out.height=10}
+str(gla_inverse)
+```
+
+```{r, out.height=10}
+str(gla_colours)
+```
+
+## GLA palettes
+
+`gglaplot` includes the `gla_pal()` function which generates different palettes from the built in GLA colours. The parameters need to be set as follows:
+
+### `gla_theme`
+
+This should be set as either "default" (light) or "inverse" (dark) depending on which theme you're using. This can be omitted and the default theme will be used. This only effects diverging and quantitative palettes.
+
+### `palette_type`
+
+The available palette types are:
+
+* **categorical** - to be used for nominal categorical data - data has categories which don't have a natural ordering.
+* **quantitative** - to be used for numerical or ordinal categorical data which has a natural ordering.
+* **highlight** - to be used where you want to highlight one (or more) type/category of data against some other context data. E.g. London vs rest of UK.
+* **diverging** - to be used for numerical or ordinal categorical data which has a natural ordering that goes through 0.
+
+To get maximum control over which colours are assigned to which values, convert your variables to factors (including numerical data, convert any continuous values into categories).
+
+### `palette_name`
+
+There are 4 different palettes included in the package:
+
+* **core** - the default palette.
+* **light** - less saturated, less contrasting, lighter variations
+* **dark** - less saturated, less contrasting, darker variations
+* **brand** - Mayor of London brand colours
+
+These palettes have a default order of colours which maximises differentiability and accessibility.
+
+The different palettes can be seen here:
+
+```{r, fig.width=8, fig.height=12, echo = FALSE, warning=FALSE}
+show_gla_pals(inc_div = TRUE)
+```
+
+
+### `main_colours`
+
+The `main_colours` parameter should be used if you want to use a specific colour from a palette or use a palette in a non-default order.
+
+It should be a (collection of) string(s) of one or more colours for your palette. For the different palette types this needs to be:
+
+* categorical - should be a collection of colours matching the number of categories in your data.
+* quantitative - should be one colour for the maximum value of your quantitative scale.
+* highlight - should be one or more colours depending on how many data categories you want to highlight.
+* diverging - should be a collection of two colours for either end of the diverging scale.
+
+If `main_colours` is left as `NULL` colours will be selected in the default order.
+
+### `n`
+
+Except for highlight palettes, `n` needs to be set to the number of categories in your data, and `gla_pal` will generate this many colours.
+
+```{r}
+gla_pal(palette_type = "categorical",
+        palette_name = "core", n = 5)
+```
+
+```{r}
+gla_pal(palette_type = "quantitative",
+        main_colours = "green", n = 5)
+```
+
+```{r}
+gla_pal(palette_type = "diverging",
+        main_colours = c("red", "yellow"), n = 6)
+```
+
+For highlight palettes, you need to provide a vector giving the number of highlighted categories followed by the number of contextual categories.
+
+```{r}
+gla_pal(palette_type = "highlight",
+        main_colours = c("blue", "yellow"), n = c(2, 3))
+```
+
+### `inc0`
+
+This is only relevant for diverging or quantitative colour palettes, if you want to explicitly include 0 in your colour scale (i.e. for a diverging palette you have a colour in the middle of the palette that is completely neutral between to two ends of the scale) then set `inc0 = TRUE` and this colour will be included in the middle or end of the palette. n colours will still be returned.
+
+```{r}
+gla_pal(gla_theme = "default", palette_type = "diverging",
+        main_colours = c("red", "yellow"), n = 7, inc0 = TRUE)
+```
+
+### `remove_margin`
+
+This is only relevant for diverging or quantitative colour palettes. If you want to reduce the overall range of lightness-darkness in the colours you can remove the margin of the palette on either the left, right or both sides. n colours will still be returned.
+
+```{r}
+gla_pal(gla_theme = "inverse", palette_type = "diverging",
+        main_colours = c("red", "yellow"), n = 5, inc0 = TRUE,
+        remove_margin = "both")
+```
+
+**Note:** For diverging palettes, n must be either odd or even depending on the combination of `inc0` and `remove_margin` used.
+
+## Using the GLA colours in a plot
+
+The palettes generated by `gla_pal()` can be added to `ggplot` objects like any other palette using `scale_fill_manual()` etc. 
+
+```{r}
+my_pal <- gla_pal(palette_type = "categorical", n = 2)
+
+
+plot <- ggplot(data = LDNUK,
+               mapping = aes(x = Year, y = GPG, group = location,
+                             colour = location)) +
+  geom_line() +
+  scale_colour_manual(values = my_pal)
+plot
+```
+

@@ -47,7 +47,7 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Vignettes
      
     <span class="caret"></span>
   </a>
@@ -62,6 +62,9 @@
       <a href="../articles/Using_the_gla_theme.html">Using `theme_gla()`</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -98,73 +101,65 @@
 <div id="gla-colours" class="section level2">
 <h2 class="hasAnchor">
 <a href="#gla-colours" class="anchor"></a>GLA colours</h2>
-<p>The <em>light</em> and <em>dark</em> themes included in <code>gglaplot</code> both come with a set of colours to be used for plot details (axis lines, fonts etc) as well as colours for the data itself. These can be accessed directly as Hex colour code strings from the lists <code>gla_light</code> and <code>gla_dark</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(gla_light)
-<span class="co">#&gt; List of 31</span>
+<p><code>gglaplot</code> comes with a set of colours to be used for plot details (axis lines, fonts etc) as well as colours for the data itself. These can be accessed directly as Hex colour code strings from the lists <code>gla_default</code>, <code>gla_inverse</code> and <code>gla_colours</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(gla_default)
+<span class="co">#&gt; List of 11</span>
 <span class="co">#&gt;  $ axis text &amp; labels: chr "#666666"</span>
 <span class="co">#&gt;  $ background        : chr "#ffffff"</span>
-<span class="co">#&gt;  $ blue              : chr "#008bc1"</span>
 <span class="co">#&gt;  $ body text         : chr "#666666"</span>
 <span class="co">#&gt;  $ context data      : chr "#cccccc"</span>
-<span class="co">#&gt;  $ green             : chr "#4c9e4c"</span>
 <span class="co">#&gt;  $ headlines         : chr "#353d42"</span>
 <span class="co">#&gt;  $ highlight area    : chr "#000000"</span>
 <span class="co">#&gt;  $ highlighted labels: chr "#353d42"</span>
-<span class="co">#&gt;  $ label             : chr "#000000"</span>
+<span class="co">#&gt;  $ label             : chr "#353d42"</span>
 <span class="co">#&gt;  $ light grid        : chr "#d8d8d8"</span>
-<span class="co">#&gt;  $ mayoral           : chr "#9e0059"</span>
-<span class="co">#&gt;  $ mid point         : chr "#e0e0e0"</span>
-<span class="co">#&gt;  $ orange            : chr "#ff7f0e"</span>
-<span class="co">#&gt;  $ pink              : chr "#ee266d"</span>
-<span class="co">#&gt;  $ purple            : chr "#c617a1"</span>
-<span class="co">#&gt;  $ red               : chr "#dd072b"</span>
-<span class="co">#&gt;  $ strong grid       : chr "#666666"</span>
-<span class="co">#&gt;  $ yellow            : chr "#e5e507"</span>
-<span class="co">#&gt;  $ blue_end          : chr "#edf1f3"</span>
-<span class="co">#&gt;  $ pink_end          : chr "#f5eef0"</span>
-<span class="co">#&gt;  $ green_end         : chr "#eff2ef"</span>
-<span class="co">#&gt;  $ red_end           : chr "#f4edee"</span>
-<span class="co">#&gt;  $ yellow_end        : chr "#f4f4ed"</span>
-<span class="co">#&gt;  $ orange_end        : chr "#f5f1ed"</span>
-<span class="co">#&gt;  $ purple_end        : chr "#f3eef2"</span>
-<span class="co">#&gt;  $ mayoral_end       : chr "#f2edf0"</span>
-<span class="co">#&gt;  $ blue_muted        : chr "#1996c6"</span>
-<span class="co">#&gt;  $ green_muted       : chr "#5da75d"</span>
-<span class="co">#&gt;  $ red_muted         : chr "#df1f3f"</span>
-<span class="co">#&gt;  $ purple_muted      : chr "#af3178"</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(gla_dark)
-<span class="co">#&gt; List of 31</span>
+<span class="co">#&gt;  $ mid point         : chr "#eeeeee"</span>
+<span class="co">#&gt;  $ strong grid       : chr "#666666"</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(gla_inverse)
+<span class="co">#&gt; List of 11</span>
 <span class="co">#&gt;  $ axis text &amp; labels: chr "#ffffff"</span>
 <span class="co">#&gt;  $ background        : chr "#121516"</span>
-<span class="co">#&gt;  $ blue              : chr "#008bc1"</span>
 <span class="co">#&gt;  $ body text         : chr "#ffffff"</span>
 <span class="co">#&gt;  $ context data      : chr "#ffffff"</span>
-<span class="co">#&gt;  $ green             : chr "#4c9e4c"</span>
 <span class="co">#&gt;  $ headlines         : chr "#ffffff"</span>
 <span class="co">#&gt;  $ highlight area    : chr "#ffffff"</span>
 <span class="co">#&gt;  $ highlighted labels: chr "#ffffff"</span>
 <span class="co">#&gt;  $ label             : chr "#ffffff"</span>
 <span class="co">#&gt;  $ light grid        : chr "#4e5254"</span>
-<span class="co">#&gt;  $ mayoral           : chr "#9e0059"</span>
-<span class="co">#&gt;  $ mid point         : chr "#212121"</span>
-<span class="co">#&gt;  $ orange            : chr "#ff7f0e"</span>
-<span class="co">#&gt;  $ pink              : chr "#ee266d"</span>
-<span class="co">#&gt;  $ purple            : chr "#c617a1"</span>
-<span class="co">#&gt;  $ red               : chr "#dd072b"</span>
-<span class="co">#&gt;  $ strong grid       : chr "#ffffff"</span>
-<span class="co">#&gt;  $ yellow            : chr "#e5e507"</span>
-<span class="co">#&gt;  $ blue_end          : chr "#13181a"</span>
-<span class="co">#&gt;  $ pink_end          : chr "#1b1517"</span>
-<span class="co">#&gt;  $ green_end         : chr "#161916"</span>
-<span class="co">#&gt;  $ red_end           : chr "#1b1415"</span>
-<span class="co">#&gt;  $ yellow_end        : chr "#1b1b14"</span>
-<span class="co">#&gt;  $ orange_end        : chr "#1c1814"</span>
-<span class="co">#&gt;  $ purple_end        : chr "#1a1419"</span>
-<span class="co">#&gt;  $ mayoral_end       : chr "#191316"</span>
-<span class="co">#&gt;  $ blue_muted        : chr "#027fb0"</span>
-<span class="co">#&gt;  $ green_muted       : chr "#469046"</span>
-<span class="co">#&gt;  $ red_muted         : chr "#c90829"</span>
-<span class="co">#&gt;  $ purple_muted      : chr "#900252"</span></code></pre></div>
+<span class="co">#&gt;  $ mid point         : chr "#333333"</span>
+<span class="co">#&gt;  $ strong grid       : chr "#ffffff"</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(gla_colours)
+<span class="co">#&gt; List of 30</span>
+<span class="co">#&gt;  $ blue_core      : chr "#6da7de"</span>
+<span class="co">#&gt;  $ ldndkpink_core : chr "#9e0059"</span>
+<span class="co">#&gt;  $ yellow_core    : chr "#dee000"</span>
+<span class="co">#&gt;  $ red_core       : chr "#d82222"</span>
+<span class="co">#&gt;  $ green_core     : chr "#5ea15d"</span>
+<span class="co">#&gt;  $ purple_core    : chr "#943fa6"</span>
+<span class="co">#&gt;  $ turquoise_core : chr "#63c5b5"</span>
+<span class="co">#&gt;  $ pink_core      : chr "#ff38ba"</span>
+<span class="co">#&gt;  $ orange_core    : chr "#eb861e"</span>
+<span class="co">#&gt;  $ ldnpink_core   : chr "#ee266d"</span>
+<span class="co">#&gt;  $ blue_light     : chr "#7ab5e5"</span>
+<span class="co">#&gt;  $ purple_light   : chr "#964a92"</span>
+<span class="co">#&gt;  $ yellow_light   : chr "#ddd82c"</span>
+<span class="co">#&gt;  $ red_light      : chr "#d84545"</span>
+<span class="co">#&gt;  $ green_light    : chr "#65aa63"</span>
+<span class="co">#&gt;  $ turquoise_light: chr "#49bf9a"</span>
+<span class="co">#&gt;  $ orange_light   : chr "#d6793a"</span>
+<span class="co">#&gt;  $ blue_dark      : chr "#3681bf"</span>
+<span class="co">#&gt;  $ magenta_dark   : chr "#89105d"</span>
+<span class="co">#&gt;  $ yellow_dark    : chr "#d3c913"</span>
+<span class="co">#&gt;  $ red_dark       : chr "#af2828"</span>
+<span class="co">#&gt;  $ green_dark     : chr "#73a072"</span>
+<span class="co">#&gt;  $ turquoise_dark : chr "#56b2a1"</span>
+<span class="co">#&gt;  $ purple_dark    : chr "#884299"</span>
+<span class="co">#&gt;  $ orange_dark    : chr "#b76325"</span>
+<span class="co">#&gt;  $ pink_brand     : chr "#ee266d"</span>
+<span class="co">#&gt;  $ cyan_brand     : chr "#00aeef"</span>
+<span class="co">#&gt;  $ dkpink_brand   : chr "#9e0059"</span>
+<span class="co">#&gt;  $ mustard_brand  : chr "#dca000"</span>
+<span class="co">#&gt;  $ red_brand      : chr "#e0001b"</span></code></pre></div>
 </div>
 <div id="gla-palettes" class="section level2">
 <h2 class="hasAnchor">
@@ -174,7 +169,7 @@
 <h3 class="hasAnchor">
 <a href="#gla_theme" class="anchor"></a><code>gla_theme</code>
 </h3>
-<p>This should be set as either “light” or “dark” depending on which theme you’re using. If you have already set a theme, this can be left as NULL (the default) and the theme will be picked up automatically.</p>
+<p>This should be set as either “default” (light) or “inverse” (dark) depending on which theme you’re using. This can be omitted and the default theme will be used. This only effects diverging and quantitative palettes.</p>
 </div>
 <div id="palette_type" class="section level3">
 <h3 class="hasAnchor">
@@ -191,71 +186,95 @@
 <li>
 <strong>diverging</strong> - to be used for numerical or ordinal categorical data which has a natural ordering that goes through 0.</li>
 </ul>
-<p>To get maximum control over which colours are assigned to which values, convert your variables to factors (including numerical data, convert any continues values into categories).</p>
-<p>The <em>categorical</em>, <em>muted</em>, <em>quantitative</em> and <em>diverging</em> palettes can be seen here:</p>
-<p><img src="Using_GLA_colour_palettes_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
+<p>To get maximum control over which colours are assigned to which values, convert your variables to factors (including numerical data, convert any continuous values into categories).</p>
+</div>
+<div id="palette_name" class="section level3">
+<h3 class="hasAnchor">
+<a href="#palette_name" class="anchor"></a><code>palette_name</code>
+</h3>
+<p>There are 4 different palettes included in the package:</p>
+<ul>
+<li>
+<strong>core</strong> - the default palette.</li>
+<li>
+<strong>light</strong> - less saturated, less contrasting, lighter variations</li>
+<li>
+<strong>dark</strong> - less saturated, less contrasting, darker variations</li>
+<li>
+<strong>brand</strong> - Mayor of London brand colours</li>
+</ul>
+<p>These palettes have a default order of colours which maximises differentiability and accessibility.</p>
+<p>The different palettes can be seen here:</p>
+<p><img src="Using_GLA_colour_palettes_files/figure-html/unnamed-chunk-5-1.png" width="768"></p>
 </div>
 <div id="main_colours" class="section level3">
 <h3 class="hasAnchor">
 <a href="#main_colours" class="anchor"></a><code>main_colours</code>
 </h3>
-<p>The <code>main_colours</code> parameter should include a (collection of) string(s) of one or more colours for your palette. For the different palette types this needs to be:</p>
+<p>The <code>main_colours</code> parameter should be used if you want to use a specific colour from a palette or use a palette in a non-default order.</p>
+<p>It should be a (collection of) string(s) of one or more colours for your palette. For the different palette types this needs to be:</p>
 <ul>
-<li>categorical - should be a collection of colours matching the number of categories in your data. If none is given then the appropriate number will be selected from the set of GLA colours.</li>
-<li>quantitative - should be one colour for the maximum value of your quantitative scale. Will default to “Mayoral” if none is given.</li>
-<li>highlight - should be one or more colours depending on how many data categories you want to highlight. Will default to “Mayoral” if none is given.</li>
-<li>diverging - should be a collection of two colours for either end of the diverging scale. Will default to c(“blue”, “green”) if none is given.</li>
+<li>categorical - should be a collection of colours matching the number of categories in your data.</li>
+<li>quantitative - should be one colour for the maximum value of your quantitative scale.</li>
+<li>highlight - should be one or more colours depending on how many data categories you want to highlight.</li>
+<li>diverging - should be a collection of two colours for either end of the diverging scale.</li>
 </ul>
+<p>If <code>main_colours</code> is left as <code>NULL</code> colours will be selected in the default order.</p>
 </div>
 <div id="n" class="section level3">
 <h3 class="hasAnchor">
 <a href="#n" class="anchor"></a><code>n</code>
 </h3>
-<p>Except for diverging palettes, <code>n</code> needs to be set to the number of categories in your data, and <code>gla_pal</code> will generate this many colours.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">'light'</span>, <span class="dt">palette_type =</span> <span class="st">'categorical'</span>, <span class="dt">n =</span> <span class="dv">5</span>)
-<span class="co">#&gt; [1] "#008bc1" "#ee266d" "#4c9e4c" "#dd072b" "#e5e507"</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">'light'</span>, <span class="dt">palette_type =</span> <span class="st">'quantitative'</span>, <span class="dt">main_colours =</span> <span class="st">'green'</span>,
-        <span class="dt">n =</span> <span class="dv">5</span>)
-<span class="co">#&gt; [1] "#4C9E4C" "#74B374" "#9DC89D" "#C6DDC6" "#EFF2EF"</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">'light'</span>, <span class="dt">palette_type =</span> <span class="st">'highlight'</span>, 
-        <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"blue"</span>, <span class="st">"yellow"</span>), <span class="dt">n =</span> <span class="dv">5</span>)
-<span class="co">#&gt; [1] "#008bc1" "#e5e507" "#cccccc" "#cccccc" "#cccccc"</span></code></pre></div>
-<p>As you can see, for the highlighting palette, any remaining colours after the <code>main_colours</code> have been used will be filled with the appropriate context colour for that theme</p>
-<p>For diverging palettes, <code>n</code> needs to be set to how many categories you have on either side of <code>0</code>, so you’ll end up with <code>2n</code> colours.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">'light'</span>, <span class="dt">palette_type =</span> <span class="st">'diverging'</span>, <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'red'</span>,<span class="st">'yellow'</span>),
-        <span class="dt">n =</span> <span class="dv">3</span>)
-<span class="co">#&gt; [1] "#DD072B" "#DE4F67" "#DF97A3" "#E1E197" "#E3E34F" "#E5E507"</span></code></pre></div>
-</div>
-<div id="muted" class="section level3">
-<h3 class="hasAnchor">
-<a href="#muted" class="anchor"></a><code>muted</code>
-</h3>
-<p>If you need a more muted colour palette for data of a sensitive nature, then set <code>muted = TRUE</code> to get a muted colour palette.</p>
-<p>The muted palette only contains 4 colours (“blue”, “green”, “red” and “purple”) and isn’t available for quantitative or diverging colour palettes.</p>
+<p>Except for highlight palettes, <code>n</code> needs to be set to the number of categories in your data, and <code>gla_pal</code> will generate this many colours.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">palette_type =</span> <span class="st">"categorical"</span>,
+        <span class="dt">palette_name =</span> <span class="st">"core"</span>, <span class="dt">n =</span> <span class="dv">5</span>)
+<span class="co">#&gt; [1] "#6da7de" "#9e0059" "#dee000" "#d82222" "#5ea15d"</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">palette_type =</span> <span class="st">"quantitative"</span>,
+        <span class="dt">main_colours =</span> <span class="st">"green"</span>, <span class="dt">n =</span> <span class="dv">5</span>)
+<span class="co">#&gt; [1] "#212B20" "#374F35" "#527450" "#759A72" "#A1C09E"</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">palette_type =</span> <span class="st">"diverging"</span>,
+        <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"red"</span>, <span class="st">"yellow"</span>), <span class="dt">n =</span> <span class="dv">6</span>)
+<span class="co">#&gt; [1] "#5D221A" "#B54C3E" "#E79788" "#B2AF52" "#716F28" "#36351A"</span></code></pre></div>
+<p>For highlight palettes, you need to provide a vector giving the number of highlighted categories followed by the number of contextual categories.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">palette_type =</span> <span class="st">"highlight"</span>,
+        <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"blue"</span>, <span class="st">"yellow"</span>), <span class="dt">n =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2</span>, <span class="dv">3</span>))
+<span class="co">#&gt; [1] "#6da7de" "#dee000" "#cccccc" "#cccccc" "#cccccc"</span></code></pre></div>
 </div>
 <div id="inc0" class="section level3">
 <h3 class="hasAnchor">
 <a href="#inc0" class="anchor"></a><code>inc0</code>
 </h3>
-<p>This is only relevant for diverging colour palettes, if you want to explicitly include 0 in your colour scale (i.e. have a colour in the middle of the palette that is completely neutral between to two ends of the scale) then set <code>inc0 = TRUE</code> and this colour will be included in the middle of the palette - meaning you will end up with <code>2n + 1</code> colours in total.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">'light'</span>, <span class="dt">palette_type =</span> <span class="st">'diverging'</span>, <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'red'</span>,<span class="st">'yellow'</span>),
-        <span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">inc0 =</span> <span class="ot">TRUE</span>)
-<span class="co">#&gt; [1] "#DD072B" "#DE4F67" "#DF97A3" "#E0E0E0" "#E1E197" "#E3E34F" "#E5E507"</span></code></pre></div>
+<p>This is only relevant for diverging or quantitative colour palettes, if you want to explicitly include 0 in your colour scale (i.e. for a diverging palette you have a colour in the middle of the palette that is completely neutral between to two ends of the scale) then set <code>inc0 = TRUE</code> and this colour will be included in the middle or end of the palette. n colours will still be returned.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"default"</span>, <span class="dt">palette_type =</span> <span class="st">"diverging"</span>,
+        <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"red"</span>, <span class="st">"yellow"</span>), <span class="dt">n =</span> <span class="dv">7</span>, <span class="dt">inc0 =</span> <span class="ot">TRUE</span>)
+<span class="co">#&gt; [1] "#5D221A" "#B54C3E" "#E79788" "#EEEEEE" "#B2AF52" "#716F28" "#36351A"</span></code></pre></div>
+</div>
+<div id="remove_margin" class="section level3">
+<h3 class="hasAnchor">
+<a href="#remove_margin" class="anchor"></a><code>remove_margin</code>
+</h3>
+<p>This is only relevant for diverging or quantitative colour palettes. If you want to reduce the overall range of lightness-darkness in the colours you can remove the margin of the palette on either the left, right or both sides. n colours will still be returned.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">"inverse"</span>, <span class="dt">palette_type =</span> <span class="st">"diverging"</span>,
+        <span class="dt">main_colours =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"red"</span>, <span class="st">"yellow"</span>), <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">inc0 =</span> <span class="ot">TRUE</span>,
+        <span class="dt">remove_margin =</span> <span class="st">"both"</span>)
+<span class="co">#&gt; [1] "#373333" "#353333" "#333333" "#333333" "#343433"</span></code></pre></div>
+<p><strong>Note:</strong> For diverging palettes, n must be either odd or even depending on the combination of <code>inc0</code> and <code>remove_margin</code> used.</p>
 </div>
 </div>
 <div id="using-the-gla-colours-in-a-plot" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-the-gla-colours-in-a-plot" class="anchor"></a>Using the GLA colours in a plot</h2>
 <p>The palettes generated by <code><a href="../reference/gla_pal.html">gla_pal()</a></code> can be added to <code>ggplot</code> objects like any other palette using <code>scale_fill_manual()</code> etc.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">gla_theme =</span> <span class="st">'light'</span>, <span class="dt">palette_type =</span> <span class="st">'categorical'</span>, <span class="dt">n =</span> <span class="dv">2</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_pal &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gla_pal.html">gla_pal</a></span>(<span class="dt">palette_type =</span> <span class="st">"categorical"</span>, <span class="dt">n =</span> <span class="dv">2</span>)
 
 
-plot =<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> LDNUK, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> GPG, <span class="dt">group =</span> location, 
-                                   <span class="dt">colour =</span> location)) <span class="op">+</span>
+plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> LDNUK,
+               <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> GPG, <span class="dt">group =</span> location,
+                             <span class="dt">colour =</span> location)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>my_pal)
+<span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> my_pal)
 plot</code></pre></div>
-<p><img src="Using_GLA_colour_palettes_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<p><img src="Using_GLA_colour_palettes_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
 </div>
   </div>
 

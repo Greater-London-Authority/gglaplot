@@ -68,14 +68,20 @@
 #' @details Various ggplot sizes are set using mms, this factor will adjust this to use pts instead.
 "mm_to_pt"
 
-#' @title gla_light
-#' @description list of colours used in the gla_light theme
+#' @title gla_default
+#' @description list of colours used in the gla_default theme
 #' @format named list
-#' @details list of hex codes of colours used for data and non-data elements of the gla_light theme
-"gla_light"
+#' @details list of hex codes of colours used for data and non-data elements of the gla_default theme
+"gla_default"
 
-#' @title gla_dark
-#' @description list of colours used in the gla_dark theme
+#' @title gla_inverse
+#' @description list of colours used in the gla_inverse theme
 #' @format named list
-#' @details list of hex codes of colours used for data and non-data elements of the gla_dark theme
-"gla_dark"
+#' @details list of hex codes of colours used for data and non-data elements of the gla_inverse theme
+"gla_inverse"
+
+#' @title gla_colours
+#' @description list of colours used in GLA palettes
+#' @format named list
+#' @details list of hex codes
+"gla_colours"

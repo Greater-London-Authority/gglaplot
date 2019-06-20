@@ -1,11 +1,11 @@
 reference:
-- title: GLA colours and themes
+- title: GLA colours, palettes and themes
   desc: >
-    Functions to generate GLA colours, palettes and themes
+    Lists of GLA colours and functions to generate GLA palettes and themes
   contents:
-  - '`get_theme_colours`'
-  - '`gla_dark`'
-  - '`gla_light`'
+  - '`gla_default`'
+  - '`gla_inverse`'
+  - '`gla_colours`'
   - '`gla_pal`'
   - '`show_gla_pals`'
   - '`theme_gla`'
@@ -21,8 +21,16 @@ reference:
   - '`ggla_line`'
   - '`ggla_sf`'
   - '`left_align_labs`'
+- title: Custom Geoms
+  desc: Custom Geoms set with default aesthetics to make GLA style plots
+  contents:
+  - '`GeomGLALine`'
+  - '`GeomGLAPointHighlight`'
+  - '`GeomGLATextHighlight`'
+  - '`GeomGLAAnnotate`'
+  - '`GeomGLASf`'
 - title: Miscellaneous helpers
-  desc: Additional helper functions
+  desc: Additional helpers
   contents:
   - '`mm_to_pt`'
 - title: Example datasets
@@ -35,9 +43,48 @@ reference:
   - '`LDNUK`'
 
 articles:
-- title: All vignettes
+- title: Palettes
   desc: ~
   contents:
-  - '`Using_GLA_colour_palettes`'
-  - '`Using_the_gla_theme`'
-  - '`Custom_ggla_plots`'
+  - '`v01_Using_GLA_colour_palettes`'
+- title: Themes
+  desc: ~
+  contents:
+  - '`v02_Using_the_gla_theme`'
+- title: Plots
+  desc: ~
+  contents:
+  - '`v03_Custom_ggla_plots`'
+
+navbar:
+  structure:
+    left:
+    - home
+    - intro
+    - reference
+    - articles
+    - tutorials
+    - news
+    right: github
+  components:
+    home:
+      icon: fa-home fa-lg
+      href: index.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    articles:
+      text: Vignettes
+      menu:
+      - text: Using GLA colour palettes
+        href: articles/v01_Using_GLA_colour_palettes.html
+      - text: Using `theme_gla()`
+        href: articles/v02_Using_the_gla_theme.html
+      - text: Custom `gglaplot`s
+        href: articles/v03_Custom_ggla_plots.html
+    news:
+      text: Changelog
+      href: news/index.html
+    github:
+      icon: fa-github fa-lg
+      href: https://github.com/Greater-London-Authority/gglaplot

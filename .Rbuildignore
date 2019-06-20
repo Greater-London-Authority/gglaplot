@@ -1,0 +1,11 @@
+^Meta$
+^docs/*$
+^update_package/*
+^/\.gitattributes$
+^data-raw$
+^_pkgdown\.yml$
+^icons$
+^README\.Rmd$
+^README-.*\.png$
+^logo\.png$
+^doc$

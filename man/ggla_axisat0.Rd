@@ -4,7 +4,10 @@
 \alias{ggla_axisat0}
 \title{ggla_axisat0}
 \usage{
-ggla_axisat0()
+ggla_axisat0(gla_theme = "default")
+}
+\arguments{
+\item{gla_theme}{Either "default" or "inverse", Default: 'default'}
 }
 \description{
 Forces the y-axis to y=0 and adds a strong axis line

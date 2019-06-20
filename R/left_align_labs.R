@@ -10,8 +10,11 @@
 #' }
 #' @rdname left_align_labs
 #' @export 
-#' @import ggplot2 
+#' @import ggplot2
 #' @importFrom ggplotify as.ggplot
+#' @seealso 
+#'  \code{\link[ggplot2]{is.ggplot}},\code{\link[ggplot2]{ggplotGrob}}
+#'  \code{\link[ggplotify]{as.ggplot}}
 left_align_labs <- function(plot) {
   #checks
   if (ggplot2::is.ggplot(plot) == FALSE) {
@@ -21,13 +24,13 @@ left_align_labs <- function(plot) {
       ggplot object."
     )
   }
-  
+
   grob <- ggplot2::ggplotGrob(plot)
-  grob$layout$l[grob$layout$name == 'title'] <- 1
-  grob$layout$l[grob$layout$name == 'subtitle'] <- 1
-  grob$layout$l[grob$layout$name == 'caption'] <- 1
+  grob$layout$l[grob$layout$name == "title"] <- 1
+  grob$layout$l[grob$layout$name == "subtitle"] <- 1
+  grob$layout$l[grob$layout$name == "caption"] <- 1
   plot <- ggplotify::as.ggplot(grob)
-  
+
   return(plot)
-  
+
   }

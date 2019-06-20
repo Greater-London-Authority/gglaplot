@@ -22,3 +22,7 @@ if(interactive()){
  }
 }
 }
+\seealso{
+\code{\link[ggplot2]{is.ggplot}},\code{\link[ggplot2]{ggplotGrob}}
+ \code{\link[ggplotify]{as.ggplot}}
+}
