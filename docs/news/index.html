@@ -181,9 +181,9 @@
 </ul>
 <p><code><a href="../reference/gla_pal.html">gla_pal()</a></code> now uses the <code>chroma</code> function <code>interp_scale</code> instead of <code><a href="https://www.rdocumentation.org/packages/grDevices/topics/colorRamp">grDevices::colorRampPalette</a></code>. The original <code>chroma</code> package is available from github <a href="https://github.com/jiho/chroma">here</a> and is designed to emulate the <a href="https://github.com/gka/chroma.js/">chroma.js</a> javascript library. <code>gglaplot</code> uses a <a href="https://github.com/LiRogers/chroma">forked version of this repo</a> that includes the option to correct the lightness scale of a palette. This version will be installed automatically when the package is updated/installed.</p>
 </div>
-<div id="plot-function-changes" class="section level2">
+<div id="plot-function-and-geometric-object-changes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#plot-function-changes" class="anchor"></a>Plot function changes</h2>
+<a href="#plot-function-and-geometric-object-changes" class="anchor"></a>Plot function and geometric object changes:</h2>
 <ul>
 <li>
 <code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code>
@@ -223,6 +223,18 @@
 <li><code><a href="../reference/ggla_labelline.html">ggla_labelline()</a></code></li>
 </ul>
 </li>
+<li>New Geomtric objects that have default aesthetics inline with the style guide (aesthetics can be overwritten as normal):
+<ul>
+<li>
+<code>GeomGLALine</code> for use with <code><a href="../reference/ggla_line.html">ggla_line()</a></code> (set as default).</li>
+<li>
+<code>GeomGLATextHighlight</code> for use with <code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code> when adding labels (existing <code>GeomGLAPointHighlight</code> set as default). Should be specified with <code>geom = GeomGLATextHighlight</code>.</li>
+<li>
+<code>GeomGLAAnnotate</code> for use with <code><a href="https://ggplot2.tidyverse.org/reference/annotate.html">ggplot2::annotate()</a></code>. Should be specified with <code>geom = GeomGLAAnnotate</code>.</li>
+<li>
+<code>GeomGLASf</code> for use with <code><a href="../reference/ggla_sf.html">ggla_sf()</a></code> (set as default).</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -230,7 +242,7 @@
 <h1 class="page-header">
 <a href="#gglaplot-0-0-0-9000" class="anchor"></a>gglaplot 0.0.0.9000</h1>
 <ul>
-<li>This is the first release of gglaplot</li>
+<li>This is the first release of gglaplot.</li>
 </ul>
 </div>
   </div>

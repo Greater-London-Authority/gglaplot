@@ -28,7 +28,7 @@ The available palettes and the colours underlying them have changed, which has n
 
 `gla_pal()` now uses the `chroma` function `interp_scale` instead of `grDevices::colorRampPalette`. The original `chroma` package is available from github [here](https://github.com/jiho/chroma) and is designed to emulate the [chroma.js](https://github.com/gka/chroma.js/) javascript library. `gglaplot` uses a [forked version of this repo](https://github.com/LiRogers/chroma) that includes the option to correct the lightness scale of a palette. This version will be installed automatically when the package is updated/installed.
 
-## Plot function changes
+## Plot function and geometric object changes:
 
 * `ggla_highlight()`
     * Now uses the settings for `gla_default` unless `gla_inverse` has been set using `theme_set()`
@@ -51,9 +51,13 @@ The available palettes and the colours underlying them have changed, which has n
     * `ggla_highlightarea()`
     * `ggla_horizbar()`
     * `ggla_labelline()`
-
-    
+* New Geomtric objects that have default aesthetics inline with the style guide (aesthetics can be overwritten as normal):
+    * `GeomGLALine` for use with `ggla_line()` (set as default).
+    * `GeomGLATextHighlight` for use with `ggla_highlight()` when adding labels (existing `GeomGLAPointHighlight` set as default). Should be specified with `geom = GeomGLATextHighlight`.
+    * `GeomGLAAnnotate` for use with `ggplot2::annotate()`. Should be specified with `geom = GeomGLAAnnotate`.
+    * `GeomGLASf` for use with `ggla_sf()` (set as default).
+  
 
 # gglaplot 0.0.0.9000
 
-* This is the first release of gglaplot
+* This is the first release of gglaplot.

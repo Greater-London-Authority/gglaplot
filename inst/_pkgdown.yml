@@ -21,6 +21,14 @@ reference:
   - '`ggla_line`'
   - '`ggla_sf`'
   - '`left_align_labs`'
+- title: Custom Geoms
+  desc: Custom Geoms set with default aesthetics to make GLA style plots
+  contents:
+  - '`GeomGLALine`'
+  - '`GeomGLAPointHighlight`'
+  - '`GeomGLATextHighlight`'
+  - '`GeomGLAAnnotate`'
+  - '`GeomGLASf`'
 - title: Miscellaneous helpers
   desc: Additional helpers
   contents:

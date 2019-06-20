@@ -201,11 +201,11 @@ p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="kw">aes</span>(<span class="dt">colour =</span> location), <span class="dt">filter_type =</span> <span class="st">"xy"</span>, <span class="dt">x_filt =</span> <span class="kw">ymd</span>(<span class="st">"2007-01-01"</span>))</code></pre></div>
 <p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-6-1.png" width="2187.5"></p>
-<p>You can also change the <code>geom</code> of <code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code> to add labels. This will probably require a bit of fiddling around with the <code>position_nudge()</code> function to get them in the right place. If we’re labelling our data we might as well remove the legend.</p>
+<p>You can also change the <code>geom</code> of <code><a href="../reference/ggla_highlight.html">ggla_highlight()</a></code> to add labels. This will probably require a bit of fiddling around with the <code>position_nudge()</code> function to get them in the right place. If we’re labelling our data we might as well remove the legend. <code>GeomGLATextHighlight</code> is a custom <code>gglaplot</code> geom.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/theme_gla.html">theme_gla</a></span>(<span class="dt">legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">label =</span> location),
-                 <span class="dt">filter_type =</span> <span class="st">"end"</span>, <span class="dt">geom =</span> GeomTextHighlight,
+                 <span class="dt">filter_type =</span> <span class="st">"end"</span>, <span class="dt">geom =</span> GeomGLATextHighlight,
                  <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="op">-</span><span class="dv">35</span>, <span class="dt">y =</span> <span class="fl">0.5</span>))</code></pre></div>
 <p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-7-1.png" width="2187.5"></p>
 </div>
@@ -252,6 +252,8 @@ p_max &lt;-<span class="st"> </span>plot <span class="op">+</span><span class="s
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="dt">filter_type =</span> <span class="st">"min"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Add a context/highlight box between 2007 - 2012</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_highlightarea.html">ggla_highlightarea</a></span>(<span class="dt">xmin =</span> <span class="kw">ymd</span>(<span class="st">"2007-01-01"</span>), <span class="dt">xmax =</span> <span class="kw">ymd</span>(<span class="st">"2012-01-01"</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="co"># Add an annotation using custom gglaplot geom GeomGLAAnnotate</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="dt">geom =</span> GeomGLAAnnotate, <span class="dt">x =</span> <span class="kw">ymd</span>(<span class="st">"2007-02-01"</span>), <span class="dt">y =</span> <span class="fl">30.25</span>, <span class="dt">label =</span> <span class="st">"Highlight"</span>) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Add a line at 2000</span>
 <span class="st">  </span><span class="kw"><a href="../reference/ggla_labelline.html">ggla_labelline</a></span>(<span class="dt">x1 =</span> <span class="kw">ymd</span>(<span class="st">"2000-01-01"</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="co"># Extend the y axis to 0</span>

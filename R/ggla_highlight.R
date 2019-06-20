@@ -35,9 +35,11 @@ StatHighlight <- ggplot2::ggproto(
     data
   })
 
+#' @title GeomGLAPointHighlight
+#' @description Geom to be used for highlighting points on a line chart with ggla_highlight()
 #' @export
-GeomPointHighlight <- ggplot2::ggproto(
-  "GeomPointHighlight",
+GeomGLAPointHighlight <- ggplot2::ggproto(
+  "GeomGLAPointHighlight",
   ggplot2::GeomPoint,
   default_aes = ggplot2::aes(
     size = 6 * mm_to_pt, stroke = 3 * mm_to_pt,
@@ -49,9 +51,11 @@ GeomPointHighlight <- ggplot2::ggproto(
     colour = gla_colours$blue_core,
     alpha = 1))
 
+#' @title GeomGLATextHighlight
+#' @description Geom to be used for adding labels to points on a chart with ggla_highlight()
 #' @export
-GeomTextHighlight <- ggplot2::ggproto(
-  "GeomTextHighlight",
+GeomGLATextHighlight <- ggplot2::ggproto(
+  "GeomGLATextHighlight",
   ggplot2::GeomText,
   default_aes = ggplot2::aes(
     colour = ifelse(
@@ -67,13 +71,36 @@ GeomTextHighlight <- ggplot2::ggproto(
     fontface = 1,
     lineheight = 1))
 
+#' @title GeomGLAAnnotate
+#' @description Geom to be used for adding annotations to plots.
+#' @export
+GeomGLAAnnotate <- ggplot2::ggproto(
+  "GeomGLAAnnotate",
+  ggplot2::GeomText,
+  default_aes = ggplot2::aes(
+    colour = ifelse(
+      ggplot2::theme_get()$panel.background$fill == gla_inverse$background,
+      gla_inverse$`axis text & labels`,
+      gla_default$`axis text & labels`
+    ),
+    size = 12 * mm_to_pt,
+    angle = 0,
+    hjust = 0,
+    vjust = 0,
+    alpha = NA,
+    family = "sans",
+    fontface = 1,
+    lineheight = 1
+  )
+)
+
 
 #' @title ggla_highlight
 #' @description Highlight selected data points
 #' @param filter_type One of string "end", "start", "max", "min" or "xy", Default: 'end'
 #' @param x_filt If filter_type = "xy" use this to select which x-values to highlight, Default: NULL
 #' @param y_filt If filter_type = "xy" use this to select which y-values to highlight, Default: NULL
-#' @param geom Override the default connection between geom_highlight() and GeomPointHighlight, for text use GeomTextHighlight Default: GeomPointHighlight
+#' @param geom Override the default connection between geom_highlight() and GeomGLAPointHighlight, for text use GeomGLATextHighlight Default: GeomGLAPointHighlight
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_point
 #' @details To use gla_inverse theme this must be set using theme_set() prior to calling ggla_highlight()
@@ -91,7 +118,7 @@ GeomTextHighlight <- ggplot2::ggproto(
 #' @param mapping Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping, Default: NULL
 #' @import ggplot2
 ggla_highlight <- function(mapping = NULL, data = NULL,
-                           geom = GeomPointHighlight, stat = "identity",
+                           geom = GeomGLAPointHighlight, stat = "identity",
                            position = "identity", ...,
                            filter_type = "end", x_filt = NULL, y_filt = NULL,
                            na.rm = FALSE, show.legend = FALSE,

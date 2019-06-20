@@ -1,3 +1,5 @@
+#' @title GeomGLALine
+#' @description Geom to be used with ggla_line()
 #' @export
 GeomGLALine <- ggplot2::ggproto("GeomGLALine", ggplot2::GeomLine,
                        default_aes = ggplot2::aes(

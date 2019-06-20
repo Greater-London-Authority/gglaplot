@@ -5,7 +5,7 @@
 \title{ggla_highlight}
 \usage{
 ggla_highlight(mapping = NULL, data = NULL,
-  geom = GeomPointHighlight, stat = "identity",
+  geom = GeomGLAPointHighlight, stat = "identity",
   position = "identity", ..., filter_type = "end", x_filt = NULL,
   y_filt = NULL, na.rm = FALSE, show.legend = FALSE,
   inherit.aes = TRUE)
@@ -15,7 +15,7 @@ ggla_highlight(mapping = NULL, data = NULL,
 
 \item{data}{The data to be displayed in this layer. There are three options: If NULL, the default, the data is inherited from the plot data as specified in the call to ggplot(). A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created. A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data, Default: NULL}
 
-\item{geom}{Override the default connection between geom_highlight() and GeomPointHighlight, for text use GeomTextHighlight Default: GeomPointHighlight}
+\item{geom}{Override the default connection between geom_highlight() and GeomGLAPointHighlight, for text use GeomGLATextHighlight Default: GeomGLAPointHighlight}
 
 \item{stat}{The statistical transformation to use on the data for this
 layer, as a string.}
