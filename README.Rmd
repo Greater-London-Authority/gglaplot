@@ -34,7 +34,7 @@ theme_set(theme_gla(gla_theme = "default"))
 plot <- ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
                                    colour = location)) +
   ggla_line(aes(size = location)) +
-  scale_size_discrete(range = c(6 * mm_to_pt, 3 * mm_to_pt)) +
+  scale_size_manual(values = c(4 * mm_to_pt, 2 * mm_to_pt)) +
   scale_colour_manual(values = pal) +
   ggla_highlight(filter_type = "end") +
   ggla_axisat0() +
