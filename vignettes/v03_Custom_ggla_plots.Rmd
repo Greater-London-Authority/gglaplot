@@ -2,15 +2,15 @@
 title: "Custom `gglaplot`s"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Custom gglaplots}
+%\VignetteIndexEntry{Custom gglaplots}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
----
-```{r setup, include = FALSE}
+  ---
+  ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "",
-  dpi = 300
+collapse = TRUE,
+comment = "",
+dpi = 300
 )
 ```
 
@@ -161,7 +161,7 @@ ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
   ggla_axisat0() +
   # Format the y-axis
   scale_y_continuous(expand = c(0, 0), limits = c(0, 32.5),
-                      labels = dollar_format(prefix = "", suffix = "%")) +
+                     labels = dollar_format(prefix = "", suffix = "%")) +
   # Format the x-axis
   scale_x_date(date_breaks = "1 year", date_labels = "%y",
                expand = expand_scale(mult = c(0.05, 0.01))) +
@@ -170,7 +170,7 @@ ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
     title = "Gender Pay Gap - Total (Median)",
     subtitle = "Gender Pay Gap - Total (Median) - London VS UK",
     caption = "Note: 2017 data is provisional\nChart: GLA City Intelligence  Source: London Datastore"
-    )
+  )
 
 ```
 
@@ -206,26 +206,21 @@ barplot
 We can add some additional formatting and labels to this
 
 ```{r}
-(barplot +
-   # Add formated labels to each bar
+barplot +
+  # Add formated labels to each bar
   geom_text(aes(label = paste(format(eyfsp, nsmall = 0), "%", sep = "")),
             y = 8, position = position_nudge(x = 0, y = 0), vjust = 0.50,
             colour = gla_default$background) +
-   # Remove any labels from the x axis (effectively our y axis)
+  # Remove any labels from the x axis (effectively our y axis)
   theme(axis.text.x = element_blank()) +
-   # Add titles
-    labs(
-      title = "Achievement in EYFSP by Ethnicity",
-      subtitle = "Percentage achieving at least the expected standard in all ELGs (2017)",
-      caption = "Source: Department for Education\nChart: GLA City Intelligence"
-      )) %>%
-  # Make labels left aligned
-  left_align_labs()
+  # Add titles
+  labs(
+    title = "Achievement in EYFSP by Ethnicity",
+    subtitle = "Percentage achieving at least the expected standard in all ELGs (2017)",
+    caption = "Source: Department for Education\nChart: GLA City Intelligence"
+  )
 
 ```
-
-By default, `ggplot2` aligns the plot labels (titles, captions etc) to the panel of the plot itself, not the whole plot area. As the ethnicity labels extend out to the left hand side of the plot, this ends up making the plot look a bit misaligned. `left_align_labs()` will adjust the alignment to be with respect to the whole plot area. This needs to be applied to the whole `ggplot` object, not just + on the end.
-
 
 And a stacked example:
 
@@ -243,9 +238,9 @@ numcats <- AvAtt %>%
 
 pal <- gla_pal(gla_theme = "default", palette_type = "categorical", n = numcats)
 
-(ggplot(AvAtt,
-        aes(x = Region, y = Score, fill = rev(Subject),
-            label = round(Score, 1))) +
+ggplot(AvAtt,
+       aes(x = Region, y = Score, fill = rev(Subject),
+           label = round(Score, 1))) +
   theme_gla() +
   ggla_horizbar() +
   geom_text(position = position_stack(vjust = 0.85),
@@ -253,12 +248,11 @@ pal <- gla_pal(gla_theme = "default", palette_type = "categorical", n = numcats)
   theme(axis.text.x = element_blank()) +
   scale_fill_manual(values = pal,
                     breaks = rev(levels(AvAtt$Subject))) +
-      labs(
-        title = "Average Attainment 8 Scores - 2016/17",
-        subtitle = "Average score per pupil in each element",
-        caption = "Source: Department for Education\nChart: GLA City Intelligence"
-        )) %>%
-  left_align_labs()
+  labs(
+    title = "Average Attainment 8 Scores - 2016/17",
+    subtitle = "Average score per pupil in each element",
+    caption = "Source: Department for Education\nChart: GLA City Intelligence"
+  )
 ```
 
 
@@ -315,7 +309,7 @@ ggplot(EURef, aes(geometry = geometry, fill = CatLeave)) +
   labs(
     title = "Leave Vote in the 2016 EU Referendum",
     caption = "Contains Ordnance Survey data Crown copyright and database right [2015]"
-    )
+  )
 ```
 
 

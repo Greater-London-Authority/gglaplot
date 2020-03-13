@@ -60,12 +60,14 @@ theme_gla <- function(gla_theme = "default",
       plot.title = ggplot2::element_text(colour = colours$headlines,
                                          family = "sans", hjust = 0,
                                          face = "bold", size = title_size),
+      plot.title.position = "plot",
       plot.subtitle = ggplot2::element_text(colour = colours$headlines,
                                             family = "sans", hjust = 0,
                                             size = base_size),
       plot.caption = ggplot2::element_text(colour = colours$`body text`,
                                            family = "sans", hjust = 0,
                                            size = label_size),
+      plot.caption.position = "plot",
 
       # axis and gridlines
       panel.grid.major.y = ggplot2::element_line(size = 1 * mm_to_pt,
@@ -80,7 +82,7 @@ theme_gla <- function(gla_theme = "default",
       axis.text.y = ggplot2::element_text(
         hjust = 0, vjust = -1,
         margin = ggplot2::margin(
-          t = 0, r = - 5 * plot_margin, b = 0, l = plot_margin / 2,
+          t = 0, r = -5 * plot_margin, b = 0, l = plot_margin / 2,
           unit = "pt")),
 
       # legend
@@ -98,7 +100,7 @@ theme_gla <- function(gla_theme = "default",
       # facets
       strip.background = ggplot2::element_blank(),
       strip.text = ggplot2::element_text(colour = colours$`body text`,
-                                         vjust = - 1, hjust = 0.05))
+                                         vjust = -1, hjust = 0.05))
 
   # axis titles
   if (x_axis_title == FALSE) {
