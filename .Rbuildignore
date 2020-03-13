@@ -9,3 +9,5 @@
 ^README-.*\.png$
 ^logo\.png$
 ^doc$
+^.*\.Rproj$
+^\.Rproj\.user$
