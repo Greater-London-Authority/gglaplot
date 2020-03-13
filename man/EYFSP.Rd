@@ -4,12 +4,14 @@
 \name{EYFSP}
 \alias{EYFSP}
 \title{Achievement in EYFSP by Ethnicity}
-\format{A data frame with 12 rows and 3 variables:
+\format{
+A data frame with 12 rows and 3 variables:
 \describe{
   \item{\code{Ethnicity}}{integer ethinicity of pupils}
   \item{\code{Region}}{integer London or England}
   \item{\code{eyfsp}}{integer percentage achieving the expected standard} 
-}}
+}
+}
 \source{
 \url{https://data.london.gov.uk/economic-fairness/equal-opportunities/school-readiness/}
 }

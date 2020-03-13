@@ -4,7 +4,9 @@
 \name{GeomGLAPointHighlight}
 \alias{GeomGLAPointHighlight}
 \title{GeomGLAPointHighlight}
-\format{An object of class \code{GeomGLAPointHighlight} (inherits from \code{GeomPoint}, \code{Geom}, \code{ggproto}, \code{gg}) of length 2.}
+\format{
+An object of class \code{GeomGLAPointHighlight} (inherits from \code{GeomPoint}, \code{Geom}, \code{ggproto}, \code{gg}) of length 2.
+}
 \usage{
 GeomGLAPointHighlight
 }

@@ -4,8 +4,13 @@
 \alias{ggla_labelline}
 \title{ggla_labelline}
 \usage{
-ggla_labelline(x1 = NULL, x2 = NULL, y1 = NULL, y2 = NULL,
-  gla_theme = "default")
+ggla_labelline(
+  x1 = NULL,
+  x2 = NULL,
+  y1 = NULL,
+  y2 = NULL,
+  gla_theme = "default"
+)
 }
 \arguments{
 \item{x1}{starting x-value, not needed for lines perpendicular to x-axis, Default: NULL}

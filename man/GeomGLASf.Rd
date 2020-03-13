@@ -4,7 +4,9 @@
 \name{GeomGLASf}
 \alias{GeomGLASf}
 \title{GeomGLASf}
-\format{An object of class \code{GeomGLASf} (inherits from \code{GeomSf}, \code{Geom}, \code{ggproto}, \code{gg}) of length 5.}
+\format{
+An object of class \code{GeomGLASf} (inherits from \code{GeomSf}, \code{Geom}, \code{ggproto}, \code{gg}) of length 5.
+}
 \usage{
 GeomGLASf
 }

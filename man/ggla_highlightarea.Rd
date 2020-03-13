@@ -4,8 +4,13 @@
 \alias{ggla_highlightarea}
 \title{ggla_highlightarea}
 \usage{
-ggla_highlightarea(xmin = -Inf, xmax = Inf, ymin = -Inf,
-  ymax = Inf, gla_theme = "default")
+ggla_highlightarea(
+  xmin = -Inf,
+  xmax = Inf,
+  ymin = -Inf,
+  ymax = Inf,
+  gla_theme = "default"
+)
 }
 \arguments{
 \item{xmin}{lower x-extent of highlighted area, Default: -Inf}
@@ -31,5 +36,5 @@ if(interactive()){
  }
 }
 #' @seealso
- \\code{\\link[ggplot2]{annotate}}
+ \code{\link[ggplot2]{annotate}}
 }

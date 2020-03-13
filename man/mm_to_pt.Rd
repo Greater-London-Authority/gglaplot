@@ -4,7 +4,9 @@
 \name{mm_to_pt}
 \alias{mm_to_pt}
 \title{mm_to_pt}
-\format{double}
+\format{
+double
+}
 \usage{
 mm_to_pt
 }

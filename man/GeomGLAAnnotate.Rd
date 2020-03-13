@@ -4,7 +4,9 @@
 \name{GeomGLAAnnotate}
 \alias{GeomGLAAnnotate}
 \title{GeomGLAAnnotate}
-\format{An object of class \code{GeomGLAAnnotate} (inherits from \code{GeomText}, \code{Geom}, \code{ggproto}, \code{gg}) of length 2.}
+\format{
+An object of class \code{GeomGLAAnnotate} (inherits from \code{GeomText}, \code{Geom}, \code{ggproto}, \code{gg}) of length 2.
+}
 \usage{
 GeomGLAAnnotate
 }

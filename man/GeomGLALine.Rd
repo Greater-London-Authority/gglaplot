@@ -4,7 +4,9 @@
 \name{GeomGLALine}
 \alias{GeomGLALine}
 \title{GeomGLALine}
-\format{An object of class \code{GeomGLALine} (inherits from \code{GeomLine}, \code{GeomPath}, \code{Geom}, \code{ggproto}, \code{gg}) of length 2.}
+\format{
+An object of class \code{GeomGLALine} (inherits from \code{GeomLine}, \code{GeomPath}, \code{Geom}, \code{ggproto}, \code{gg}) of length 2.
+}
 \usage{
 GeomGLALine
 }

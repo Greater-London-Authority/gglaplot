@@ -4,9 +4,14 @@
 \alias{theme_gla}
 \title{theme_gla}
 \usage{
-theme_gla(gla_theme = "default", x_axis_title = FALSE,
-  y_axis_title = FALSE, xgridlines = FALSE, legend = TRUE,
-  base_size = 14)
+theme_gla(
+  gla_theme = "default",
+  x_axis_title = FALSE,
+  y_axis_title = FALSE,
+  xgridlines = FALSE,
+  legend = TRUE,
+  base_size = 14
+)
 }
 \arguments{
 \item{gla_theme}{Either 'default' or 'inverse', Default: 'default'}
