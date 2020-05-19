@@ -164,7 +164,7 @@ ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
                      labels = dollar_format(prefix = "", suffix = "%")) +
   # Format the x-axis
   scale_x_date(date_breaks = "1 year", date_labels = "%y",
-               expand = expand_scale(mult = c(0.05, 0.01))) +
+               expand = expansion(mult = c(0.05, 0.01))) +
   # Add titles and captions
   labs(
     title = "Gender Pay Gap - Total (Median)",
