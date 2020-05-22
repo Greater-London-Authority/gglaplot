@@ -50,10 +50,12 @@ ggla_horizbar <- function(..., stat = "identity", position = "stack",
   horizbar <- list(
     horizbar,
     ggplot2::coord_flip(),
-    ggplot2::theme(panel.grid = ggplot2::element_blank(),
+    ggplot2::theme(panel.grid.major.y = ggplot2::element_blank(),
                    axis.text.y = ggplot2::element_text(
                      hjust = 0, vjust = 0.5,
-                     margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 0, unit = "pt"))))
+                     margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 0,
+                                              unit = "pt")),
+                   axis.ticks.length.y = unit(x = 0, units = "pt")))
 
   return(horizbar)
 

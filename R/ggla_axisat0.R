@@ -24,10 +24,13 @@ ggla_axisat0 <- function(gla_theme = "default") {
   checkmate::assert_choice(gla_theme, c("default", "inverse"))
 
   colours <- get(paste0("gla_", gla_theme))
-
-  ggla_axisat0 <- ggplot2::geom_hline(yintercept = 0, linetype = "solid",
-                                      color = colours$`strong grid`,
-                                      size = 1 * mm_to_pt)
-
+  
+  ggla_axisat0 <- list(ggplot2::geom_hline(yintercept = 0, linetype = "solid",
+                                           color = colours$`strong grid`,
+                                           size = 1 * mm_to_pt),
+                       ggplot2::theme(axis.ticks.y = element_line(
+                         color = c(colours$`strong grid`,
+                                   rep(colours$`light grid`, 1000)),
+                         size = 1 * mm_to_pt)))
   return(ggla_axisat0)
 }
