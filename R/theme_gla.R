@@ -6,6 +6,9 @@
 #' @param xgridlines boolean, If TRUE, theme will include gridlines on the x-axis, Default: FALSE
 #' @param legend boolean, If TRUE, theme will include a legend at the top left of the plot, Default: TRUE
 #' @param base_size base font size, Default: 14
+#' @param y_label_length length of lines under y-axis labels. For most plots this won't need changing.
+#' It will need adjusting for faceted plots or if labels are particularly long.
+#' As a rough guide this should be set approximately equal to 96 * strwidth(y_labels, unit = "inches") with default base_size.
 #' @details DETAILS
 #' @examples 
 #' \dontrun{
@@ -19,7 +22,7 @@
 theme_gla <- function(gla_theme = "default",
                       x_axis_title = FALSE, y_axis_title = FALSE,
                       xgridlines = FALSE, legend = TRUE,
-                      base_size = 14) {
+                      base_size = 14, y_label_length = 100) {
 
   # checks
   check <- checkmate::test_choice(gla_theme, choices = c("light", "dark"))
@@ -87,14 +90,14 @@ theme_gla <- function(gla_theme = "default",
       axis.ticks.x = ggplot2::element_blank(),
       axis.ticks.y = ggplot2::element_line(size = 1 * mm_to_pt,
                                            colour = colours$`light grid`),
-      axis.ticks.length.y = ggplot2::unit(100, units = "pt"),
+      axis.ticks.length.y = ggplot2::unit(y_label_length, units = "pt"),
       axis.text = ggplot2::element_text(colour = colours$`body text`,
                                         family = "sans",
                                         hjust = 0.5, size = axis_size),
       axis.text.y = ggplot2::element_text(
         hjust = 0, vjust = -0.5,
         margin = ggplot2::margin(
-          t = 0, r = -100, b = 0, l = 0,
+          t = 0, r = -y_label_length, b = 0, l = 0,
           unit = "pt")),
 
       # legend
