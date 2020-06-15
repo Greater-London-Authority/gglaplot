@@ -55,7 +55,11 @@ theme_gla <- function(gla_theme = "default",
                                     b = plot_margin, l = plot_margin,
                                     unit =  "pt"),
       plot.background = ggplot2::element_rect(fill = colours$background),
+      
+      # facet panels
       panel.border = ggplot2::element_blank(),
+      panel.spacing.y = unit(axis_size + plot_margin, units = "pt"),
+      panel.spacing.x = unit(plot_margin, units = "pt"),
 
       # text and title
       text = ggplot2::element_text(colour = colours$`body text`,
