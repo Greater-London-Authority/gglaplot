@@ -1,0 +1,108 @@
+---
+title: "Using plotly with gglaplot"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using plotly with gglaplot}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+  
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+collapse = TRUE,
+comment = "",
+dpi = 300,
+fig.width = 9,
+fig.height = 7
+)
+```
+
+The R package for plotly, an interactive plotting library, includes a function to convert ggplots into interactive ploty plots. A version of this is included in gglaplot which adjust the look of the plot to be more inkeeping with the GLA IU style guide (if theme_gla() has been used on the ggplot).
+
+The conversion of ggplots to plotlys using `ggplotly` isn't perfect and is still undergoing development. `gglaplotly` provides only basic adjustments to this, and is experimental at this stage. The main limitations are:
+
+* It can only be used on in built ggplot2 geoms (not any of the custom gglaplot ones like `ggla_line` or `ggla_sf`)
+* Not all features of a ggplot can be converted (e.g. subtitles and captions are lost in the conversion)
+
+For more complex figures it could be easier to start with base plotly, details on how to do this can be found [here](https://plotly-r.com/) and [here](https://plotly.com/r/).
+
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(gglaplot)
+library(plotly)
+library(sf)
+library(scales)
+```
+
+Here's a simple ggplot line chart:
+```{r}
+pal <- gla_pal(gla_theme = "default", palette_type = "highlight", n = c(1, 1))
+
+plot <- ggplot(data = LDNUK,
+               mapping = aes(x = Year, y = GPG,
+                             group = location, colour = location)) +
+  scale_y_continuous(labels = dollar_format(prefix = "", suffix = "%",
+                                            accuracy = 0.1)) +
+  labs(title = "Gender Pay Gap - Total (Median) - London VS UK") +
+  scale_colour_manual(values = pal) +
+  geom_line() +
+  # Use theme_gla() - a lot of the theme styling will be carried across automatically
+  theme_gla()
+
+
+plot
+```
+
+Feeding this plot into `gglaplotly` will produce a basic plotly plot, including a default hovertool and basic interactivity:
+
+```{r}
+gglaplotly(plot)
+```
+
+These can then be adjusted as you would any other plotly plot. See [here](https://plotly-r.com/) and [here](https://plotly.com/r/) for more details.
+
+To adjust what it shown in the hover tool add a `text` aesthetic to the ggplot plot and reference it in `tooltip` in gglaplotly.
+
+```{r}
+plot <- ggplot(data = LDNUK,
+               mapping = aes(x = Year, y = GPG,
+                             group = location, colour = location,
+                             text = comma(x = GPG, accuracy = 0.5, suffix = "%"))) +
+  scale_colour_manual(values = pal) +
+  geom_line() +
+  theme_gla() +
+  scale_y_continuous(labels = dollar_format(prefix = "", suffix = "%",
+                                            accuracy = 0.1)) +
+  labs(title = "Gender Pay Gap - Total (Median) - London VS UK")
+gglaplotly(plot, tooltip = "text")
+```
+
+Range sliders can be added to view certain periods of data
+
+```{r}
+gglaplotly(plot, tooltip = "text", dynamicTicks = TRUE) %>%
+  layout(xaxis = list(rangeslider = list(type = "date")))
+  
+```
+
+
+`gglaplotly` also includes some default settings to tidy up the rendering of maps:
+
+```{r, fig.cap="Contains Ordnance Survey data Crown copyright and database right [2015]", fig.align="left"}
+pal <- gla_pal(gla_theme = "default", palette_type = "diverging",
+               main_colours = c("blue", "red"), n = 6, remove_margin = "both")
+EURef <- EURef %>%
+  st_as_sf()
+plot <- ggplot(data = EURef) +
+  geom_sf(mapping = aes(geometry = geometry, fill = CatLeave, text = CatLeave),
+          color = gla_default$background) +
+  scale_fill_manual(values = pal) + 
+  labs(title = "Leave Vote in the 2016 EU Referendum") +
+  theme_gla()
+
+gglaplotly(plot,
+           tooltip = "text")
+```
+
+**Note**: As captions cannot be carried over from ggplots, a figure caption has been added in RMarkdown (using `fig.cap=` in the chunk header). It is also possible to add an annotation to a plotly figure using [`layout(annotation = list(...))`](https://plotly.com/r/reference/#layout-annotations), but the positioning will depend on the other features of the figure.
