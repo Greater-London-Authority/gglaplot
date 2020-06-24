@@ -17,7 +17,7 @@ fig.height = 7
 )
 ```
 
-The R package for plotly, an interactive plotting library, includes a function to convert ggplots into interactive ploty plots. A version of this is included in gglaplot which adjust the look of the plot to be more inkeeping with the GLA IU style guide (if theme_gla() has been used on the ggplot).
+The R package for plotly, an interactive plotting library, includes a function to convert ggplots into interactive ploty plots. A version of this is included in gglaplot which adjust the look of the plot to be more in keeping with the GLA IU style guide (if theme_gla() has been used on the ggplot).
 
 The conversion of ggplots to plotlys using `ggplotly` isn't perfect and is still undergoing development. `gglaplotly` provides only basic adjustments to this, and is experimental at this stage. The main limitations are:
 
@@ -62,7 +62,7 @@ gglaplotly(plot)
 
 These can then be adjusted as you would any other plotly plot. See [here](https://plotly-r.com/) and [here](https://plotly.com/r/) for more details.
 
-The title and legend can look a bit crowded (the positioning of these outside the plot so they don't overlap is tricky). In some sitations it might be better to write the plot title in the rmarkdown document instead and not include it in the plot itself.
+The title and legend can look a bit crowded (the positioning of these outside the plot so they don't overlap is tricky). In some situations it might be better to write the plot title in the rmarkdown document instead and not include it in the plot itself.
 
 To adjust what it shown in the hover tool add a `text` aesthetic to the ggplot plot and reference it in `tooltip` in gglaplotly.
 

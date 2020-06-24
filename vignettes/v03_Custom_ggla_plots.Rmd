@@ -208,7 +208,7 @@ We can add some additional formatting and labels to this
 
 ```{r}
 barplot +
-  # Add formated labels to each bar
+  # Add formatted labels to each bar
   geom_text(aes(label = paste(format(eyfsp, nsmall = 0), "%", sep = "")),
             y = 8, position = position_nudge(x = 0, y = 0), vjust = 0.50,
             colour = gla_default$background) +
@@ -259,7 +259,7 @@ ggplot(AvAtt,
 
 ## Donut charts
 
-We'll use some data on internet useage in London to illustrate donut charts
+We'll use some data on internet usage in London to illustrate donut charts
 
 ```{r}
 Internet %>%
@@ -292,7 +292,7 @@ EURef %>%
   kable()
 ```
 
-The leave vote has been seperated out into categories for each Borough.
+The leave vote has been separated out into categories for each Borough.
 The geometry of each Borough is available on the [DataStore](https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london).
 
 To plot geographical data, you can use the `ggla_sf()` which is similar to the `ggplot::geom_sf()` function with different defaults to fit with our style guide. This function works with *simple features data*, as used in the [sf package](https://www.rdocumentation.org/packages/sf/versions/0.7-2). The geometry here is polygons, but `ggla_sf()` works with other geometry types.
