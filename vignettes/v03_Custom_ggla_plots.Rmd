@@ -2,11 +2,12 @@
 title: "Custom `gglaplot`s"
 output: rmarkdown::html_vignette
 vignette: >
-%\VignetteIndexEntry{Custom gglaplots}
+  %\VignetteIndexEntry{Custom gglaplots}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-  ---
-  ```{r setup, include = FALSE}
+---
+
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
 collapse = TRUE,
 comment = "",
@@ -191,7 +192,7 @@ Here's an unstacked, faceted example:
 ```{r}
 barplot <- ggplot(EYFSP, aes(x = Ethnicity, y = eyfsp, fill = Region)) +
   # Add theme with gridlines and legend turned off
-  theme_gla(xgridlines = FALSE, legend = FALSE) +
+  theme_gla(legend = FALSE) +
   # Add horizontal bar chart
   # to100 adds a context bar behind the data up to 100%
   ggla_horizbar(to100 = TRUE) +
