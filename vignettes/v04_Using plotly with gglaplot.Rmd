@@ -62,6 +62,8 @@ gglaplotly(plot)
 
 These can then be adjusted as you would any other plotly plot. See [here](https://plotly-r.com/) and [here](https://plotly.com/r/) for more details.
 
+The title and legend can look a bit crowded (the positioning of these outside the plot so they don't overlap is tricky). In some sitations it might be better to write the plot title in the rmarkdown document instead and not include it in the plot itself.
+
 To adjust what it shown in the hover tool add a `text` aesthetic to the ggplot plot and reference it in `tooltip` in gglaplotly.
 
 ```{r}
@@ -83,7 +85,7 @@ Range sliders can be added to view certain periods of data
 ```{r}
 gglaplotly(plot, tooltip = "text", dynamicTicks = TRUE) %>%
   layout(xaxis = list(rangeslider = list(type = "date")))
-  
+
 ```
 
 
