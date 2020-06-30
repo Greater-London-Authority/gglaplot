@@ -17,11 +17,11 @@ fig.height = 7
 )
 ```
 
-The R package for plotly, an interactive plotting library, includes a function to convert ggplots into interactive ploty plots. A version of this is included in gglaplot which adjust the look of the plot to be more in keeping with the GLA IU style guide (if theme_gla() has been used on the ggplot).
+The R package [plotly](https://plotly.com/r/), allows you to make interactive plots in R. These plots can either be made using plotly itself, or simple plots can be converted from ggplot2 using `ggplotly`. gglaplot includes functions which apply styling to the plots to be more in keeping with the GLA IU style guide.
 
-The conversion of ggplots to plotlys using `ggplotly` isn't perfect and is still undergoing development. `gglaplotly` provides only basic adjustments to this, and is experimental at this stage. The main limitations are:
+The conversion of ggplots to plotlys using `ggplotly` isn't perfect and is still undergoing development. The main limitations are:
 
-* It can only be used on in built ggplot2 geoms (not any of the custom gglaplot ones like `ggla_line` or `ggla_sf`)
+* It can mostly only be used on in built ggplot2 geoms (the only custom gglaplot geom it works for is `ggla_line`, although more may be added)
 * Not all features of a ggplot can be converted (e.g. subtitles and captions are lost in the conversion)
 
 For more complex figures it could be easier to start with base plotly, details on how to do this can be found [here](https://plotly-r.com/) and [here](https://plotly.com/r/).
@@ -33,6 +33,7 @@ library(gglaplot)
 library(plotly)
 library(sf)
 library(scales)
+library(htmlwidgets)
 ```
 
 Here's a simple ggplot line chart:
@@ -46,23 +47,27 @@ plot <- ggplot(data = LDNUK,
                                             accuracy = 0.1)) +
   labs(title = "Gender Pay Gap - Total (Median) - London VS UK") +
   scale_colour_manual(values = pal) +
-  geom_line() +
-  # Use theme_gla() - a lot of the theme styling will be carried across automatically
-  theme_gla()
+  ggla_line()
 
 
 plot
 ```
 
-Feeding this plot into `gglaplotly` will produce a basic plotly plot, including a default hovertool and basic interactivity:
+Feeding this plot into `ggplotly` will produce a basic plotly plot, including a default hovertool and basic interactivity and piping it into `ggla_plotly_settings` will apply gglaplot styling:
 
 ```{r}
-gglaplotly(plot)
+ggplotly(plot) %>%
+  ggla_plotly_settings()
+```
+`ggla_plotly_settings` includes the same arguments as `theme_gla`, including using the inverse theme.
+
+```{r}
+ggplotly(plot) %>%
+  ggla_plotly_settings(gla_theme = "inverse")
 ```
 
-These can then be adjusted as you would any other plotly plot. See [here](https://plotly-r.com/) and [here](https://plotly.com/r/) for more details.
 
-The title and legend can look a bit crowded (the positioning of these outside the plot so they don't overlap is tricky). In some situations it might be better to write the plot title in the rmarkdown document instead and not include it in the plot itself.
+`ggla_plotly_settings` includes adjustments to the `layout`, `style` and `config` settings of plotly plots. To make additional adjustments any layout arguments can be added directly to `ggla_plotly_settings(...)`. For changes to the `style` and `config` of the plot, the plot can either be piped into `style()` or `config()` after `ggla_plotly_settings` or the sub-functions included in `ggla_plotly_settings()` (`ggla_plotly_layout`, `ggla_plotly_style`, `ggla_plotly_config`) can be used instead with each of them accepting the arguments of their equivalent plotly functions. See [here](https://plotly-r.com/) and [here](https://plotly.com/r/) for more details.
 
 To adjust what it shown in the hover tool add a `text` aesthetic to the ggplot plot and reference it in `tooltip` in gglaplotly.
 
@@ -72,19 +77,19 @@ plot <- ggplot(data = LDNUK,
                              group = location, colour = location,
                              text = comma(x = GPG, accuracy = 0.5, suffix = "%"))) +
   scale_colour_manual(values = pal) +
-  geom_line() +
-  theme_gla() +
+  ggla_line() +
   scale_y_continuous(labels = dollar_format(prefix = "", suffix = "%",
                                             accuracy = 0.1)) +
   labs(title = "Gender Pay Gap - Total (Median) - London VS UK")
-gglaplotly(plot, tooltip = "text")
+ggplotly(plot, tooltip = "text") %>%
+  ggla_plotly_settings()
 ```
 
 Range sliders can be added to view certain periods of data
 
 ```{r}
-gglaplotly(plot, tooltip = "text", dynamicTicks = TRUE) %>%
-  layout(xaxis = list(rangeslider = list(type = "date")))
+ggplotly(plot, tooltip = "text", dynamicTicks = TRUE) %>%
+  ggla_plotly_settings(xaxis = list(rangeslider = list(type = "date")))
 
 ```
 
@@ -100,11 +105,18 @@ plot <- ggplot(data = EURef) +
   geom_sf(mapping = aes(geometry = geometry, fill = CatLeave, text = CatLeave),
           color = gla_default$background) +
   scale_fill_manual(values = pal) + 
-  labs(title = "Leave Vote in the 2016 EU Referendum") +
-  theme_gla()
+  labs(title = "Leave Vote in the 2016 EU Referendum")
 
-gglaplotly(plot,
-           tooltip = "text")
+plotly_plot <- ggplotly(plot, tooltip = "text") %>%
+  ggla_plotly_settings()
+plotly_plot
 ```
 
 **Note**: As captions cannot be carried over from ggplots, a figure caption has been added in RMarkdown (using `fig.cap=` in the chunk header). It is also possible to add an annotation to a plotly figure using [`layout(annotation = list(...))`](https://plotly.com/r/reference/#layout-annotations), but the positioning will depend on the other features of the figure.
+
+Plotly figures can be saved as standalone html files using the `htmlwidgets` package:
+
+
+```{r, eval=FALSE}
+saveWidget(plotly_plot, file = "plotly_plot.html")
+```
