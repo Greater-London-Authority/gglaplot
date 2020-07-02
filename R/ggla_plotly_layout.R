@@ -4,20 +4,22 @@ ggla_plotly_layout <- function(plot, gla_theme = "default",
                         base_size = 14,
                         annotations = NULL, ...) {
   colours <- get(paste0("gla_", gla_theme))
-  
+
   # Text size
   title_size <- base_size * (18 / 14)
   label_size <- base_size * (12 / 14)
   axis_size <- base_size * (12 / 14)
   plot_margin <- base_size * (5 / 14)
-  
+
   has_title <- !is.null(plot$x$layout$title$text)
   has_geom <- "geometry" %in% names(unname(plot$x$attrs)[[1]])
-  
-  
+
+
   ggla_plotly <- plot %>%
     plotly::layout(
-      margin = list(t = plot_margin, b = plot_margin, r = plot_margin, l = plot_margin, pad = 0),
+      margin = list(t = plot_margin, b = plot_margin,
+                    r = plot_margin, l = plot_margin,
+                    pad = 0),
       plot_bgcolor = colours$background,
       paper_bgcolor = colours$background,
       font = list(
@@ -46,10 +48,10 @@ ggla_plotly_layout <- function(plot, gla_theme = "default",
         tickangle = 0,
         showline = FALSE,
         linecolor = colours$`light grid`,
-        linewidth = 2/3,
+        linewidth = 2 / 3,
         showgrid = xgridlines,
         gridcolor = colours$`light grid`,
-        gridwidth = 2/3,
+        gridwidth = 2 / 3,
         zeroline = FALSE,
         anchor = "y",
         title = list(
@@ -103,22 +105,22 @@ ggla_plotly_layout <- function(plot, gla_theme = "default",
           family = "Arial",
           size = label_size)),
       showlegend = legend)
-  
+
   if (has_title) {
     ggla_plotly <- ggla_plotly %>%
       layout(margin = list(t = 5 * title_size))
   }
-  
+
   if (!x_axis_title) {
     ggla_plotly <- ggla_plotly %>%
       layout(xaxis = list(title = list(text = NULL)))
   }
-  
+
   if (!y_axis_title) {
     ggla_plotly <- ggla_plotly %>%
       layout(yaxis = list(title = list(text = NULL)))
   }
-  
+
   if (has_geom) {
     ggla_plotly <- ggla_plotly %>%
       layout(
@@ -130,7 +132,7 @@ ggla_plotly_layout <- function(plot, gla_theme = "default",
           showgrid = FALSE)
       )
   }
-  
+
   if (!is.null(annotations)) {
     default_annotations <- list(
       arrowhead = 0,
@@ -157,6 +159,6 @@ ggla_plotly_layout <- function(plot, gla_theme = "default",
   }
   ggla_plotly <- ggla_plotly %>%
     layout(...)
-  
+
   return(ggla_plotly)
 }

@@ -3,14 +3,14 @@
 #' @param gla_theme Either "default" or "inverse", Default: "default"
 #' @param inc_div boolean, If TRUE, output will include diverging colour palettes, Default: FALSE
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
 #' @rdname show_gla_pals
-#' @export 
+#' @export
 #' @import checkmate
 #' @import dplyr
 show_gla_pals <- function(gla_theme = "default", inc_div = FALSE) {

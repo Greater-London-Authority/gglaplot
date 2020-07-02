@@ -10,19 +10,20 @@
 #' It will need adjusting for faceted plots or if labels are particularly long.
 #' As a rough guide this should be set approximately equal to 96 * strwidth(y_labels, unit = "inches") with default base_size.
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
 #' @rdname theme_gla
-#' @export 
+#' @export
 #' @import checkmate
 theme_gla <- function(gla_theme = "default",
                       x_axis_title = FALSE, y_axis_title = FALSE,
                       xgridlines = FALSE, legend = TRUE,
-                      base_size = 14, free_y_facets = FALSE, y_label_length = 100) {
+                      base_size = 14, free_y_facets = FALSE,
+                      y_label_length = 100) {
 
   # checks
   check <- checkmate::test_choice(gla_theme, choices = c("light", "dark"))
@@ -36,7 +37,7 @@ theme_gla <- function(gla_theme = "default",
   checkmate::assert_logical(xgridlines)
   checkmate::assert_logical(legend)
   checkmate::assert_number(base_size, lower = 0)
-  
+
   colours <- get(paste0("gla_", gla_theme))
 
   # Text size
@@ -71,11 +72,12 @@ theme_gla <- function(gla_theme = "default",
       plot.subtitle = ggplot2::element_text(colour = colours$headlines,
                                             family = "sans", hjust = 0,
                                             size = base_size,
-                                            margin = margin(t = 0,
-                                                            r = 0,
-                                                            b = 1.5 * plot_margin,
-                                                            l = 0,
-                                                            unit = "pt")),
+                                            margin = margin(
+                                              t = 0,
+                                              r = 0,
+                                              b = 1.5 * plot_margin,
+                                              l = 0,
+                                              unit = "pt")),
       plot.caption = ggplot2::element_text(colour = colours$`body text`,
                                            family = "sans", hjust = 0,
                                            size = label_size),
@@ -86,7 +88,7 @@ theme_gla <- function(gla_theme = "default",
                                                  colour = colours$`light grid`),
       panel.grid.major.x = ggplot2::element_blank(),
       panel.grid.minor = ggplot2::element_blank(),
-      
+
       # axis text and ticks
       axis.ticks.x = ggplot2::element_blank(),
       axis.ticks.y = ggplot2::element_line(size = 1 * mm_to_pt,
@@ -133,19 +135,19 @@ theme_gla <- function(gla_theme = "default",
           colour = colours$`body text`, family = "sans", hjust = 0.5,
           size = label_size,
           margin = ggplot2::margin(2 * plot_margin, 0, plot_margin, 0, "pt"))
-        )
+      )
   }
-    if (y_axis_title == FALSE) {
-      theme_gla <- theme_gla +
-        ggplot2::theme(axis.title.y = ggplot2::element_blank())
-    } else {
-      theme_gla <- theme_gla +
-        ggplot2::theme(
-          axis.title.y = ggplot2::element_text(
-            colour = colours$`body text`, family = "sans", hjust = 0.5,
-            size = label_size,
-            margin = ggplot2::margin(0, 2 * plot_margin, 0, plot_margin, "pt"))
-          )
+  if (y_axis_title == FALSE) {
+    theme_gla <- theme_gla +
+      ggplot2::theme(axis.title.y = ggplot2::element_blank())
+  } else {
+    theme_gla <- theme_gla +
+      ggplot2::theme(
+        axis.title.y = ggplot2::element_text(
+          colour = colours$`body text`, family = "sans", hjust = 0.5,
+          size = label_size,
+          margin = ggplot2::margin(0, 2 * plot_margin, 0, plot_margin, "pt"))
+      )
   }
 
   # x-axis gridlines
@@ -160,7 +162,7 @@ theme_gla <- function(gla_theme = "default",
     theme_gla <- theme_gla +
       ggplot2::theme(legend.position = "none")
   }
-  
+
   if (free_y_facets) {
     theme_gla <- theme_gla +
       ggplot2::theme(axis.ticks.length.y = ggplot2::unit(0, units = "pt"),

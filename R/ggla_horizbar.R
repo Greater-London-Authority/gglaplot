@@ -5,16 +5,16 @@
 #' @param to100 boolean, If TRUE a context layer will be added below to bar chart up to 100, Default: FALSE
 #' @inheritParams ggplot2::geom_bar
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' @seealso 
+#' @seealso
 #'  \code{\link[ggplot2]{geom_bar}}
 #' @rdname ggla_horizbar
-#' @export 
+#' @export
 #' @import checkmate
 #' @param gla_theme Either "default" or "inverse", Default: 'default'
 ggla_horizbar <- function(..., stat = "identity", position = "stack",

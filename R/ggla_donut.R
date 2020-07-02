@@ -21,16 +21,16 @@
 #' }
 #'
 #' @details This works by creating a stacked bar chart and converting to polar coordinates.
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' @seealso 
+#' @seealso
 #'  \code{\link[ggplot2]{geom_bar}}
 #' @rdname ggla_donut
-#' @export 
+#' @export
 #' @import ggplot2
 #' @importFrom utils modifyList
 #' @param gla_theme Either "default" or "inverse", Default: 'default'
@@ -66,13 +66,15 @@ ggla_donut <- function(mapping = NULL, data = NULL, stat = "count",
                                   position = "stack",
                                   colour = NA, ...),
                 ggplot2::coord_polar(theta = "y", direction = -1),
-                ggplot2::theme(panel.grid.major.y = ggplot2::element_blank(),
-                               axis.text.y = ggplot2::element_blank(),
-                               axis.text.x = ggplot2::element_blank(),
-                               axis.line = ggplot2::element_blank(),
-                               axis.ticks.length.y = ggplot2::unit(x = 0,
-                                                                   units = "pt"),
-                               legend.position = "none"),
+                ggplot2::theme(
+                  panel.grid.major.y = ggplot2::element_blank(),
+                  axis.text.y = ggplot2::element_blank(),
+                  axis.text.x = ggplot2::element_blank(),
+                  axis.line = ggplot2::element_blank(),
+                  axis.ticks.length.y = ggplot2::unit(
+                    x = 0,
+                    units = "pt"),
+                  legend.position = "none"),
                 ggplot2::xlim(c(0, 3.25)))
   if (!is.null(title)) {
     donut <- list(donut,
