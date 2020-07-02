@@ -22,7 +22,7 @@
 theme_gla <- function(gla_theme = "default",
                       x_axis_title = FALSE, y_axis_title = FALSE,
                       xgridlines = FALSE, legend = TRUE,
-                      base_size = 14, y_label_length = 100) {
+                      base_size = 14, free_y_facets = FALSE, y_label_length = 100) {
 
   # checks
   check <- checkmate::test_choice(gla_theme, choices = c("light", "dark"))
@@ -55,11 +55,6 @@ theme_gla <- function(gla_theme = "default",
                                     b = plot_margin, l = plot_margin,
                                     unit =  "pt"),
       plot.background = ggplot2::element_rect(fill = colours$background),
-      
-      # facet panels
-      panel.border = ggplot2::element_blank(),
-      panel.spacing.y = unit(axis_size + plot_margin, units = "pt"),
-      panel.spacing.x = unit(plot_margin, units = "pt"),
 
       # text and title
       text = ggplot2::element_text(colour = colours$`body text`,
@@ -86,11 +81,13 @@ theme_gla <- function(gla_theme = "default",
                                            size = label_size),
       plot.caption.position = "plot",
 
-      # axis and gridlines
+      # gridlines
       panel.grid.major.y = ggplot2::element_line(size = 1 * mm_to_pt,
                                                  colour = colours$`light grid`),
       panel.grid.major.x = ggplot2::element_blank(),
       panel.grid.minor = ggplot2::element_blank(),
+      
+      # axis text and ticks
       axis.ticks.x = ggplot2::element_blank(),
       axis.ticks.y = ggplot2::element_line(size = 1 * mm_to_pt,
                                            colour = colours$`light grid`),
@@ -118,9 +115,12 @@ theme_gla <- function(gla_theme = "default",
                              l = 0, b = 0, unit = "pt"),
 
       # facets
+      panel.border = ggplot2::element_blank(),
+      panel.spacing.y = unit(axis_size + 3 * plot_margin, units = "pt"),
+      panel.spacing.x = unit(5 * plot_margin, units = "pt"),
       strip.background = ggplot2::element_blank(),
       strip.text = ggplot2::element_text(colour = colours$`body text`,
-                                         vjust = -1, hjust = 0.05))
+                                         vjust = 0, hjust = 0.5))
 
   # axis titles
   if (x_axis_title == FALSE) {
@@ -159,6 +159,16 @@ theme_gla <- function(gla_theme = "default",
   if (legend == FALSE) {
     theme_gla <- theme_gla +
       ggplot2::theme(legend.position = "none")
+  }
+  
+  if (free_y_facets) {
+    theme_gla <- theme_gla +
+      ggplot2::theme(axis.ticks.length.y = ggplot2::unit(0, units = "pt"),
+                     axis.text.y = ggplot2::element_text(
+                       hjust = 1, vjust = 0.5,
+                       margin = ggplot2::margin(
+                         t = 0, r = plot_margin, b = 0, l = 0,
+                         unit = "pt")))
   }
 
   return(theme_gla)
