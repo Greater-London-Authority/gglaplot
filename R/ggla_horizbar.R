@@ -55,7 +55,7 @@ ggla_horizbar <- function(..., stat = "identity", position = "stack",
                      hjust = 0, vjust = 0.5,
                      margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 0,
                                               unit = "pt")),
-                   axis.ticks.length.y = unit(x = 0, units = "pt")))
+                   axis.ticks.length.y = ggplot2::unit(x = 0, units = "pt")))
 
   return(horizbar)
 

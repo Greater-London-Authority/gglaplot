@@ -108,22 +108,22 @@ ggla_plotly_layout <- function(plot, gla_theme = "default",
 
   if (has_title) {
     ggla_plotly <- ggla_plotly %>%
-      layout(margin = list(t = 5 * title_size))
+      plotly::layout(margin = list(t = 5 * title_size))
   }
 
   if (!x_axis_title) {
     ggla_plotly <- ggla_plotly %>%
-      layout(xaxis = list(title = list(text = NULL)))
+      plotly::layout(xaxis = list(title = list(text = NULL)))
   }
 
   if (!y_axis_title) {
     ggla_plotly <- ggla_plotly %>%
-      layout(yaxis = list(title = list(text = NULL)))
+      plotly::layout(yaxis = list(title = list(text = NULL)))
   }
 
   if (has_geom) {
     ggla_plotly <- ggla_plotly %>%
-      layout(
+      plotly::layout(
         xaxis = list(
           showticklabels = FALSE,
           showgrid = FALSE),
@@ -148,17 +148,17 @@ ggla_plotly_layout <- function(plot, gla_theme = "default",
     default_font <- list(size = label_size,
                          family = "Arial",
                          color = colours$`axis text & labels`)
-    annotations <- modifyList(default_annotations, annotations)
+    annotations <- utils::modifyList(default_annotations, annotations)
     if ("font" %in% names(annotations)) {
-      annotations$font <- modifyList(default_font, annotations$font)
+      annotations$font <- utils::modifyList(default_font, annotations$font)
     } else {
       annotations$font <- default_font
     }
     ggla_plotly <- ggla_plotly %>%
-      layout(annotations = annotations)
+      plotly::layout(annotations = annotations)
   }
   ggla_plotly <- ggla_plotly %>%
-    layout(...)
+    plotly::layout(...)
 
   return(ggla_plotly)
 }

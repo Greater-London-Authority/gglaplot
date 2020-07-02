@@ -1,6 +1,6 @@
 ggla_plotly_config <- function(plot, ...) {
   ggla_plotly <- plot %>%
-    config(displayModeBar = FALSE) %>%
-    config(...)
+    plotly::config(displayModeBar = FALSE) %>%
+    plotly::config(...)
   return(ggla_plotly)
 }
