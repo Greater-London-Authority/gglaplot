@@ -11,13 +11,13 @@
 #' @param xmax higher x-extent of highlighted area, Default: Inf
 #' @param xmin lower x-extent of highlighted area, Default: -Inf
 #' @param to100 boolean, If TRUE a context layer will be added below to bar chart up to 100, Default: FALSE
-#' @param y2 final y-value, only needed lines which aren't perpedicular or parallel to axis, Default: NULL
-#' @param x2 final x-value, only needed lines which aren't perpedicular or parallel to axis, Default: NULL
+#' @param y2 final y-value, only needed for lines which aren't perpendicular or parallel to axis, Default: NULL
+#' @param x2 final x-value, only needed for lines which aren't perpendicular or parallel to axis, Default: NULL
 #' @param y1 starting y-value, not needed for lines perpendicular to y-axis, Default: NULL
 #' @param x1 starting x-value, not needed for lines perpendicular to x-axis, Default: NULL
 #' @param inc0 boolean, If TRUE an additional colour representing zero will be added to a quantitative or diverging palette. Default: FALSE
 #' @param muted boolean, If TRUE a muted version of the gla colours will be used, Default: FALSE
-#' @param n Number of colours in the palette. If palette_type = "highlight" n must have length 2, specifing the number of highlighted and contextual colours. Default: 6
+#' @param n Number of colours in the palette. If palette_type = "highlight" n must have length 2, specifying the number of highlighted and contextual colours. Default: 6
 #' @param main_colours One or more colours. If NULL default order will be used, Default: NULL
 #' @param palette_type One of the strings "categorical", "quantitative", "highlight" or "diverging", Default: "categorical"
 #' @param palette_name One of the strings "core", "ldn", "light" or "dark", Default: "core"
@@ -30,3 +30,5 @@
 #' @param gla_theme Either "default" or "inverse", Default: "default"
 #' @param stat The statistical transformation to use on the data for this layer, as a string.
 #' @param position Position adjustment, either as a string, or the result of a call to a position adjustment function.
+#' @param plot A plotly plot, created either using plot_ly or ggplotly.
+#' @param annotations Annotations settings passed onto plotly::layout(annotations = ...)

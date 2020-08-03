@@ -27,9 +27,6 @@ a call to a position adjustment function.}
 \description{
 Create a horizontal bar chart
 }
-\details{
-DETAILS
-}
 \examples{
 \dontrun{
 if(interactive()){

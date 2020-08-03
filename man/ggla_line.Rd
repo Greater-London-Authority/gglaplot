@@ -64,9 +64,6 @@ to the paired geom/stat.}
 \description{
 Wrapper for ggplot2::geom_line with round line ends
 }
-\details{
-DETAILS
-}
 \examples{
 \dontrun{
 if(interactive()){

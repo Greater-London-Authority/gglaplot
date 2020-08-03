@@ -15,19 +15,16 @@ ggla_labelline(
 \arguments{
 \item{x1}{starting x-value, not needed for lines perpendicular to x-axis, Default: NULL}
 
-\item{x2}{final x-value, only needed lines which aren't perpedicular or parallel to axis, Default: NULL}
+\item{x2}{final x-value, only needed lines which aren't perpendicular or parallel to axis, Default: NULL}
 
 \item{y1}{starting y-value, not needed for lines perpendicular to y-axis, Default: NULL}
 
-\item{y2}{final y-value, only needed lines which aren't perpedicular or parallel to axis, Default: NULL}
+\item{y2}{final y-value, only needed lines which aren't perpendicular or parallel to axis, Default: NULL}
 
 \item{gla_theme}{Either "default" or "inverse", Default: 'default'}
 }
 \description{
 Add a dotted line labelled a specific point
-}
-\details{
-DETAILS
 }
 \examples{
 \dontrun{

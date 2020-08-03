@@ -35,9 +35,6 @@ Returns a character vector of length n giving colour hexs.
 \description{
 Generates palettes using the GLA colours
 }
-\details{
-DETAILS
-}
 \examples{
 \dontrun{
 if(interactive()){
