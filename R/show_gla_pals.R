@@ -2,7 +2,6 @@
 #' @description Display the available GLA palettes
 #' @param gla_theme Either "default" or "inverse", Default: "default"
 #' @param inc_div boolean, If TRUE, output will include diverging colour palettes, Default: FALSE
-#' @details DETAILS
 #' @examples
 #' \dontrun{
 #' if(interactive()){

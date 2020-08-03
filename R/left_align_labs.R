@@ -2,7 +2,6 @@
 #' @description DEPRECATED. The functionality is now included in `theme_gla`.
 #' Left aligns titles, subtitles and captions to the left of the whole plot (default is to left align to just the plot area)
 #' @param plot ggplot2 object
-#' @details DETAILS
 #' @examples
 #' \dontrun{
 #' if(interactive()){

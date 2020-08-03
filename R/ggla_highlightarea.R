@@ -4,14 +4,13 @@
 #' @param xmax higher x-extent of highlighted area, Default: Inf
 #' @param ymin lower y-extent of highlighted area, Default: -Inf
 #' @param ymax higher y-extent of highlighted area, Default: Inf
-#' @details DETAILS
 #' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' #' @seealso
+#' @seealso
 #'  \code{\link[ggplot2]{annotate}}
 #' @rdname ggla_highlightarea
 #' @export

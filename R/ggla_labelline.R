@@ -4,7 +4,6 @@
 #' @param x2 final x-value, only needed lines which aren't perpendicular or parallel to axis, Default: NULL
 #' @param y1 starting y-value, not needed for lines perpendicular to y-axis, Default: NULL
 #' @param y2 final y-value, only needed lines which aren't perpendicular or parallel to axis, Default: NULL
-#' @details DETAILS
 #' @examples
 #' \dontrun{
 #' if(interactive()){

@@ -6,10 +6,8 @@
 #' @param xgridlines boolean, If TRUE, theme will include gridlines on the x-axis, Default: FALSE
 #' @param legend boolean, If TRUE, theme will include a legend at the top left of the plot, Default: TRUE
 #' @param base_size base font size, Default: 14
-#' @param y_label_length length of lines under y-axis labels. For most plots this won't need changing.
-#' It will need adjusting for faceted plots or if labels are particularly long.
-#' As a rough guide this should be set approximately equal to 96 * strwidth(y_labels, unit = "inches") with default base_size.
-#' @details DETAILS
+#' @param y_label_length length of lines under y-axis labels. For most plots this won't need changing. It will need adjusting for faceted plots or if labels are particularly long. As a rough guide this should be set approximately equal to 96 * strwidth(y_labels, unit = "inches") with default base_size.
+#' @param free_y_facets Use if faceting plot with free y scales. Adjusts position of y axis labels, Default: FALSE
 #' @examples
 #' \dontrun{
 #' if(interactive()){

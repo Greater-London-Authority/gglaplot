@@ -1,6 +1,5 @@
 #' @title ggla_axisat0
 #' @description Forces the y-axis to y=0 and adds a strong axis line
-#' @details DETAILS
 #' @examples
 #' \dontrun{
 #' if(interactive()){
