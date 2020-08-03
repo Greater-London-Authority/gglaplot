@@ -73,9 +73,10 @@ To adjust what it shown in the hover tool add a `text` aesthetic to the ggplot p
 
 ```{r}
 plot <- ggplot(data = LDNUK,
-               mapping = aes(x = Year, y = GPG,
-                             group = location, colour = location,
-                             text = comma(x = GPG, accuracy = 0.5, suffix = "%"))) +
+               mapping = aes(
+                 x = Year, y = GPG,
+                 group = location, colour = location,
+                 text = comma(x = GPG, accuracy = 0.5, suffix = "%"))) +
   scale_colour_manual(values = pal) +
   ggla_line() +
   scale_y_continuous(labels = dollar_format(prefix = "", suffix = "%",
@@ -104,7 +105,7 @@ EURef <- EURef %>%
 plot <- ggplot(data = EURef) +
   geom_sf(mapping = aes(geometry = geometry, fill = CatLeave, text = CatLeave),
           color = gla_default$background) +
-  scale_fill_manual(values = pal) + 
+  scale_fill_manual(values = pal) +
   labs(title = "Leave Vote in the 2016 EU Referendum")
 
 plotly_plot <- ggplotly(plot, tooltip = "text") %>%
