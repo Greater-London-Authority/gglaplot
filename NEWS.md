@@ -1,3 +1,19 @@
+# gglaplot 1.1.0
+
+Changes relate to new functionality in ggplot2 3.3 and new functions to apply gglaplot style to plotly plots. The package now depends on [ggplot2 v3.3](https://github.com/tidyverse/ggplot2/tree/v3.3.0).
+
+## New features
+* gglaplot style can now be added to plotly plots by `%>%` it into `ggla_plotly_settings()`. This adjust the plotly `layout`, `style` and `config` settings. Each of these can applied seperately (and adjusted with addtional arguments) with `ggla_plotly_layout()`, `ggla_plotly_style()` and `ggla_plotly_config()`. (#23)
+
+## Major changes
+* `left_align_labs()` is being deprecated. The functionality to fully left align titles, subtitles and captions is now included in `theme_gla()`. [Left aligning the legend is an open issue in ggplot2 which will be resolved in v3.4](https://github.com/tidyverse/ggplot2/issues/4020).
+* y-axis labels now sit on tick marks. A default value for the length is set which should work for most plots. For plots with particularly long y-axis labels or a y-axis title the tick mark length can be adjusted with `y_label_length` in `theme_gla()`. (#21)
+* `theme_gla()` now includes a boolean arguement `free_y_facets`. This should be used for faceted plots with free scales on the y axis. This changes the position of the y-axis labels 
+
+## Bug fixes
+* Issues with overlapping legends, titles, plots resolved. (#24)
+
+
 # gglaplot 1.0.0
 
 The majority of the changes relate to updates to the underlying style guide, further details and advice can be found [here](https://data.london.gov.uk/blog/city-intelligence-data-design-guidelines/), and updates to ggplot2. The package now depends on [ggplot2 v3.2](https://github.com/tidyverse/ggplot2/tree/v3.2.0).
