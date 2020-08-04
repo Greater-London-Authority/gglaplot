@@ -27,8 +27,7 @@ ggla_plotly_style <- function(plot, gla_theme = "default",
                         font = list(family = "Arial",
                                     color = colours$background,
                                     size = label_size)),
-      hoveron = "fill") %>%
-    plotly::style(...)
+      hoveron = "fill", ...)
 
   return(ggla_plot)
 }
