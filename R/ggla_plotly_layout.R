@@ -18,7 +18,7 @@
 #' }
 #' @rdname ggla_plotly_layout
 #' @export
-#' @import plotly
+#' @importFrom plotly layout
 #' @import utils
 ggla_plotly_layout <- function(plot, gla_theme = "default",
                         x_axis_title = FALSE, y_axis_title = FALSE,

@@ -11,7 +11,7 @@
 #' }
 #' @rdname ggla_plotly_config
 #' @export
-#' @import plotly
+#' @importFrom plotly config
 ggla_plotly_config <- function(plot, ...) {
   ggla_plotly <- plot %>%
     plotly::config(displayModeBar = FALSE) %>%

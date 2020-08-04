@@ -13,7 +13,7 @@
 #' }
 #' @rdname ggla_plotly_style
 #' @export
-#' @import plotly
+#' @importFrom plotly style
 ggla_plotly_style <- function(plot, gla_theme = "default",
                               base_size = 14, ...) {
 
