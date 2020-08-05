@@ -19,7 +19,7 @@ This vignette summarises how to use the custom theme included in `gglaplot`.
 
 Themes control the overall look of the non-data components of plots. `ggplot2` includes various default themes, as well as a framework for editing and building your own, on which `theme_gla` is built.
 
-##How to apply  `theme_gla` to a `ggplot` object
+## How to apply  `theme_gla` to a `ggplot` object
 
 
 ```{r message=FALSE, warning=FALSE}
@@ -58,9 +58,9 @@ str(theme_gla)
 
 To change some of the more complicated aspects of the style of the plot, we need to change some of the `theme_gla()` arguments from their defaults.
 
-##Settings in the `theme_gla()` function
+## Settings in the `theme_gla()` function
 
-###Default or Inverse Theme
+### Default or Inverse Theme
 
 
 ```{r}
@@ -68,7 +68,7 @@ plot +
   theme_gla(gla_theme = "inverse")
 ```
 
-###Axis titles
+### Axis titles
 
 If needed, axis titles can be added to plots with the `x_axis_title` and `y_axis_title` arguments. If you're including a y-axis label you may need to adjust the length of the lines under the y-axis labels
 
@@ -77,7 +77,7 @@ plot +
   theme_gla(x_axis_title = TRUE, y_axis_title = TRUE, y_label_length = 25)
 ```
 
-###Gridlines
+### Gridlines
 
 `xgridlines` controls whether gridlines appear on the x-axis of the plot.
 
@@ -86,7 +86,7 @@ plot +
   theme_gla(xgridlines = TRUE)
 ```
 
-###Legend
+### Legend
 
 `legend` controls whether the legend appears. Where possible data should be labelled directly instead.
 
@@ -103,7 +103,7 @@ plot +
   guides(col = guide_legend(nrow = 2))
 ```
 
-###Font size
+### Font size
 
 `base_size` changes the base font size of the plot. The font size of any titles and captions will scale accordingly. Try and get the `base_size` to match the font size of the document/presentation the plot is being used in.
 
@@ -112,7 +112,7 @@ plot +
   theme_gla(base_size = 20)
 ```
 
-###Faceting
+### Faceting
 
 Faceting creates small multiples of plots, split into rows and columns by different variables.
 
@@ -145,7 +145,7 @@ ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG)) +
 
 If there are many small plots in a facet plot, it's worth considering scaling down the `base_size` in `theme_gla` to stop text looking out of proportion, and to reduce the `size` of some geoms to avoid losing detail.
 
-##How to use `theme_gla()`
+## How to use `theme_gla()`
 
 As above, you can just add `theme_gla()` to each of your ggplot objects. It's best to add it directly after the call to `ggplot` so it won't overwrite any manual changes you make later on. As with other `ggplot` themes you can make manual changes to them directly. For example, if for a particular plot you don't want any y-gridlines you can remove them using the `ggplot::theme()` function:
 
