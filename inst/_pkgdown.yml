@@ -89,9 +89,9 @@ navbar:
       menu:
       - text: Using GLA colour palettes
         href: articles/v01_Using_GLA_colour_palettes.html
-      - text: Using `theme_gla()`
+      - text: Using theme_gla()
         href: articles/v02_Using_the_gla_theme.html
-      - text: Custom `gglaplot`s
+      - text: Custom gglaplots
         href: articles/v03_Custom_ggla_plots.html
       - text: Using plotly with gglaplot
         href: articles/v04_Using_plotly_with_gglaplot.html

@@ -1,8 +1,8 @@
 ---
-title: "Using `theme_gla()`"
+title: "Using theme_gla()"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Using the ggla theme}
+  %\VignetteIndexEntry{Using theme_gla()}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

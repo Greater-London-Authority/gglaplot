@@ -1,5 +1,5 @@
 ---
-title: "Custom `gglaplot`s"
+title: "Custom gglaplots"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Custom gglaplots}
@@ -69,7 +69,9 @@ pal <- gla_pal(gla_theme = "default", palette_type = "highlight", n = c(1, 1))
 plot <- ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG,
                                            group = location)) +
   scale_colour_manual(values = pal) +
-  ggla_line(mapping = aes(colour = location))
+  ggla_line(mapping = aes(colour = location)) +
+  # Adjust the y_label_length parameter as we're going to have multiple charts on one plot
+  theme_gla(y_label_length = 25)
 
 plot
 
@@ -106,7 +108,7 @@ plot +
   theme_gla(legend = FALSE) +
   ggla_highlight(mapping = aes(label = location),
                  filter_type = "end", geom = GeomGLATextHighlight,
-                 position = position_nudge(x = -35, y = 0.5))
+                 position = position_nudge(x = -50, y = 0.5))
 ```
 
 ## Highlighting an area with `ggla_highlightarea()`
