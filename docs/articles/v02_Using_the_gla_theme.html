@@ -111,7 +111,9 @@
     
 <p>This vignette summarises how to use the custom theme included in <code>gglaplot</code>.</p>
 <p>Themes control the overall look of the non-data components of plots. <code>ggplot2</code> includes various default themes, as well as a framework for editing and building your own, on which <code>theme_gla</code> is built.</p>
-<p>##How to apply <code>theme_gla</code> to a <code>ggplot</code> object</p>
+<div id="how-to-apply-theme_gla-to-a-ggplot-object" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-to-apply-theme_gla-to-a-ggplot-object" class="anchor"></a>How to apply <code>theme_gla</code> to a <code>ggplot</code> object</h2>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">gglaplot</span>)</pre></body></html></div>
 <p>To illustrate how <code>theme_gla</code> can be used with <code>ggplot</code> plots, we’ll use a dataset comparing the gender pay gap in London and the rest of the UK. Here’s the dataset plotted in standard <code>ggplot</code>.</p>
@@ -130,22 +132,36 @@
     xgridlines = FALSE, legend = TRUE, base_size = 14, free_y_facets = FALSE, 
     y_label_length = 100)  </code></pre>
 <p>To change some of the more complicated aspects of the style of the plot, we need to change some of the <code><a href="../reference/theme_gla.html">theme_gla()</a></code> arguments from their defaults.</p>
-<p>##Settings in the <code><a href="../reference/theme_gla.html">theme_gla()</a></code> function</p>
-<p>###Default or Inverse Theme</p>
+</div>
+<div id="settings-in-the-theme_gla-function" class="section level2">
+<h2 class="hasAnchor">
+<a href="#settings-in-the-theme_gla-function" class="anchor"></a>Settings in the <code>theme_gla()</code> function</h2>
+<div id="default-or-inverse-theme" class="section level3">
+<h3 class="hasAnchor">
+<a href="#default-or-inverse-theme" class="anchor"></a>Default or Inverse Theme</h3>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">plot</span> +
   <span class="fu"><a href="../reference/theme_gla.html">theme_gla</a></span>(<span class="kw">gla_theme</span> <span class="kw">=</span> <span class="st">"inverse"</span>)</pre></body></html></div>
 <p><img src="v02_Using_the_gla_theme_files/figure-html/unnamed-chunk-5-1.png" width="2187.5"></p>
-<p>###Axis titles</p>
+</div>
+<div id="axis-titles" class="section level3">
+<h3 class="hasAnchor">
+<a href="#axis-titles" class="anchor"></a>Axis titles</h3>
 <p>If needed, axis titles can be added to plots with the <code>x_axis_title</code> and <code>y_axis_title</code> arguments. If you’re including a y-axis label you may need to adjust the length of the lines under the y-axis labels</p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">plot</span> +
   <span class="fu"><a href="../reference/theme_gla.html">theme_gla</a></span>(<span class="kw">x_axis_title</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">y_axis_title</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">y_label_length</span> <span class="kw">=</span> <span class="fl">25</span>)</pre></body></html></div>
 <p><img src="v02_Using_the_gla_theme_files/figure-html/unnamed-chunk-6-1.png" width="2187.5"></p>
-<p>###Gridlines</p>
+</div>
+<div id="gridlines" class="section level3">
+<h3 class="hasAnchor">
+<a href="#gridlines" class="anchor"></a>Gridlines</h3>
 <p><code>xgridlines</code> controls whether gridlines appear on the x-axis of the plot.</p>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">plot</span> +
   <span class="fu"><a href="../reference/theme_gla.html">theme_gla</a></span>(<span class="kw">xgridlines</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <p><img src="v02_Using_the_gla_theme_files/figure-html/unnamed-chunk-7-1.png" width="2187.5"></p>
-<p>###Legend</p>
+</div>
+<div id="legend" class="section level3">
+<h3 class="hasAnchor">
+<a href="#legend" class="anchor"></a>Legend</h3>
 <p><code>legend</code> controls whether the legend appears. Where possible data should be labelled directly instead.</p>
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">plot</span> +
   <span class="fu"><a href="../reference/theme_gla.html">theme_gla</a></span>(<span class="kw">xgridlines</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
@@ -155,12 +171,18 @@
   <span class="fu"><a href="../reference/theme_gla.html">theme_gla</a></span>() +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span>(<span class="kw">col</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span>(<span class="kw">nrow</span> <span class="kw">=</span> <span class="fl">2</span>))</pre></body></html></div>
 <p><img src="v02_Using_the_gla_theme_files/figure-html/unnamed-chunk-9-1.png" width="2187.5"></p>
-<p>###Font size</p>
+</div>
+<div id="font-size" class="section level3">
+<h3 class="hasAnchor">
+<a href="#font-size" class="anchor"></a>Font size</h3>
 <p><code>base_size</code> changes the base font size of the plot. The font size of any titles and captions will scale accordingly. Try and get the <code>base_size</code> to match the font size of the document/presentation the plot is being used in.</p>
 <div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">plot</span> +
   <span class="fu"><a href="../reference/theme_gla.html">theme_gla</a></span>(<span class="kw">base_size</span> <span class="kw">=</span> <span class="fl">20</span>)</pre></body></html></div>
 <p><img src="v02_Using_the_gla_theme_files/figure-html/unnamed-chunk-10-1.png" width="2187.5"></p>
-<p>###Faceting</p>
+</div>
+<div id="faceting" class="section level3">
+<h3 class="hasAnchor">
+<a href="#faceting" class="anchor"></a>Faceting</h3>
 <p>Faceting creates small multiples of plots, split into rows and columns by different variables.</p>
 <p>Simple facet plots can use <code><a href="../reference/theme_gla.html">theme_gla()</a></code> with no adjustments.</p>
 <div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">LDNUK</span>, <span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">Year</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">GPG</span>)) +
@@ -182,7 +204,12 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(<span class="kw">limits</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">30</span>))</pre></body></html></div>
 <p><img src="v02_Using_the_gla_theme_files/figure-html/unnamed-chunk-13-1.png" width="2187.5"></p>
 <p>If there are many small plots in a facet plot, it’s worth considering scaling down the <code>base_size</code> in <code>theme_gla</code> to stop text looking out of proportion, and to reduce the <code>size</code> of some geoms to avoid losing detail.</p>
-<p>##How to use <code><a href="../reference/theme_gla.html">theme_gla()</a></code></p>
+</div>
+</div>
+<div id="how-to-use-theme_gla" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-to-use-theme_gla" class="anchor"></a>How to use <code>theme_gla()</code>
+</h2>
 <p>As above, you can just add <code><a href="../reference/theme_gla.html">theme_gla()</a></code> to each of your ggplot objects. It’s best to add it directly after the call to <code>ggplot</code> so it won’t overwrite any manual changes you make later on. As with other <code>ggplot</code> themes you can make manual changes to them directly. For example, if for a particular plot you don’t want any y-gridlines you can remove them using the <code>ggplot::theme()</code> function:</p>
 <div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">LDNUK</span>, <span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">Year</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">GPG</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="no">location</span>,
                                    <span class="kw">colour</span> <span class="kw">=</span> <span class="no">location</span>)) +
@@ -197,11 +224,14 @@
 
 <span class="no">plot</span></pre></body></html></div>
 <p><img src="v02_Using_the_gla_theme_files/figure-html/unnamed-chunk-15-1.png" width="2187.5"></p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
