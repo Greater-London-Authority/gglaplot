@@ -29,10 +29,18 @@ reference:
   - '`GeomGLATextHighlight`'
   - '`GeomGLAAnnotate`'
   - '`GeomGLASf`'
+- title: plotly wrappers
+  desc: Wrappers for plotly functions to create GLA style plotly plots
+  contents:
+  - '`ggla_plotly_settings`'
+  - '`ggla_plotly_layout`'
+  - '`ggla_plotly_style`'
+  - '`ggla_plotly_config`'
 - title: Miscellaneous helpers
   desc: Additional helpers
   contents:
   - '`mm_to_pt`'
+  - '`plotly_helpers`'
 - title: Example datasets
   desc: ~
   contents:
@@ -55,7 +63,10 @@ articles:
   desc: ~
   contents:
   - '`v03_Custom_ggla_plots`'
-
+- title: Plotly
+  desc: ~
+  contents:
+  - '`v04_Using_plotly_with_gglaplot`'
 navbar:
   structure:
     left:
@@ -82,6 +93,8 @@ navbar:
         href: articles/v02_Using_the_gla_theme.html
       - text: Custom `gglaplot`s
         href: articles/v03_Custom_ggla_plots.html
+      - text: Using plotly with gglaplot
+        href: articles/v04_Using_plotly_with_gglaplot.html
     news:
       text: Changelog
       href: news/index.html
