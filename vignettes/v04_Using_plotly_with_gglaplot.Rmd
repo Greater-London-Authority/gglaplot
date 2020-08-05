@@ -11,9 +11,7 @@ vignette: >
 knitr::opts_chunk$set(
 collapse = TRUE,
 comment = "",
-dpi = 300,
-fig.width = 9,
-fig.height = 7
+dpi = 300
 )
 ```
 
@@ -56,13 +54,13 @@ plot
 Feeding this plot into `ggplotly` will produce a basic plotly plot, including a default hovertool and basic interactivity and piping it into `ggla_plotly_settings` will apply gglaplot styling:
 
 ```{r}
-ggplotly(plot) %>%
+ggplotly(plot, width = 800, height = 500) %>%
   ggla_plotly_settings()
 ```
 `ggla_plotly_settings` includes the same arguments as `theme_gla`, including using the inverse theme.
 
 ```{r}
-ggplotly(plot) %>%
+ggplotly(plot, width = 800, height = 500) %>%
   ggla_plotly_settings(gla_theme = "inverse")
 ```
 
@@ -82,14 +80,14 @@ plot <- ggplot(data = LDNUK,
   scale_y_continuous(labels = dollar_format(prefix = "", suffix = "%",
                                             accuracy = 0.1)) +
   labs(title = "Gender Pay Gap - Total (Median) - London VS UK")
-ggplotly(plot, tooltip = "text") %>%
+ggplotly(plot, tooltip = "text", width = 800, height = 500) %>%
   ggla_plotly_settings()
 ```
 
 Range sliders can be added to view certain periods of data
 
 ```{r}
-ggplotly(plot, tooltip = "text", dynamicTicks = TRUE) %>%
+ggplotly(plot, tooltip = "text", dynamicTicks = TRUE, width = 800, height = 500) %>%
   ggla_plotly_settings(xaxis = list(rangeslider = list(type = "date")))
 
 ```
@@ -108,7 +106,7 @@ plot <- ggplot(data = EURef) +
   scale_fill_manual(values = pal) +
   labs(title = "Leave Vote in the 2016 EU Referendum")
 
-plotly_plot <- ggplotly(plot, tooltip = "text") %>%
+plotly_plot <- ggplotly(plot, tooltip = "text", width = 800, height = 500) %>%
   ggla_plotly_settings()
 plotly_plot
 ```
