@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom `gglaplot`s • gglaplot</title>
+<title>Custom gglaplots • gglaplot</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Custom `gglaplot`s">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Custom gglaplots">
 <meta property="og:description" content="gglaplot">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -64,10 +64,10 @@
       <a href="../articles/v01_Using_GLA_colour_palettes.html">Using GLA colour palettes</a>
     </li>
     <li>
-      <a href="../articles/v02_Using_the_gla_theme.html">Using `theme_gla()`</a>
+      <a href="../articles/v02_Using_the_gla_theme.html">Using theme_gla()</a>
     </li>
     <li>
-      <a href="../articles/v03_Custom_ggla_plots.html">Custom `gglaplot`s</a>
+      <a href="../articles/v03_Custom_ggla_plots.html">Custom gglaplots</a>
     </li>
     <li>
       <a href="../articles/v04_Using_plotly_with_gglaplot.html">Using plotly with gglaplot</a>
@@ -98,7 +98,7 @@
       </header><script src="v03_Custom_ggla_plots_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Custom <code>gglaplot</code>s</h1>
+      <h1 data-toc-skip>Custom gglaplots</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/Greater-London-Authority/gglaplot/blob/master/vignettes/v03_Custom_ggla_plots.Rmd"><code>vignettes/v03_Custom_ggla_plots.Rmd</code></a></small>
@@ -186,7 +186,9 @@
 <span class="no">plot</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">LDNUK</span>, <span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">Year</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">GPG</span>,
                                            <span class="kw">group</span> <span class="kw">=</span> <span class="no">location</span>)) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span>(<span class="kw">values</span> <span class="kw">=</span> <span class="no">pal</span>) +
-  <span class="fu"><a href="../reference/ggla_line.html">ggla_line</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">colour</span> <span class="kw">=</span> <span class="no">location</span>))
+  <span class="fu"><a href="../reference/ggla_line.html">ggla_line</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">colour</span> <span class="kw">=</span> <span class="no">location</span>)) +
+  <span class="co"># Adjust the y_label_length parameter as we're going to have multiple charts on one plot</span>
+  <span class="fu"><a href="../reference/theme_gla.html">theme_gla</a></span>(<span class="kw">y_label_length</span> <span class="kw">=</span> <span class="fl">25</span>)
 
 <span class="no">plot</span></pre></body></html></div>
 <p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-4-1.png" width="2187.5"></p>
@@ -212,7 +214,7 @@
   <span class="fu"><a href="../reference/theme_gla.html">theme_gla</a></span>(<span class="kw">legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
   <span class="fu"><a href="../reference/ggla_highlight.html">ggla_highlight</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">label</span> <span class="kw">=</span> <span class="no">location</span>),
                  <span class="kw">filter_type</span> <span class="kw">=</span> <span class="st">"end"</span>, <span class="kw">geom</span> <span class="kw">=</span> <span class="no">GeomGLATextHighlight</span>,
-                 <span class="kw">position</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_nudge.html">position_nudge</a></span>(<span class="kw">x</span> <span class="kw">=</span> -<span class="fl">35</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="fl">0.5</span>))</pre></body></html></div>
+                 <span class="kw">position</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_nudge.html">position_nudge</a></span>(<span class="kw">x</span> <span class="kw">=</span> -<span class="fl">50</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="fl">0.5</span>))</pre></body></html></div>
 <p><img src="v03_Custom_ggla_plots_files/figure-html/unnamed-chunk-7-1.png" width="2187.5"></p>
 </div>
 </div>
