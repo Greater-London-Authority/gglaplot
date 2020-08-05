@@ -5,7 +5,7 @@
 \alias{to_basic.GeomGLALine}
 \title{Plotly helpers}
 \usage{
-to_basic.GeomGLALine(data, prestats_data, layout, params, p, ...)
+\method{to_basic}{GeomGLALine}(data, prestats_data, layout, params, p, ...)
 }
 \description{
 Helper functions to make it easier to automatically create plotly charts
