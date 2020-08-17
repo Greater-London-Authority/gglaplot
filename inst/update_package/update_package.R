@@ -56,7 +56,7 @@ roxygen2::roxygenise()
 sinew::makeImport('R/', cut = 3, print = FALSE, format = 'description', desc_loc = '.')
 # This won't appear automatically as only %||% is used
 usethis::use_package('rlang')
-# Need new functionality included in 3.2
+# Need new functionality included in 3.3
 usethis::use_package('ggplot2', min_version = 3.3)
 
 
