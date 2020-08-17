@@ -2,13 +2,14 @@
 output: github_document
 ---
 
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.path = "man/figures/")
 ```
 
 # gglaplot <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
-The package provides several wrappers and tools to use with ggplot2 to make graphics that follow the GLA [City Intelligence Data Design Guidelines](https://data.london.gov.uk/blog/city-intelligence-data-design-guidelines/).
+The package provides several wrappers and tools to use with ggplot2 and plotly to make graphics that follow the GLA [City Intelligence Data Design Guidelines](https://data.london.gov.uk/blog/city-intelligence-data-design-guidelines/).
 
 ## Installation
 
@@ -66,6 +67,12 @@ There are many online resources for ggplot2, including:
 * [ggplot2 cheatsheet](https://ggplot2.tidyverse.org/)
 * [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/)
 * [DataCamp course](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1)
+
+### plotly
+
+* [plotly website](https://plotly.com/r/)
+* [plotly bookdown](https://plotly-r.com/)
+
 
 ### gglaplot
 
