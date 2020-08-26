@@ -4,7 +4,9 @@
 \name{gla_colours}
 \alias{gla_colours}
 \title{gla_colours}
-\format{named list}
+\format{
+named list
+}
 \usage{
 gla_colours
 }

@@ -12,9 +12,6 @@ ggla_axisat0(gla_theme = "default")
 \description{
 Forces the y-axis to y=0 and adds a strong axis line
 }
-\details{
-DETAILS
-}
 \examples{
 \dontrun{
 if(interactive()){

@@ -4,7 +4,9 @@
 \name{gla_inverse}
 \alias{gla_inverse}
 \title{gla_inverse}
-\format{named list}
+\format{
+named list
+}
 \usage{
 gla_inverse
 }

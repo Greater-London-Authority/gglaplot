@@ -4,17 +4,16 @@
 #' @param stat The statistical transformation to use on the data for this layer, as a string, Default: "identity"
 #' @param to100 boolean, If TRUE a context layer will be added below to bar chart up to 100, Default: FALSE
 #' @inheritParams ggplot2::geom_bar
-#' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' @seealso 
+#' @seealso
 #'  \code{\link[ggplot2]{geom_bar}}
 #' @rdname ggla_horizbar
-#' @export 
+#' @export
 #' @import checkmate
 #' @param gla_theme Either "default" or "inverse", Default: 'default'
 ggla_horizbar <- function(..., stat = "identity", position = "stack",
@@ -50,10 +49,12 @@ ggla_horizbar <- function(..., stat = "identity", position = "stack",
   horizbar <- list(
     horizbar,
     ggplot2::coord_flip(),
-    ggplot2::theme(panel.grid = ggplot2::element_blank(),
+    ggplot2::theme(panel.grid.major.y = ggplot2::element_blank(),
                    axis.text.y = ggplot2::element_text(
                      hjust = 0, vjust = 0.5,
-                     margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 0, unit = "pt"))))
+                     margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 0,
+                                              unit = "pt")),
+                   axis.ticks.length.y = ggplot2::unit(x = 0, units = "pt")))
 
   return(horizbar)
 

@@ -1,6 +1,6 @@
 Package: gglaplot
 Title: Makes graphics in the GLA style using ggplot2
-Version: 1.0.0
+Version: 1.1.0
 Authors@R: c(person("Libby", "Rogers", email = "Libby.Rogers@london.gov.uk",
                     role = c("aut","cre")),
              person("Mike", "Brondbjerg", email = "Mike.Brondbjerg@london.gov.uk",
@@ -15,9 +15,10 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     checkmate,
-    ggplot2 (>= 3.2),
+    ggplot2 (>= 3.3),
     utils,
     dplyr,
+    plotly,
     sf,
     stats,
     grid,
@@ -29,6 +30,6 @@ Imports:
 Suggests: knitr, rmarkdown, gridExtra, lubridate, scales
 Remotes: lirogers/chroma
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 URL: https://github.com/Greater-London-Authority/gglaplot
 BugReports: https://github.com/Greater-London-Authority/gglaplot/issues

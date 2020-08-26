@@ -1,8 +1,10 @@
-pandoc: 1.19.2.1
-pkgdown: 1.3.0
+pandoc: 2.7.3
+pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   v01_Using_GLA_colour_palettes: v01_Using_GLA_colour_palettes.html
   v02_Using_the_gla_theme: v02_Using_the_gla_theme.html
   v03_Custom_ggla_plots: v03_Custom_ggla_plots.html
+  v04_Using_plotly_with_gglaplot: v04_Using_plotly_with_gglaplot.html
+last_built: 2020-08-05T13:02Z
 

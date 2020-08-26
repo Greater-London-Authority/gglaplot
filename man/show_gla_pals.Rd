@@ -14,9 +14,6 @@ show_gla_pals(gla_theme = "default", inc_div = FALSE)
 \description{
 Display the available GLA palettes
 }
-\details{
-DETAILS
-}
 \examples{
 \dontrun{
 if(interactive()){

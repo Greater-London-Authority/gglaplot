@@ -4,7 +4,8 @@
 \name{EURef}
 \alias{EURef}
 \title{EU Referendum Results}
-\format{A data frame with 33 rows and 7 variables:
+\format{
+A data frame with 33 rows and 7 variables:
 \describe{
   \item{\code{Area_Code}}{integer GSS borough code}
   \item{\code{Area}}{integer Borugh name}
@@ -13,7 +14,8 @@
   \item{\code{PropLeave}}{double Leave vote as a proportion}
   \item{\code{CatLeave}}{integer Leave vote proportion split into categories}
   \item{\code{geometry}}{list geometry of Borough}  
-}}
+}
+}
 \source{
 \url{https://data.london.gov.uk/dataset/eu-referendum-results}
 

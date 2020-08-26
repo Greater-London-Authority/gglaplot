@@ -4,7 +4,9 @@
 \name{GeomGLATextHighlight}
 \alias{GeomGLATextHighlight}
 \title{GeomGLATextHighlight}
-\format{An object of class \code{GeomGLATextHighlight} (inherits from \code{GeomText}, \code{Geom}, \code{ggproto}, \code{gg}) of length 2.}
+\format{
+An object of class \code{GeomGLATextHighlight} (inherits from \code{GeomText}, \code{Geom}, \code{ggproto}, \code{gg}) of length 2.
+}
 \usage{
 GeomGLATextHighlight
 }

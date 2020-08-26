@@ -12,15 +12,14 @@ GeomGLALine <- ggplot2::ggproto("GeomGLALine", ggplot2::GeomLine,
 #' @description Wrapper for ggplot2::geom_line with round line ends
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_point
-#' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
 #' @rdname ggla_line
-#' @export 
+#' @export
 #' @import ggplot2
 ggla_line <- function(mapping = NULL, data = NULL, stat = "identity",
                       position = "identity", na.rm = FALSE,

@@ -1,21 +1,20 @@
 #' @title ggla_labelline
 #' @description Add a dotted line labelled a specific point
 #' @param x1 starting x-value, not needed for lines perpendicular to x-axis, Default: NULL
-#' @param x2 final x-value, only needed lines which aren't perpedicular or parallel to axis, Default: NULL
+#' @param x2 final x-value, only needed lines which aren't perpendicular or parallel to axis, Default: NULL
 #' @param y1 starting y-value, not needed for lines perpendicular to y-axis, Default: NULL
-#' @param y2 final y-value, only needed lines which aren't perpedicular or parallel to axis, Default: NULL
-#' @details DETAILS
-#' @examples 
+#' @param y2 final y-value, only needed lines which aren't perpendicular or parallel to axis, Default: NULL
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' @seealso 
+#' @seealso
 #'  \code{\link[ggplot2]{geom_abline}}
 #'  \code{\link[ggplot2]{geom_segment}}
 #' @rdname ggla_labelline
-#' @export 
+#' @export
 #' @import checkmate
 #' @param gla_theme Either "default" or "inverse", Default: 'default'
 ggla_labelline <- function(x1 = NULL, x2 = NULL, y1 = NULL, y2 = NULL,

@@ -10,10 +10,8 @@ left_align_labs(plot)
 \item{plot}{ggplot2 object}
 }
 \description{
+DEPRECATED. The functionality is now included in `theme_gla`.
 Left aligns titles, subtitles and captions to the left of the whole plot (default is to left align to just the plot area)
-}
-\details{
-DETAILS
 }
 \examples{
 \dontrun{

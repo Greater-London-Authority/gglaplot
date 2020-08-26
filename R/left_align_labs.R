@@ -1,21 +1,23 @@
 #' @title left_align_labs
-#' @description Left aligns titles, subtitles and captions to the left of the whole plot (default is to left align to just the plot area)
+#' @description DEPRECATED. The functionality is now included in `theme_gla`.
+#' Left aligns titles, subtitles and captions to the left of the whole plot (default is to left align to just the plot area)
 #' @param plot ggplot2 object
-#' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
 #' @rdname left_align_labs
-#' @export 
+#' @export
 #' @import ggplot2
 #' @importFrom ggplotify as.ggplot
-#' @seealso 
+#' @seealso
 #'  \code{\link[ggplot2]{is.ggplot}},\code{\link[ggplot2]{ggplotGrob}}
 #'  \code{\link[ggplotify]{as.ggplot}}
 left_align_labs <- function(plot) {
+  .Deprecated(msg = "'left_align_labs' is deprecated.
+The functionality is now included in 'theme_gla'")
   #checks
   if (ggplot2::is.ggplot(plot) == FALSE) {
     stop(
@@ -33,4 +35,4 @@ left_align_labs <- function(plot) {
 
   return(plot)
 
-  }
+}

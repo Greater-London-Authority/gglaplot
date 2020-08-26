@@ -4,8 +4,13 @@
 \alias{ggla_horizbar}
 \title{ggla_horizbar}
 \usage{
-ggla_horizbar(..., stat = "identity", position = "stack",
-  to100 = FALSE, gla_theme = "default")
+ggla_horizbar(
+  ...,
+  stat = "identity",
+  position = "stack",
+  to100 = FALSE,
+  gla_theme = "default"
+)
 }
 \arguments{
 \item{...}{other parameters to be passed to geom_bar}
@@ -21,9 +26,6 @@ a call to a position adjustment function.}
 }
 \description{
 Create a horizontal bar chart
-}
-\details{
-DETAILS
 }
 \examples{
 \dontrun{

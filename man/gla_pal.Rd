@@ -4,9 +4,15 @@
 \alias{gla_pal}
 \title{gla_pal}
 \usage{
-gla_pal(gla_theme = "default", palette_type = "categorical",
-  palette_name = "core", main_colours = NULL, n = 6, inc0 = FALSE,
-  remove_margin = NULL)
+gla_pal(
+  gla_theme = "default",
+  palette_type = "categorical",
+  palette_name = "core",
+  main_colours = NULL,
+  n = 6,
+  inc0 = FALSE,
+  remove_margin = NULL
+)
 }
 \arguments{
 \item{gla_theme}{One of "default" or "inverse". Default: 'default'}
@@ -28,9 +34,6 @@ Returns a character vector of length n giving colour hexs.
 }
 \description{
 Generates palettes using the GLA colours
-}
-\details{
-DETAILS
 }
 \examples{
 \dontrun{

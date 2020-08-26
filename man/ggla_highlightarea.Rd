@@ -4,8 +4,13 @@
 \alias{ggla_highlightarea}
 \title{ggla_highlightarea}
 \usage{
-ggla_highlightarea(xmin = -Inf, xmax = Inf, ymin = -Inf,
-  ymax = Inf, gla_theme = "default")
+ggla_highlightarea(
+  xmin = -Inf,
+  xmax = Inf,
+  ymin = -Inf,
+  ymax = Inf,
+  gla_theme = "default"
+)
 }
 \arguments{
 \item{xmin}{lower x-extent of highlighted area, Default: -Inf}
@@ -21,15 +26,13 @@ ggla_highlightarea(xmin = -Inf, xmax = Inf, ymin = -Inf,
 \description{
 Add a shaded rectangle behind a plot.
 }
-\details{
-DETAILS
-}
 \examples{
 \dontrun{
 if(interactive()){
  #EXAMPLE1
  }
 }
-#' @seealso
- \\code{\\link[ggplot2]{annotate}}
+}
+\seealso{
+\code{\link[ggplot2]{annotate}}
 }

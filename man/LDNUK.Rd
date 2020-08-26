@@ -4,12 +4,14 @@
 \name{LDNUK}
 \alias{LDNUK}
 \title{Gender Pay Gap}
-\format{A data frame with 42 rows and 3 variables:
+\format{
+A data frame with 42 rows and 3 variables:
 \describe{
   \item{\code{Year}}{double year of data}
   \item{\code{location}}{integer London vs UK}
   \item{\code{GPG}}{double Gender pay gap (percentage)} 
-}}
+}
+}
 \source{
 \url{https://data.london.gov.uk/economic-fairness/labour-market/gender-pay-gap/}
 }

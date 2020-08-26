@@ -4,7 +4,9 @@
 \name{gla_default}
 \alias{gla_default}
 \title{gla_default}
-\format{named list}
+\format{
+named list
+}
 \usage{
 gla_default
 }

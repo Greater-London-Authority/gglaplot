@@ -4,12 +4,14 @@
 \name{AvAtt}
 \alias{AvAtt}
 \title{AvAtt}
-\format{A data frame with 8 rows and 3 variables:
+\format{
+A data frame with 8 rows and 3 variables:
 \describe{
   \item{\code{Region}}{integer factor column, London or England}
   \item{\code{Subject}}{integer factor column of subject element}
   \item{\code{Score}}{double Attainment 8 Score} 
-}}
+}
+}
 \source{
 \url{https://data.london.gov.uk/economic-fairness/equal-opportunities/ks4-achievement/}
 }

@@ -4,11 +4,20 @@
 \alias{ggla_highlight}
 \title{ggla_highlight}
 \usage{
-ggla_highlight(mapping = NULL, data = NULL,
-  geom = GeomGLAPointHighlight, stat = "identity",
-  position = "identity", ..., filter_type = "end", x_filt = NULL,
-  y_filt = NULL, na.rm = FALSE, show.legend = FALSE,
-  inherit.aes = TRUE)
+ggla_highlight(
+  mapping = NULL,
+  data = NULL,
+  geom = GeomGLAPointHighlight,
+  stat = "identity",
+  position = "identity",
+  ...,
+  filter_type = "end",
+  x_filt = NULL,
+  y_filt = NULL,
+  na.rm = FALSE,
+  show.legend = FALSE,
+  inherit.aes = TRUE
+)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping, Default: NULL}
@@ -23,7 +32,7 @@ layer, as a string.}
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
 
-\item{...}{Other arguments passed on to \code{\link[=layer]{layer()}}. These are
+\item{...}{Other arguments passed on to \code{\link[ggplot2:layer]{layer()}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
 \code{colour = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
@@ -46,7 +55,7 @@ display.}
 \item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics,
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
-the default plot specification, e.g. \code{\link[=borders]{borders()}}.}
+the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 }
 \description{
 Highlight selected data points

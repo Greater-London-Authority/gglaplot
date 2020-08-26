@@ -119,14 +119,14 @@ sf_gla_grob <- function(x, lineend = "butt", linejoin = "round",
 #' @description Wrapper for ggplot2::geom_sf simplyfying coordinates and appearance
 #' @inheritParams ggplot2::geom_point
 #' @details To use gla_inverse theme this must be set using theme_set() prior to calling ggla_sf()
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
 #' @rdname ggla_sf
-#' @export 
+#' @export
 #' @import ggplot2
 ggla_sf <- function(mapping = ggplot2::aes(), data = NULL, stat = "sf",
                     position = "identity", na.rm = FALSE, show.legend = NA,

@@ -1,8 +1,8 @@
 ---
-title: "Using `theme_gla()`"
+title: "Using theme_gla()"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Using the ggla theme}
+  %\VignetteIndexEntry{Using theme_gla()}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -19,7 +19,7 @@ This vignette summarises how to use the custom theme included in `gglaplot`.
 
 Themes control the overall look of the non-data components of plots. `ggplot2` includes various default themes, as well as a framework for editing and building your own, on which `theme_gla` is built.
 
-##How to apply  `theme_gla` to a `ggplot` object
+## How to apply  `theme_gla` to a `ggplot` object
 
 
 ```{r message=FALSE, warning=FALSE}
@@ -58,9 +58,9 @@ str(theme_gla)
 
 To change some of the more complicated aspects of the style of the plot, we need to change some of the `theme_gla()` arguments from their defaults.
 
-##Settings in the `theme_gla()` function
+## Settings in the `theme_gla()` function
 
-###Default or Inverse Theme
+### Default or Inverse Theme
 
 
 ```{r}
@@ -68,18 +68,16 @@ plot +
   theme_gla(gla_theme = "inverse")
 ```
 
-###Axis titles
+### Axis titles
 
-If needed, axis titles can be added to plots with the `x_axis_title` and `y_axis_title` arguments
+If needed, axis titles can be added to plots with the `x_axis_title` and `y_axis_title` arguments. If you're including a y-axis label you may need to adjust the length of the lines under the y-axis labels
 
 ```{r}
 plot +
-  theme_gla(x_axis_title = TRUE, y_axis_title = TRUE)
+  theme_gla(x_axis_title = TRUE, y_axis_title = TRUE, y_label_length = 25)
 ```
 
-
-
-###Gridlines
+### Gridlines
 
 `xgridlines` controls whether gridlines appear on the x-axis of the plot.
 
@@ -88,8 +86,7 @@ plot +
   theme_gla(xgridlines = TRUE)
 ```
 
-
-###Legend
+### Legend
 
 `legend` controls whether the legend appears. Where possible data should be labelled directly instead.
 
@@ -106,8 +103,7 @@ plot +
   guides(col = guide_legend(nrow = 2))
 ```
 
-
-###Font size
+### Font size
 
 `base_size` changes the base font size of the plot. The font size of any titles and captions will scale accordingly. Try and get the `base_size` to match the font size of the document/presentation the plot is being used in.
 
@@ -116,7 +112,40 @@ plot +
   theme_gla(base_size = 20)
 ```
 
-##How to use `theme_gla()`
+### Faceting
+
+Faceting creates small multiples of plots, split into rows and columns by different variables.
+
+Simple facet plots can use `theme_gla()` with no adjustments.
+
+```{r}
+ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG)) +
+  facet_grid(cols = vars(location)) +
+  geom_line() +
+  theme_gla()
+```
+
+For facet plots which have data in different ranges, free scales may be needed to avoid the data in some facets being squashed. If this is the case the `free_y_facets` argument in `theme_gla` should be set to `TRUE`. This changes the position and alignment of the y-axis labels to a format which works better when the y-axis labels may vary a lot in length.
+
+```{r}
+ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG)) +
+  facet_grid(rows = vars(location), scales = "free_y") +
+  geom_line() +
+  theme_gla(free_y_facets = TRUE)
+```
+
+Each facet can have it's own set of axis using `facet_wrap`. These can either be completely *free*, (i.e. have different ranges), or the ranges can be set using limits in `scale_y_continuous`.
+```{r}
+ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG)) +
+  facet_wrap(facets = "location", scales = "free_y") +
+  geom_line() +
+  theme_gla(free_y_facets = TRUE) +
+  scale_y_continuous(limits = c(0, 30))
+```
+
+If there are many small plots in a facet plot, it's worth considering scaling down the `base_size` in `theme_gla` to stop text looking out of proportion, and to reduce the `size` of some geoms to avoid losing detail.
+
+## How to use `theme_gla()`
 
 As above, you can just add `theme_gla()` to each of your ggplot objects. It's best to add it directly after the call to `ggplot` so it won't overwrite any manual changes you make later on. As with other `ggplot` themes you can make manual changes to them directly. For example, if for a particular plot you don't want any y-gridlines you can remove them using the `ggplot::theme()` function:
 
@@ -125,7 +154,8 @@ ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
                                    colour = location)) +
   theme_gla(xgridlines = FALSE) +
   geom_line() +
-  theme(panel.grid.major.y = element_blank())
+  theme(panel.grid.major.y = element_blank(),
+        axis.ticks.y = element_line(colour = "white"))
 ```
 
 You can get more information on how to manually adjust themes in the [ggplot documentation](https://ggplot2.tidyverse.org/reference/theme.html). We've tried to include the suggestions of the style guide in `theme_gla()`, but there may be plots it doesn't quite work for.
@@ -133,7 +163,7 @@ You can get more information on how to manually adjust themes in the [ggplot doc
 Instead of adding `theme_gla()` to every one of your plots you can also set the theme at the start of your session.
 
 ```{r}
-theme_set(theme_gla(xgridlines = FALSE))
+theme_set(theme_gla())
 
 plot
 ```

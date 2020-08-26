@@ -4,9 +4,16 @@
 \alias{theme_gla}
 \title{theme_gla}
 \usage{
-theme_gla(gla_theme = "default", x_axis_title = FALSE,
-  y_axis_title = FALSE, xgridlines = FALSE, legend = TRUE,
-  base_size = 14)
+theme_gla(
+  gla_theme = "default",
+  x_axis_title = FALSE,
+  y_axis_title = FALSE,
+  xgridlines = FALSE,
+  legend = TRUE,
+  base_size = 14,
+  free_y_facets = FALSE,
+  y_label_length = 100
+)
 }
 \arguments{
 \item{gla_theme}{Either 'default' or 'inverse', Default: 'default'}
@@ -20,12 +27,13 @@ theme_gla(gla_theme = "default", x_axis_title = FALSE,
 \item{legend}{boolean, If TRUE, theme will include a legend at the top left of the plot, Default: TRUE}
 
 \item{base_size}{base font size, Default: 14}
+
+\item{free_y_facets}{Use if faceting plot with free y scales. Adjusts position of y axis labels, Default: FALSE}
+
+\item{y_label_length}{length of lines under y-axis labels. For most plots this won't need changing. It will need adjusting for faceted plots or if labels are particularly long. As a rough guide this should be set approximately equal to 96 * strwidth(y_labels, unit = "inches") with default base_size.}
 }
 \description{
 Controls the non-data display to be consistent with our style guide
-}
-\details{
-DETAILS
 }
 \examples{
 \dontrun{

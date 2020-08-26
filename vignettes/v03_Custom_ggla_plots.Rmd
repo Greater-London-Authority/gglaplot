@@ -1,16 +1,17 @@
 ---
-title: "Custom `gglaplot`s"
+title: "Custom gglaplots"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Custom gglaplots}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "",
-  dpi = 300
+collapse = TRUE,
+comment = "",
+dpi = 300
 )
 ```
 
@@ -68,7 +69,9 @@ pal <- gla_pal(gla_theme = "default", palette_type = "highlight", n = c(1, 1))
 plot <- ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG,
                                            group = location)) +
   scale_colour_manual(values = pal) +
-  ggla_line(mapping = aes(colour = location))
+  ggla_line(mapping = aes(colour = location)) +
+  # Adjust the y_label_length parameter as we're going to have multiple charts on one plot
+  theme_gla(y_label_length = 25)
 
 plot
 
@@ -93,7 +96,8 @@ grid.arrange(p_start, p_end, p_min, p_max, ncol = 2, nrow = 2)
 
 ```{r}
 plot +
-  ggla_highlight(aes(colour = location), filter_type = "xy", x_filt = ymd("2007-01-01"))
+  ggla_highlight(aes(colour = location), filter_type = "xy",
+                 x_filt = ymd("2007-01-01"))
 ```
 
 You can also change the `geom` of `ggla_highlight()` to add labels. This will probably require a bit of fiddling around with the `position_nudge()` function to get them in the right place. If we're labelling our data we might as well remove the legend. `GeomGLATextHighlight` is a custom `gglaplot` geom.
@@ -104,7 +108,7 @@ plot +
   theme_gla(legend = FALSE) +
   ggla_highlight(mapping = aes(label = location),
                  filter_type = "end", geom = GeomGLATextHighlight,
-                 position = position_nudge(x = -35, y = 0.5))
+                 position = position_nudge(x = -50, y = 0.5))
 ```
 
 ## Highlighting an area with `ggla_highlightarea()`
@@ -154,23 +158,24 @@ ggplot(data = LDNUK, mapping = aes(x = Year, y = GPG, group = location,
   # Add a context/highlight box between 2007 - 2012
   ggla_highlightarea(xmin = ymd("2007-01-01"), xmax = ymd("2012-01-01")) +
   # Add an annotation using custom gglaplot geom GeomGLAAnnotate
-  annotate(geom = GeomGLAAnnotate, x = ymd("2007-02-01"), y = 30.25, label = "Highlight") +
+  annotate(geom = GeomGLAAnnotate, x = ymd("2007-02-01"), y = 30.25,
+           label = "Highlight") +
   # Add a line at 2000
   ggla_labelline(x1 = ymd("2000-01-01")) +
   # Extend the y axis to 0
   ggla_axisat0() +
   # Format the y-axis
   scale_y_continuous(expand = c(0, 0), limits = c(0, 32.5),
-                      labels = dollar_format(prefix = "", suffix = "%")) +
+                     labels = dollar_format(prefix = "", suffix = "%")) +
   # Format the x-axis
   scale_x_date(date_breaks = "1 year", date_labels = "%y",
-               expand = expand_scale(mult = c(0.05, 0.01))) +
+               expand = expansion(mult = c(0.05, 0.01))) +
   # Add titles and captions
   labs(
     title = "Gender Pay Gap - Total (Median)",
     subtitle = "Gender Pay Gap - Total (Median) - London VS UK",
     caption = "Note: 2017 data is provisional\nChart: GLA City Intelligence  Source: London Datastore"
-    )
+  )
 
 ```
 
@@ -191,7 +196,7 @@ Here's an unstacked, faceted example:
 ```{r}
 barplot <- ggplot(EYFSP, aes(x = Ethnicity, y = eyfsp, fill = Region)) +
   # Add theme with gridlines and legend turned off
-  theme_gla(xgridlines = FALSE, legend = FALSE) +
+  theme_gla(legend = FALSE) +
   # Add horizontal bar chart
   # to100 adds a context bar behind the data up to 100%
   ggla_horizbar(to100 = TRUE) +
@@ -206,26 +211,21 @@ barplot
 We can add some additional formatting and labels to this
 
 ```{r}
-(barplot +
-   # Add formated labels to each bar
+barplot +
+  # Add formatted labels to each bar
   geom_text(aes(label = paste(format(eyfsp, nsmall = 0), "%", sep = "")),
             y = 8, position = position_nudge(x = 0, y = 0), vjust = 0.50,
             colour = gla_default$background) +
-   # Remove any labels from the x axis (effectively our y axis)
+  # Remove any labels from the x axis (effectively our y axis)
   theme(axis.text.x = element_blank()) +
-   # Add titles
-    labs(
-      title = "Achievement in EYFSP by Ethnicity",
-      subtitle = "Percentage achieving at least the expected standard in all ELGs (2017)",
-      caption = "Source: Department for Education\nChart: GLA City Intelligence"
-      )) %>%
-  # Make labels left aligned
-  left_align_labs()
+  # Add titles
+  labs(
+    title = "Achievement in EYFSP by Ethnicity",
+    subtitle = "Percentage achieving at least the expected standard in all ELGs (2017)",
+    caption = "Source: Department for Education\nChart: GLA City Intelligence"
+  )
 
 ```
-
-By default, `ggplot2` aligns the plot labels (titles, captions etc) to the panel of the plot itself, not the whole plot area. As the ethnicity labels extend out to the left hand side of the plot, this ends up making the plot look a bit misaligned. `left_align_labs()` will adjust the alignment to be with respect to the whole plot area. This needs to be applied to the whole `ggplot` object, not just + on the end.
-
 
 And a stacked example:
 
@@ -243,9 +243,9 @@ numcats <- AvAtt %>%
 
 pal <- gla_pal(gla_theme = "default", palette_type = "categorical", n = numcats)
 
-(ggplot(AvAtt,
-        aes(x = Region, y = Score, fill = rev(Subject),
-            label = round(Score, 1))) +
+ggplot(AvAtt,
+       aes(x = Region, y = Score, fill = rev(Subject),
+           label = round(Score, 1))) +
   theme_gla() +
   ggla_horizbar() +
   geom_text(position = position_stack(vjust = 0.85),
@@ -253,18 +253,17 @@ pal <- gla_pal(gla_theme = "default", palette_type = "categorical", n = numcats)
   theme(axis.text.x = element_blank()) +
   scale_fill_manual(values = pal,
                     breaks = rev(levels(AvAtt$Subject))) +
-      labs(
-        title = "Average Attainment 8 Scores - 2016/17",
-        subtitle = "Average score per pupil in each element",
-        caption = "Source: Department for Education\nChart: GLA City Intelligence"
-        )) %>%
-  left_align_labs()
+  labs(
+    title = "Average Attainment 8 Scores - 2016/17",
+    subtitle = "Average score per pupil in each element",
+    caption = "Source: Department for Education\nChart: GLA City Intelligence"
+  )
 ```
 
 
 ## Donut charts
 
-We'll use some data on internet useage in London to illustrate donut charts
+We'll use some data on internet usage in London to illustrate donut charts
 
 ```{r}
 Internet %>%
@@ -297,7 +296,7 @@ EURef %>%
   kable()
 ```
 
-The leave vote has been seperated out into categories for each Borough.
+The leave vote has been separated out into categories for each Borough.
 The geometry of each Borough is available on the [DataStore](https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london).
 
 To plot geographical data, you can use the `ggla_sf()` which is similar to the `ggplot::geom_sf()` function with different defaults to fit with our style guide. This function works with *simple features data*, as used in the [sf package](https://www.rdocumentation.org/packages/sf/versions/0.7-2). The geometry here is polygons, but `ggla_sf()` works with other geometry types.
@@ -315,7 +314,7 @@ ggplot(EURef, aes(geometry = geometry, fill = CatLeave)) +
   labs(
     title = "Leave Vote in the 2016 EU Referendum",
     caption = "Contains Ordnance Survey data Crown copyright and database right [2015]"
-    )
+  )
 ```
 
 
