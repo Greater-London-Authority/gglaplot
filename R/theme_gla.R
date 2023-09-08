@@ -152,7 +152,7 @@ theme_gla <- function(gla_theme = "default",
   if (xgridlines) {
     theme_gla <- theme_gla +
       ggplot2::theme(panel.grid.major.x = ggplot2::element_line(
-        size = 1 * mm_to_pt, colour =  colours$`light grid`))
+        linewidth = 1 * mm_to_pt, colour =  colours$`light grid`))
   }
 
   # legend
