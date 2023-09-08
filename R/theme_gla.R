@@ -82,14 +82,14 @@ theme_gla <- function(gla_theme = "default",
       plot.caption.position = "plot",
 
       # gridlines
-      panel.grid.major.y = ggplot2::element_line(size = 1 * mm_to_pt,
+      panel.grid.major.y = ggplot2::element_line(linewidth = 1 * mm_to_pt,
                                                  colour = colours$`light grid`),
       panel.grid.major.x = ggplot2::element_blank(),
       panel.grid.minor = ggplot2::element_blank(),
 
       # axis text and ticks
       axis.ticks.x = ggplot2::element_blank(),
-      axis.ticks.y = ggplot2::element_line(size = 1 * mm_to_pt,
+      axis.ticks.y = ggplot2::element_line(linewidth = 1 * mm_to_pt,
                                            colour = colours$`light grid`),
       axis.ticks.length.y = ggplot2::unit(y_label_length, units = "pt"),
       axis.text = ggplot2::element_text(colour = colours$`body text`,
