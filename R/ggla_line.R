@@ -4,8 +4,9 @@
 GeomGLALine <- ggplot2::ggproto("GeomGLALine", ggplot2::GeomLine,
                        default_aes = ggplot2::aes(
                          colour = gla_colours$blue_core,
-                         size = 3 * mm_to_pt, linetype = 1,
-                         alpha = 1)
+                         linewidth = 3 * mm_to_pt, linetype = 1,
+                         alpha = 1),
+                       rename_size = TRUE
 )
 
 #' @title ggla_line
